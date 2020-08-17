@@ -1,5 +1,7 @@
 # spx
 
+> _**spx** - **s**cheme **p**ro**x**y_
+
 A simple tool that allows naive proxying of urls with custom schemes.
 Useful for cases when you don't have an ability to use original url, bacause of some limitations (ex. urls on [**Notion**](https://notion.so/product))
 
