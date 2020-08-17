@@ -17,7 +17,7 @@ const index = () => {
 
     return <main>
         <Head>
-            <title>Create proxy scheme URL</title>
+            <title>spx - Create a proxy for custom scheme URL</title>
 
             <meta
                 name="viewport"
@@ -32,7 +32,7 @@ const index = () => {
 
                 <div className="wrapper">
                     <div className="label">
-                        <span>{typeof location == "object" ? location.host : 'link.now.sh'}/{type}/</span>
+                        <span>{typeof location == "object" ? location.host : 'spx.now.sh'}/{type}/</span>
                     </div>
                     <div className="input">
                         <input

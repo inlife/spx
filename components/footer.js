@@ -1,7 +1,7 @@
 const Footer = () =>
     <footer>
         <nav>
-            <a href="https://github.com/inlife/" target="_blank">Source</a>
+            <a href="https://github.com/inlife/spx" target="_blank">Source</a>
             <b/>
             <a href="https://vercel.app" target="_blank">Hosted on Vercel</a>
         </nav>

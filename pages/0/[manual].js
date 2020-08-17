@@ -13,7 +13,7 @@ const manual = () => {
 
     return <main>
         <Head>
-            <title>{url}</title>
+            <title>spx - {url}</title>
 
             <meta
                 name="viewport"
