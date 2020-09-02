@@ -30,7 +30,7 @@ const index = () => {
                 <h2>Create a proxy scheme URL</h2>
                 <p>Provide a custom scheme url, select activation type, and click "Copy".</p>
 
-                <div className="wrapper">
+                <div className="wrapper" style={{marginRight: '8px'}}>
                     <div className="label">
                         <span>{typeof location == "object" ? location.host : 'spx.now.sh'}/{type}/</span>
                     </div>
@@ -49,11 +49,11 @@ const index = () => {
                     </div>
                 </div>
 
-                <div className="wrapper">
-                        <select onChange={e => setType(e.target.value)} value={type}>
-                            <option value="1">auto</option>
-                            <option value="0">manual</option>
-                        </select>
+                <div className="wrapper" style={{width:'auto'}}>
+                    <select onChange={e => setType(e.target.value)} value={type}>
+                        <option value="1">auto</option>
+                        <option value="0">manual</option>
+                    </select>
                 </div>
             </section>
             <footer>
@@ -161,8 +161,7 @@ const index = () => {
 
             .wrapper {
                 display: inline-flex;
-                width: 300px;
-                max-width: 100%;
+                /*max-width: 100%;*/
             }
 
             .wrapper .label {
@@ -186,6 +185,9 @@ const index = () => {
                 outline: 0px;
                 line-height: 26px;
                 -webkit-appearance: none;
+                -moz-appearance:    none;
+                appearance:         none;
+                height: 42px;
 
                 border: 1px solid #eaeaea;
                 border-radius: 5px;
@@ -197,13 +199,23 @@ const index = () => {
                 font-size: 14px;
                 box-shadow: none;
                 outline: 0px;
-                line-height: 26px;
+                line-height: 22px;
                 border: 1px solid #eaeaea;
                 border-radius: 5px;
+                height: 42px;
 
-                width: 100%;
+                position: relative;
+                top: 2px;
+
+                -webkit-appearance: none;
+                -moz-appearance:    none;
+                appearance:         none;
+
+                /*width: 80%;*/
                 padding: 9px;
-                /*height: 38px;*/
+                display: block;
+                /*margin: 0 auto;*/
+                /*margin-right: 0;*/
             }
 
             .wrapper input:focus {
