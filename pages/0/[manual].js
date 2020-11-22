@@ -67,6 +67,15 @@ const manual = () => {
                 text-align: center;
                 margin-bottom: 25px;
             }
+            h1 > a {
+                position: relative;
+                top: 8px;
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-width: 450px;
+            }
         `}</style>
     </main>
 }

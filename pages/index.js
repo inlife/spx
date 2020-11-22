@@ -15,14 +15,44 @@ const index = () => {
         setTimeout(() => setButtonText("Copy"), 2500)
     }
 
+    const config = {
+        name: 'spx - Create a proxy for custom scheme URL',
+        description: 'spx - scheme proxy. A simple tool that allows naive proxying of urls with custom schemes. Useful for cases when you don\'t have an ability to use original url, because of some limitations (ex. urls on Notion)',
+        keywords: 'scheme, proxy, url, notion, link, share, page, web, short',
+        site: 'https://spx.now.sh',
+    }
+
     return <main>
         <Head>
-            <title>spx - Create a proxy for custom scheme URL</title>
+            <title>{config.name}</title>
 
-            <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1, user-scalable=no"
-            />
+            <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+
+            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+            <meta name='description' content={config.description} />
+            <meta name='keywords' content={config.keywords} />
+            <meta name='author' content={config.name} />
+
+            <meta name='HandheldFriendly' content='True' />
+
+            <link rel='canonical' content={config.site} />
+            <link rel='author' href='https://plus.google.com/114197786731970943237' />
+            <link rel='publisher' href='https://plus.google.com/114197786731970943237' />
+
+            <meta property='og:title' content={config.name} />
+            <meta property='og:description' content={config.description} />
+            <meta property='og:locale' content='en_US' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content={config.site} />
+            <meta property='og:image' content={config.site + '/preview.png?v=1'} />
+            <meta property='og:site_name' content={config.name} />
+
+            <meta property='fb:admins' content='100000470641337' />
+            <meta property='fb:profile_id' content='100000470641337' />
+
+            <meta name='twitter:card' content='summary' />
+            <meta name='twitter:creator' content='@inlife360' />
+            <meta name='twitter:description' content={config.description} />
         </Head>
 
         <article>
