@@ -23,3 +23,7 @@ The tool is quite simple to use:
 You can deploy the tool on your own account by clicking this button: 
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Finlife%2Fspx)
+
+### Privacy
+
+Please be advised that the product uses Google Analytics to track clicks onto generated links for product learning and improvement purposes. If that is something you do not want to happen, please refrain from using the product.
