@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "next": "^10.0.2",
-    "next-ga": "^2.3.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
