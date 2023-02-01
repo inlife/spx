@@ -22,7 +22,7 @@ The tool is quite simple to use:
 
 You can deploy the tool on your own account by clicking this button: 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Finlife%2Fspx)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Frobhawkes%2Fspx)
 
 ### Privacy
 
