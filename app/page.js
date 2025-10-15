@@ -1,11 +1,20 @@
-import Head from 'next/head'
-import Footer from 'components/footer'
-import {useState} from 'react'
+'use client'
 
-const index = () => {
+import Footer from 'components/footer'
+import {useState, useEffect} from 'react'
+
+export default function HomePage() {
     const [url, setUrl] = useState("")
     const [type, setType] = useState(1)
     const [buttonText, setButtonText] = useState("Copy")
+    const [hostname, setHostname] = useState("spx.now.sh")
+
+    useEffect(() => {
+        // Set the actual hostname on the client side
+        if (typeof window !== 'undefined') {
+            setHostname(window.location.host)
+        }
+    }, [])
 
     const generateUrl = () => {
         const link = location.href + [type, encodeURIComponent(url)].join('/')
@@ -15,54 +24,15 @@ const index = () => {
         setTimeout(() => setButtonText("Copy"), 2500)
     }
 
-    const config = {
-        name: 'spx - Create a proxy for custom scheme URL',
-        description: 'spx - scheme proxy. A simple tool that allows naive proxying of urls with custom schemes. Useful for cases when you don\'t have an ability to use original url, because of some limitations (ex. urls on Notion)',
-        keywords: 'scheme, proxy, url, notion, link, share, page, web, short',
-        site: 'https://spx.now.sh',
-    }
-
     return <main>
-        <Head>
-            <title>{config.name}</title>
-
-            <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-
-            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-            <meta name='description' content={config.description} />
-            <meta name='keywords' content={config.keywords} />
-            <meta name='author' content={config.name} />
-
-            <meta name='HandheldFriendly' content='True' />
-
-            <link rel='canonical' content={config.site} />
-            <link rel='author' href='https://plus.google.com/114197786731970943237' />
-            <link rel='publisher' href='https://plus.google.com/114197786731970943237' />
-
-            <meta property='og:title' content={config.name} />
-            <meta property='og:description' content={config.description} />
-            <meta property='og:locale' content='en_US' />
-            <meta property='og:type' content='website' />
-            <meta property='og:url' content={config.site} />
-            <meta property='og:image' content={config.site + '/preview.png?v=1'} />
-            <meta property='og:site_name' content={config.name} />
-
-            <meta property='fb:admins' content='100000470641337' />
-            <meta property='fb:profile_id' content='100000470641337' />
-
-            <meta name='twitter:card' content='summary' />
-            <meta name='twitter:creator' content='@inlife360' />
-            <meta name='twitter:description' content={config.description} />
-        </Head>
-
         <article>
             <section>
                 <h2>Create a proxy scheme URL</h2>
                 <p>Provide a custom scheme url, select activation type, and click "Copy".</p>
 
-                <div className="wrapper" style={{marginRight: '8px'}}>
+                <div className="wrapper bg-amber-400" style={{marginRight: '8px'}}>
                     <div className="label">
-                        <span>{typeof location == "object" ? location.host : 'spx.now.sh'}/{type}/</span>
+                        <span>{hostname}/{type}/</span>
                     </div>
                     <div className="input">
                         <input
@@ -73,7 +43,7 @@ const index = () => {
                             maxLength="256"
                             onChange={e => setUrl(e.target.value.trim())}
                             value={url}
-                            autoFocus={1}
+                            autoFocus={true}
                             type="text"
                         />
                     </div>
@@ -165,7 +135,6 @@ const index = () => {
             }
 
             article > footer .button {
-                display: inline-block;
                 float: right;
             }
 
@@ -215,8 +184,7 @@ const index = () => {
                 outline: 0px;
                 line-height: 26px;
                 -webkit-appearance: none;
-                -moz-appearance:    none;
-                appearance:         none;
+                -moz-appearance: none;
                 height: 42px;
 
                 border: 1px solid #eaeaea;
@@ -238,8 +206,7 @@ const index = () => {
                 top: 2px;
 
                 -webkit-appearance: none;
-                -moz-appearance:    none;
-                appearance:         none;
+                -moz-appearance: none;
 
                 /*width: 80%;*/
                 padding: 9px;
@@ -254,5 +221,3 @@ const index = () => {
         `}</style>
     </main>
 }
-
-export default index
