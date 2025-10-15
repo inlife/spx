@@ -1,5 +1,8 @@
 import './globals.css'
 import Script from 'next/script'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'spx - Create a proxy for custom scheme URL',
@@ -63,7 +66,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body>
+      <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>

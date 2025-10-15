@@ -2,9 +2,10 @@
 
 import Footer from 'components/footer'
 import {useEffect} from 'react'
+import { useParams } from 'next/navigation'
 
-export default function ProxyPage({ params }) {
-    const { type, url } = params
+export default function ProxyPage() {
+    const { type, url } = useParams()
     const decodedUrl = decodeURIComponent(url)
 
     useEffect(() => {
@@ -21,125 +22,36 @@ export default function ProxyPage({ params }) {
     if (type === '1') {
         // Auto redirect mode - show loading or redirect message
         return (
-            <main>
-                <section>
-                    <h1>Redirecting...</h1>
-                    <p>You will be redirected to: <a href={decodedUrl}>{decodedUrl}</a></p>
+            <main className="w-full h-full flex justify-center items-center p-4 sm:p-6 lg:p-8 flex-col">
+                <section className="text-center max-w-full">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Redirecting...</h1>
+                    <p className="text-gray-600 mb-4">You will be redirected to:</p>
+                    <a
+                        href={decodedUrl}
+                        className="inline-block text-blue-600 hover:text-blue-800 hover:underline break-all max-w-full text-sm sm:text-base"
+                    >
+                        {decodedUrl}
+                    </a>
                 </section>
                 <Footer />
-
-                <style jsx global>{`
-                    body {
-                        margin: 0;
-                        font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-                        text-rendering: optimizeLegibility;
-                        -webkit-font-smoothing: antialiased;
-                    }
-                    html,
-                    body {
-                        height: 100%;
-                    }
-                    body > div:first-child,
-                    body > div:first-child > div:first-child,
-                    body > div:first-child > div:first-child > div {
-                        height: inherit;
-                    }
-                `}</style>
-
-                <style jsx>{`
-                    main {
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 20px;
-                        box-sizing: border-box;
-                        flex-direction: column;
-                    }
-                    main > section {
-                        text-align: center;
-                        max-width: 100%;
-                    }
-
-                    h1 {
-                        font-weight: bold;
-                        font-size: 34px;
-                        text-align: center;
-                        margin-bottom: 25px;
-                    }
-                    h1 > a {
-                        position: relative;
-                        top: 8px;
-                        display: inline-block;
-                        overflow: hidden;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        max-width: 450px;
-                    }
-                `}</style>
             </main>
         )
     }
 
     // Manual mode - show clickable link
     return (
-        <main>
-            <section>
-                <h1>Click: <a href={decodedUrl}>{decodedUrl}</a></h1>
+        <main className="w-full h-full flex justify-center items-center p-4 sm:p-6 lg:p-8 flex-col">
+            <section className="text-center max-w-full">
+                <h1 className="flex flex-col gap-2 items-center justify-center text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    <span>Click to open:</span>
+                    <a href={decodedUrl} className="inline-block pointer">
+                        <button className="px-4 py-2 text-lg font-medium text-white bg-gray-900 border border-gray-900 rounded-md hover:bg-white hover:text-gray-900 transition-all duration-200 min-w-[80px] min-h-[44px] truncate max-w-80">
+                            {decodedUrl}
+                        </button>
+                    </a>
+                </h1>
             </section>
             <Footer />
-
-            <style jsx global>{`
-                body {
-                    margin: 0;
-                    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-                    text-rendering: optimizeLegibility;
-                    -webkit-font-smoothing: antialiased;
-                }
-                html,
-                body {
-                    height: 100%;
-                }
-                body > div:first-child,
-                body > div:first-child > div:first-child,
-                body > div:first-child > div:first-child > div {
-                    height: inherit;
-                }
-            `}</style>
-
-            <style jsx>{`
-                main {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 20px;
-                    box-sizing: border-box;
-                    flex-direction: column;
-                }
-                main > section {
-                    text-align: center;
-                    max-width: 100%;
-                }
-
-                h1 {
-                    font-weight: bold;
-                    font-size: 34px;
-                    text-align: center;
-                    margin-bottom: 25px;
-                }
-                h1 > a {
-                    position: relative;
-                    top: 8px;
-                    display: inline-block;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    max-width: 450px;
-                }
-            `}</style>
         </main>
     )
 }

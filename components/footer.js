@@ -1,65 +1,16 @@
 const Footer = () =>
-    <footer>
-        <nav>
-            <a href="https://github.com/inlife/spx" target="_blank">Source</a>
-            <b/>
-            <a href="https://vercel.app" target="_blank">Hosted on Vercel</a>
+    <footer className="flex justify-center items-center py-12 sm:py-14 absolute bottom-0 left-0 right-0 max-[400px]:hidden">
+        <nav className="h-4 flex justify-center items-center text-xs sm:text-sm text-gray-400">
+            <a
+                href="https://github.com/inlife/spx"
+                target="_blank"
+                className="hover:text-pink-500 transition-colors duration-100 ease-in"
+            >
+                Source
+            </a>
+            <div className="block bg-gray-400 w-px h-full mx-2 sm:mx-3" />
+                Made with ❤️ by <a href="https://twitter.com/inlife360" target="_blank" className="text-gray-400 hover:text-pink-500 transition-colors duration-100 ease-in ml-1">inlife</a>
         </nav>
-
-        <style jsx>{`
-            footer {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 50px 0 40px 0;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-            }
-            footer nav {
-                height: 18px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            footer nav a {
-                font-size: 13px;
-                color: #b2b2b2;
-                text-decoration: none;
-                transition: color 100ms ease-in;
-            }
-            footer nav a:hover {
-                color: #ff0080;
-            }
-            footer nav b {
-                display: block;
-                background: #b2b2b2;
-                width: 1px;
-                height: 100%;
-                margin: 0 10px;
-            }
-            p {
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 24px;
-                max-width: 390px;
-                text-align: center;
-                margin: 14px auto 30px auto;
-            }
-            a {
-                text-decoration: none;
-                color: #ff0080;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-            @media (max-height: 400px) {
-                footer {
-                    display: none;
-                }
-            }
-        `}</style>
     </footer>
 
 export default Footer

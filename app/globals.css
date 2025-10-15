@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-gray-900 bg-gray-50;
+    font-family: "Inter", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html, body {
+    @apply h-full;
+  }
+
+  body > div:first-child,
+  body > div:first-child > div:first-child,
+  body > div:first-child > div:first-child > div {
+    @apply h-full;
+  }
+}
