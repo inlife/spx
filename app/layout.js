@@ -72,7 +72,11 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         {/* google adsense */}
-        <Script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2466083603668341" strategy="afterInteractive" />
+        <Script 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2466083603668341" 
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`${inter.className} antialiased`}>
         <Analytics />
