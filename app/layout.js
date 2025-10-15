@@ -5,30 +5,30 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'spx - Create a proxy for custom scheme URL',
-  description: 'spx - scheme proxy. A simple tool that allows naive proxying of urls with custom schemes. Useful for cases when you don\'t have an ability to use original url, because of some limitations (ex. urls on Notion)',
-  keywords: 'scheme, proxy, url, notion, link, share, page, web, short',
+  title: 'SPX - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
+  description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
+  keywords: 'notion links, obsidian links, broken links fix, link converter, url fixer, share links notion, share links obsidian, clickable links, custom scheme, universal links, slack links, zoom links, obsidian url, notion url',
   authors: [{ name: 'inlife' }],
   openGraph: {
-    title: 'spx - Create a proxy for custom scheme URL',
-    description: 'spx - scheme proxy. A simple tool that allows naive proxying of urls with custom schemes. Useful for cases when you don\'t have an ability to use original url, because of some limitations (ex. urls on Notion)',
+    title: 'SPX - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
+    description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
     url: 'https://spx.now.sh',
-    siteName: 'spx - Create a proxy for custom scheme URL',
+    siteName: 'SPX - Free Link Converter',
     images: [
       {
         url: 'https://spx.now.sh/preview.png?v=1',
         width: 1200,
         height: 630,
-        alt: 'spx - scheme proxy',
+        alt: 'SPX - Make Links Work Everywhere',
       },
     ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     creator: '@inlife360',
-    description: 'spx - scheme proxy. A simple tool that allows naive proxying of urls with custom schemes. Useful for cases when you don\'t have an ability to use original url, because of some limitations (ex. urls on Notion)',
+    description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
   },
   robots: 'index, follow',
 }
