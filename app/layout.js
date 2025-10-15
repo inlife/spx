@@ -9,6 +9,10 @@ export const metadata = {
   description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
   keywords: 'notion links, obsidian links, broken links fix, link converter, url fixer, share links notion, share links obsidian, clickable links, custom scheme, universal links, slack links, zoom links, obsidian url, notion url',
   authors: [{ name: 'inlife' }],
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'SPX - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
     description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
