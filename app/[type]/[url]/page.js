@@ -9,6 +9,7 @@ export default function ProxyPage() {
     const decodedUrl = decodeURIComponent(url)
 
     useEffect(() => {
+        console.log('[info] type:', type)
         if (type === '1' && decodedUrl) {
             console.log('[info] redirecting user to url:', decodedUrl)
             window.location = decodedUrl
@@ -50,7 +51,7 @@ export default function ProxyPage() {
                         </button>
                     </a>
                 </h1>
-                <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4 max-w-md">
+                <div className="mt-6 mx-auto bg-gray-50 border border-gray-200 rounded-lg p-4 max-w-md">
                     <p className="text-sm text-gray-600 mb-2">This link will open:</p>
                     <code className="text-xs text-gray-700 break-all bg-white border border-gray-300 rounded px-2 py-1">{decodedUrl}</code>
                 </div>
