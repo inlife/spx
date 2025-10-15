@@ -7,14 +7,6 @@ export default function HomePage() {
     const [url, setUrl] = useState("")
     const [type, setType] = useState("1")
     const [buttonText, setButtonText] = useState("Copy My Link")
-    const [hostname, setHostname] = useState("spx.vercel.sh")
-
-    useEffect(() => {
-        // Set the actual hostname on the client side
-        if (typeof window !== 'undefined') {
-            setHostname(window.location.host)
-        }
-    }, [])
 
     const generateUrl = () => {
         const link = location.href + [type, encodeURIComponent(url)].join('/')
@@ -29,7 +21,7 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-        
+
         {/* Content wrapper with relative positioning */}
         <div className="relative z-10 w-full flex flex-col items-center">
         {/* Hero Section */}
@@ -162,7 +154,7 @@ export default function HomePage() {
                     <div className="text-gray-400 text-xl">→</div>
                     <div className="text-center">
                         <div className="text-green-500 text-sm font-medium mb-2">✅ After</div>
-                        <code className="bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 break-all">spx.vercel.sh/1/slack://channel/ABC123</code>
+                        <code className="bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 break-all">shortlink.studio/1/slack://channel/ABC123</code>
                         <div className="text-xs mt-2 text-gray-500 mt-1">(works everywhere!)</div>
                     </div>
                 </div>
