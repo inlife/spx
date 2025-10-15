@@ -55,6 +55,7 @@ export default function RootLayout({ children }) {
         <link rel="publisher" href="https://plus.google.com/114197786731970943237" />
         <meta property="fb:admins" content="100000470641337" />
         <meta property="fb:profile_id" content="100000470641337" />
+        <meta name="google-adsense-account" content="ca-pub-2466083603668341" />
 
         {/* Google Analytics */}
         <Script
