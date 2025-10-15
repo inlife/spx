@@ -1,6 +1,7 @@
 import './globals.css'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -70,8 +71,11 @@ export default function RootLayout({ children }) {
             gtag('config', 'UA-76312016-2');
           `}
         </Script>
+        {/* google adsense */}
+        <Script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2466083603668341" strategy="afterInteractive" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <Analytics />
         {children}
       </body>
     </html>
