@@ -8,7 +8,7 @@
 
 [**🚀 Try it now →**](https://www.shortlink.studio)
 
-<img src="https://user-images.githubusercontent.com/2182108/91936193-1107f480-ecf8-11ea-873f-c0c3998292af.png" width="600" />
+<img src="https://www.shortlink.studio/preview.png" width="600" />
 
 </div>
 
@@ -32,8 +32,8 @@ SPX (Scheme Proxy) is a free tool that solves a common frustration: **broken cus
 2. **Toggle** auto-open if you want automatic redirection
 3. **Copy** your universal link and share it anywhere!
 
-**Before:** `slack://channel/ABC123` ❌ (broken in Notion)
-**After:** `shortlink.studio/1/slack://channel/ABC123` ✅ (works everywhere!)
+* **Before:** `slack://channel/ABC123` ❌ (broken in Notion)
+* **After:** `shortlink.studio/1/slack://channel/ABC123` ✅ (works everywhere!)
 
 ## 💡 Perfect For
 
