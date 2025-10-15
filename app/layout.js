@@ -12,11 +12,11 @@ export const metadata = {
   openGraph: {
     title: 'SPX - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
     description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
-    url: 'https://spx.vercel.sh',
+    url: 'https://spx.vercel.app',
     siteName: 'SPX - Free Link Converter',
     images: [
       {
-        url: 'https://spx.vercel.sh/preview.png?v=1',
+        url: 'https://spx.vercel.app/preview.png?v=1',
         width: 1200,
         height: 630,
         alt: 'SPX - Make Links Work Everywhere',
@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="HandheldFriendly" content="True" />
-        <link rel="canonical" href="https://spx.vercel.sh" />
+        <link rel="canonical" href="https://spx.vercel.app" />
         <link rel="author" href="https://plus.google.com/114197786731970943237" />
         <link rel="publisher" href="https://plus.google.com/114197786731970943237" />
         <meta property="fb:admins" content="100000470641337" />
