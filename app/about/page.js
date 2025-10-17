@@ -18,7 +18,7 @@ export default function AboutPage() {
             {/* Hero Section */}
             <section className="text-center mt-8 sm:mt-12 lg:mt-16 mb-12 max-w-4xl mx-auto">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                    About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">SPX</span>
+                    About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Shortlink</span>
                 </h1>
                 <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
                     Making custom scheme URLs work everywhere on the web
@@ -27,14 +27,14 @@ export default function AboutPage() {
 
             {/* Main Content */}
             <article className="w-full max-w-3xl mx-auto space-y-8">
-                {/* What is SPX */}
+                {/* What is Shortlink */}
                 <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">What is SPX?</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">What is Shortlink?</h2>
                     <p className="text-gray-600 mb-4 leading-relaxed">
-                        SPX (Short Protocol eXchange) is a free tool that converts custom scheme URLs into universal web links that work in any application or platform.
+                        Shortlink is a free tool that converts custom scheme URLs into universal web links that work in any application or platform.
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                        Have you ever tried to share a <code className="bg-gray-100 px-2 py-1 rounded text-sm">slack://</code> or <code className="bg-gray-100 px-2 py-1 rounded text-sm">zoom://</code> link in Notion, Obsidian, or an email, only to find it doesn't work? SPX solves this problem by creating a clickable web link that properly redirects to your custom protocol.
+                        Have you ever tried to share a <code className="bg-gray-100 px-2 py-1 rounded text-sm">slack://</code> or <code className="bg-gray-100 px-2 py-1 rounded text-sm">zoom://</code> link in Notion, Obsidian, or an email, only to find it doesn't work? Shortlink solves this problem by creating a clickable web link that properly redirects to your custom protocol.
                     </p>
                 </section>
 
@@ -45,7 +45,7 @@ export default function AboutPage() {
                         Many modern apps use custom URL schemes for deep linking - like <code className="bg-gray-100 px-2 py-1 rounded text-sm">slack://</code>, <code className="bg-gray-100 px-2 py-1 rounded text-sm">notion://</code>, or <code className="bg-gray-100 px-2 py-1 rounded text-sm">obsidian://</code>. These work great when clicked directly from your browser or OS, but break when embedded in web apps, documentation, or shared content.
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                        We created SPX to bridge this gap and make deep linking truly universal.
+                        We created Shortlink to bridge this gap and make deep linking truly universal.
                     </p>
                 </section>
 
@@ -129,7 +129,7 @@ export default function AboutPage() {
                 <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
                     <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Built With</h2>
                     <p className="text-gray-600 mb-4 leading-relaxed">
-                        SPX is built with modern web technologies to ensure fast performance and reliability:
+                        Shortlink is built with modern web technologies to ensure fast performance and reliability:
                     </p>
                     <div className="flex flex-wrap gap-2">
                         <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">Next.js 15</span>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                         href="/"
                         className="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md hover:bg-blue-700 hover:border-blue-700 transition-all duration-200"
                     >
-                        Try SPX Now
+                        Try Shortlink Now
                     </a>
                 </section>
             </article>

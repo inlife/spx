@@ -7,7 +7,7 @@ const Header = () =>
                     <span className="text-white font-bold text-lg sm:text-xl">S</span>
                 </div>
                 <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    SPX
+                    Shortlink
                 </span>
             </a>
 

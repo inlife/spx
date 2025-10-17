@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'SPX - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
+  title: 'Shortlink - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
   description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
   keywords: 'notion links, obsidian links, broken links fix, link converter, url fixer, share links notion, share links obsidian, clickable links, custom scheme, universal links, slack links, zoom links, obsidian url, notion url',
   authors: [{ name: 'inlife' }],
@@ -15,16 +15,16 @@ export const metadata = {
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'SPX - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
+    title: 'Shortlink - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
     description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
     url: 'https://www.shortlink.studio',
-    siteName: 'SPX - Free Link Converter',
+    siteName: 'Shortlink - Free Link Converter',
     images: [
       {
         url: 'https://www.shortlink.studio/preview.png?v=1',
         width: 1200,
         height: 630,
-        alt: 'SPX - Make Links Work Everywhere',
+        alt: 'Shortlink - Make Links Work Everywhere',
       },
     ],
     locale: 'en_US',
@@ -72,8 +72,8 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         {/* google adsense */}
-        <Script 
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2466083603668341" 
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2466083603668341"
           strategy="afterInteractive"
           crossOrigin="anonymous"
         />
