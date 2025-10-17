@@ -1,5 +1,6 @@
 'use client'
 
+import Header from 'components/header'
 import Footer from 'components/footer'
 import {useState, useEffect} from 'react'
 
@@ -16,7 +17,7 @@ export default function HomePage() {
         setTimeout(() => setButtonText("Copy My Link"), 2500)
     }
 
-    return <main className="w-full min-h-screen flex justify-center p-4 sm:p-6 lg:p-8 flex-col pb-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
+    return <main className="w-full min-h-screen flex justify-center flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
         {/* Decorative gradient orbs */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -24,6 +25,9 @@ export default function HomePage() {
 
         {/* Content wrapper with relative positioning */}
         <div className="relative z-10 w-full flex flex-col items-center">
+        <Header />
+
+        <div className="w-full px-4 sm:px-6 lg:px-8 pb-32">
         {/* Hero Section */}
         <section className="text-center mt-8 sm:mt-12 lg:mt-16 mb-12 max-w-4xl mx-auto">
             <div className="inline-block bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-full px-4 py-2 mb-6 shadow-sm">
@@ -149,13 +153,13 @@ export default function HomePage() {
                     <div className="text-center">
                         <div className="text-red-500 text-sm font-medium mb-2">❌ Before</div>
                         <code className="bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 break-all">slack://channel/ABC123</code>
-                        <div className="text-xs mt-2 text-gray-500 mt-1">(broken in Notion)</div>
+                        <div className="text-xs text-gray-500 mt-1">(broken in Notion)</div>
                     </div>
                     <div className="text-gray-400 text-xl">→</div>
                     <div className="text-center">
                         <div className="text-green-500 text-sm font-medium mb-2">✅ After</div>
                         <code className="bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 break-all">shortlink.studio/1/slack://channel/ABC123</code>
-                        <div className="text-xs mt-2 text-gray-500 mt-1">(works everywhere!)</div>
+                        <div className="text-xs text-gray-500 mt-1">(works everywhere!)</div>
                     </div>
                 </div>
             </div>
@@ -182,6 +186,7 @@ export default function HomePage() {
         </section>
 
         <Footer />
+        </div>
         </div>
     </main>
 }
