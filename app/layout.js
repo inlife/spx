@@ -6,19 +6,19 @@ import { Analytics } from "@vercel/analytics/next"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Shortlink - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
-  description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
-  keywords: 'notion links, obsidian links, broken links fix, link converter, url fixer, share links notion, share links obsidian, clickable links, custom scheme, universal links, slack links, zoom links, obsidian url, notion url',
+  title: 'Shortlink - Shorten & Fix Links for Notion, Obsidian & Other Apps | Free Link Shortener',
+  description: 'Shorten and convert custom scheme URLs into compact, universal links that work in Notion, Obsidian, Slack, and anywhere else. Built-in URL compression makes links up to 65% shorter. Free, instant, no signup required.',
+  keywords: 'url shortener, link shortener, shorten url, compress url, short link, notion links, obsidian links, broken links fix, link converter, url fixer, share links notion, share links obsidian, clickable links, custom scheme, universal links, slack links, zoom links, obsidian url, notion url, link compressor, short url generator',
   authors: [{ name: 'inlife' }],
   icons: {
     icon: '/favicon.svg',
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'Shortlink - Make Links Work in Notion, Obsidian & Other Apps | Free Link Converter',
-    description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
+    title: 'Shortlink - Shorten & Fix Links for Notion, Obsidian & Other Apps | Free Link Shortener',
+    description: 'Shorten and convert custom scheme URLs into compact, universal links that work in Notion, Obsidian, Slack, and anywhere else. Built-in URL compression makes links up to 65% shorter. Free, instant, no signup required.',
     url: 'https://www.shortlink.studio',
-    siteName: 'Shortlink - Free Link Converter',
+    siteName: 'Shortlink - Free Link Shortener & Converter',
     images: [
       {
         url: 'https://www.shortlink.studio/preview.png?v=1',
@@ -33,7 +33,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@inlife360',
-    description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else. Free, instant, no signup required.',
+    description: 'Shorten and convert custom scheme URLs into compact, universal links that work in Notion, Obsidian, Slack, and anywhere else. Built-in URL compression makes links up to 65% shorter. Free, instant, no signup required.',
   },
   robots: 'index, follow',
 }
@@ -78,7 +78,7 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
         <Analytics />
         {children}
       </body>

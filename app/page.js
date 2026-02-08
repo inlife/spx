@@ -44,17 +44,17 @@ export default function HomePage() {
                 <span className="text-sm font-medium bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Free • No Signup • Instant</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Make Your Links Work <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Anywhere</span>
+                Shorten & Fix Your Links <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Anywhere</span>
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Convert special links into universal links that work in Notion, Obsidian, Slack, and other apps
+                Convert special links into short, universal links that work in Notion, Obsidian, Slack, and other apps
             </p>
         </section>
 
         <article className="text-left border border-gray-200 rounded-lg shadow-sm bg-white w-full max-w-2xl mx-auto">
             <section className="p-4 sm:p-6 lg:p-8">
                 <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Turn broken links into working links in 3 simple steps</h2>
-                <p className="text-gray-600 mb-6">Paste your link, choose how it opens, and get a shareable link that works everywhere.</p>
+                <p className="text-gray-600 mb-6">Paste your link, choose how it opens, and get a short, shareable link that works everywhere.</p>
 
                 {/* Input Field */}
                 <div className="mb-6">
@@ -207,8 +207,9 @@ export default function HomePage() {
             <details className="text-sm text-gray-600">
                 <summary className="cursor-pointer hover:text-gray-800 font-medium">How does this work?</summary>
                 <div className="mt-3 text-left bg-white border border-gray-200 rounded p-4">
-                    <p className="mb-2">When you paste a special link (like <code>slack://</code> or <code>zoom://</code>), we create a regular web link that:</p>
+                    <p className="mb-2">When you paste a special link (like <code>slack://</code> or <code>zoom://</code>), we create a short web link that:</p>
                     <ul className="list-disc list-inside space-y-1 text-sm">
+                        <li>Is up to 65% shorter than the original URL</li>
                         <li>Works in any app or website</li>
                         <li>Opens your original link when clicked</li>
                         <li>Doesn't require any downloads or signups</li>
