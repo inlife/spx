@@ -2,15 +2,28 @@
 
 import Header from 'components/header'
 import Footer from 'components/footer'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
+import {shouldCompress} from 'utils/codec'
 
 export default function HomePage() {
     const [url, setUrl] = useState("")
     const [type, setType] = useState("1")
+    const [compress, setCompress] = useState(false)
     const [buttonText, setButtonText] = useState("Copy My Link")
 
     const generateUrl = () => {
-        const link = location.href + [type, encodeURIComponent(url)].join('/')
+        const origin = location.origin + '/'
+        let link
+        if (compress) {
+            const result = shouldCompress(url, type)
+            if (result.useCompression) {
+                link = origin + 's/' + result.compressed
+            } else {
+                link = origin + result.legacy
+            }
+        } else {
+            link = origin + type + '/' + encodeURIComponent(url)
+        }
         console.log('[info] created url', link)
         navigator.clipboard.writeText(link)
         setButtonText("Copied! ✓")
@@ -80,6 +93,28 @@ export default function HomePage() {
                         <span
                             className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
                                 type === "1" ? 'translate-x-6' : 'translate-x-1'
+                            }`}
+                        />
+                    </button>
+                </div>
+
+                {/* Compress Link Toggle */}
+                <div className="flex items-center justify-between bg-gray-50 rounded-lg p-4 mb-4">
+                    <div className="flex-1">
+                        <h3 className="text-sm font-semibold text-gray-900 mb-1">Shorten link</h3>
+                        <p className="text-xs text-gray-500">Compress the URL using stateless compression</p>
+                    </div>
+                    <button
+                        onClick={() => setCompress(!compress)}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                            compress ? 'bg-blue-600' : 'bg-gray-300'
+                        }`}
+                        role="switch"
+                        aria-checked={compress}
+                    >
+                        <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
+                                compress ? 'translate-x-6' : 'translate-x-1'
                             }`}
                         />
                     </button>
