@@ -8,19 +8,16 @@ import {shouldCompress} from 'utils/codec'
 export default function HomePage() {
     const [url, setUrl] = useState("")
     const [type, setType] = useState("1")
-    const [compress, setCompress] = useState(false)
+    const [compress, setCompress] = useState(true)
     const [buttonText, setButtonText] = useState("Copy My Link")
+
+    const canCompress = url.length > 0 && shouldCompress(url, type).useCompression
 
     const generateUrl = () => {
         const origin = location.origin + '/'
         let link
-        if (compress) {
-            const result = shouldCompress(url, type)
-            if (result.useCompression) {
-                link = origin + 's/' + result.compressed
-            } else {
-                link = origin + result.legacy
-            }
+        if (compress && canCompress) {
+            link = origin + 's/' + shouldCompress(url, type).compressed
         } else {
             link = origin + type + '/' + encodeURIComponent(url)
         }
@@ -98,8 +95,8 @@ export default function HomePage() {
                     </button>
                 </div>
 
-                {/* Compress Link Toggle */}
-                <div className="flex items-center justify-between bg-gray-50 rounded-lg p-4 mb-4">
+                {/* Compress Link Toggle — only shown when compression would shorten the URL */}
+                {canCompress && <div className="flex items-center justify-between bg-gray-50 rounded-lg p-4 mb-4">
                     <div className="flex-1">
                         <h3 className="text-sm font-semibold text-gray-900 mb-1">Shorten link</h3>
                         <p className="text-xs text-gray-500">Compress the URL using stateless compression</p>
@@ -118,7 +115,7 @@ export default function HomePage() {
                             }`}
                         />
                     </button>
-                </div>
+                </div>}
             </section>
             <footer className="border-t border-gray-200 bg-gray-50 p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div className="text-sm text-gray-500">
