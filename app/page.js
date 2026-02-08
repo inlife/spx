@@ -2,15 +2,25 @@
 
 import Header from 'components/header'
 import Footer from 'components/footer'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
+import {shouldCompress} from 'utils/codec'
 
 export default function HomePage() {
     const [url, setUrl] = useState("")
     const [type, setType] = useState("1")
+    const [compress, setCompress] = useState(true)
     const [buttonText, setButtonText] = useState("Copy My Link")
 
+    const canCompress = url.length > 0 && shouldCompress(url, type).useCompression
+
     const generateUrl = () => {
-        const link = location.href + [type, encodeURIComponent(url)].join('/')
+        const origin = location.origin + '/'
+        let link
+        if (compress && canCompress) {
+            link = origin + 's/' + shouldCompress(url, type).compressed
+        } else {
+            link = origin + type + '/' + encodeURIComponent(url)
+        }
         console.log('[info] created url', link)
         navigator.clipboard.writeText(link)
         setButtonText("Copied! ✓")
@@ -34,17 +44,17 @@ export default function HomePage() {
                 <span className="text-sm font-medium bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Free • No Signup • Instant</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Make Your Links Work <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Anywhere</span>
+                Shorten & Fix Your Links <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Anywhere</span>
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Convert special links into universal links that work in Notion, Obsidian, Slack, and other apps
+                Convert special links into short, universal links that work in Notion, Obsidian, Slack, and other apps
             </p>
         </section>
 
         <article className="text-left border border-gray-200 rounded-lg shadow-sm bg-white w-full max-w-2xl mx-auto">
             <section className="p-4 sm:p-6 lg:p-8">
                 <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Turn broken links into working links in 3 simple steps</h2>
-                <p className="text-gray-600 mb-6">Paste your link, choose how it opens, and get a shareable link that works everywhere.</p>
+                <p className="text-gray-600 mb-6">Paste your link, choose how it opens, and get a short, shareable link that works everywhere.</p>
 
                 {/* Input Field */}
                 <div className="mb-6">
@@ -84,6 +94,28 @@ export default function HomePage() {
                         />
                     </button>
                 </div>
+
+                {/* Compress Link Toggle — only shown when compression would shorten the URL */}
+                {canCompress && <div className="flex items-center justify-between bg-gray-50 rounded-lg p-4 mb-4">
+                    <div className="flex-1">
+                        <h3 className="text-sm font-semibold text-gray-900 mb-1">Shorten link</h3>
+                        <p className="text-xs text-gray-500">Compress the URL using stateless compression</p>
+                    </div>
+                    <button
+                        onClick={() => setCompress(!compress)}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                            compress ? 'bg-blue-600' : 'bg-gray-300'
+                        }`}
+                        role="switch"
+                        aria-checked={compress}
+                    >
+                        <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
+                                compress ? 'translate-x-6' : 'translate-x-1'
+                            }`}
+                        />
+                    </button>
+                </div>}
             </section>
             <footer className="border-t border-gray-200 bg-gray-50 p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div className="text-sm text-gray-500">
@@ -175,8 +207,9 @@ export default function HomePage() {
             <details className="text-sm text-gray-600">
                 <summary className="cursor-pointer hover:text-gray-800 font-medium">How does this work?</summary>
                 <div className="mt-3 text-left bg-white border border-gray-200 rounded p-4">
-                    <p className="mb-2">When you paste a special link (like <code>slack://</code> or <code>zoom://</code>), we create a regular web link that:</p>
+                    <p className="mb-2">When you paste a special link (like <code>slack://</code> or <code>zoom://</code>), we create a short web link that:</p>
                     <ul className="list-disc list-inside space-y-1 text-sm">
+                        <li>Is up to 65% shorter than the original URL</li>
                         <li>Works in any app or website</li>
                         <li>Opens your original link when clicked</li>
                         <li>Doesn't require any downloads or signups</li>
