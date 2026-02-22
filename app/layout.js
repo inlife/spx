@@ -1,30 +1,27 @@
 import './globals.css'
 import Script from 'next/script'
-import { Inter } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({ subsets: ['latin'] })
-
 export const metadata = {
-  title: 'Shortlink - Shorten & Fix Links for Notion, Obsidian & Other Apps | Free Link Shortener',
-  description: 'Shorten and convert custom scheme URLs into compact, universal links that work in Notion, Obsidian, Slack, and anywhere else. Built-in URL compression makes links up to 65% shorter. Free, instant, no signup required.',
-  keywords: 'url shortener, link shortener, shorten url, compress url, short link, notion links, obsidian links, broken links fix, link converter, url fixer, share links notion, share links obsidian, clickable links, custom scheme, universal links, slack links, zoom links, obsidian url, notion url, link compressor, short url generator',
+  title: 'Shortlink — Fix Custom Scheme URLs',
+  description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and everywhere else. Free, instant, no signup.',
+  keywords: 'url shortener, link shortener, custom scheme, notion links, obsidian links, broken links fix, link converter, universal links, slack links, zoom links',
   authors: [{ name: 'inlife' }],
   icons: {
     icon: '/favicon.svg',
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'Shortlink - Shorten & Fix Links for Notion, Obsidian & Other Apps | Free Link Shortener',
-    description: 'Shorten and convert custom scheme URLs into compact, universal links that work in Notion, Obsidian, Slack, and anywhere else. Built-in URL compression makes links up to 65% shorter. Free, instant, no signup required.',
+    title: 'Shortlink — Fix Custom Scheme URLs',
+    description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and everywhere else. Free, instant, no signup.',
     url: 'https://www.shortlink.studio',
-    siteName: 'Shortlink - Free Link Shortener & Converter',
+    siteName: 'Shortlink',
     images: [
       {
         url: 'https://www.shortlink.studio/preview.png?v=1',
         width: 1200,
         height: 630,
-        alt: 'Shortlink - Make Links Work Everywhere',
+        alt: 'Shortlink',
       },
     ],
     locale: 'en_US',
@@ -33,7 +30,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@inlife360',
-    description: 'Shorten and convert custom scheme URLs into compact, universal links that work in Notion, Obsidian, Slack, and anywhere else. Built-in URL compression makes links up to 65% shorter. Free, instant, no signup required.',
+    description: 'Convert custom scheme URLs into universal links that work everywhere. Free, instant, no signup.',
   },
   robots: 'index, follow',
 }
@@ -58,6 +55,13 @@ export default function RootLayout({ children }) {
         <meta property="fb:profile_id" content="100000470641337" />
         <meta name="google-adsense-account" content="ca-pub-2466083603668341" />
 
+        {/* Fonts: Satoshi (Fontshare) + JetBrains Mono (Google Fonts) */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-CG6KC5KZLG"
@@ -78,7 +82,7 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
         <Analytics />
         {children}
       </body>
