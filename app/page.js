@@ -2,6 +2,7 @@
 
 import Header from 'components/header'
 import Footer from 'components/footer'
+import GeoBg from 'components/geo-bg'
 import {useState} from 'react'
 import {shouldCompress} from 'utils/codec'
 
@@ -9,7 +10,7 @@ export default function HomePage() {
     const [url, setUrl] = useState("")
     const [type, setType] = useState("1")
     const [compress, setCompress] = useState(true)
-    const [buttonText, setButtonText] = useState("Copy My Link")
+    const [buttonText, setButtonText] = useState("COPY LINK")
 
     const canCompress = url.length > 0 && shouldCompress(url, type).useCompression
 
@@ -23,203 +24,289 @@ export default function HomePage() {
         }
         console.log('[info] created url', link)
         navigator.clipboard.writeText(link)
-        setButtonText("Copied! ✓")
-        setTimeout(() => setButtonText("Copy My Link"), 2500)
+        setButtonText("COPIED")
+        setTimeout(() => setButtonText("COPY LINK"), 2500)
     }
 
-    return <main className="w-full min-h-screen flex justify-center flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    const marqueeText = "CUSTOM SCHEME \u2014 URL COMPRESSION \u2014 UNIVERSAL LINKS \u2014 STATELESS ENCODING \u2014 NOTION \u2014 OBSIDIAN \u2014 SLACK \u2014 ZOOM \u2014 DEEP LINKING \u2014 "
 
-        {/* Content wrapper with relative positioning */}
-        <div className="relative z-10 w-full flex flex-col items-center">
-        <Header />
+    return (
+        <main className="min-h-[100dvh] flex flex-col">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'FAQPage',
+                        mainEntity: [
+                            { '@type': 'Question', name: 'What is a custom scheme URL?', acceptedAnswer: { '@type': 'Answer', text: 'A custom scheme URL uses a non-standard protocol like slack://, obsidian://, or zoom:// instead of https://. Apps register these schemes to handle deep links, but they break when pasted into web pages, emails, or documentation because browsers do not recognize them.' } },
+                            { '@type': 'Question', name: 'Why do custom scheme links break in Notion and Obsidian?', acceptedAnswer: { '@type': 'Answer', text: 'Web-based apps like Notion strip or block non-HTTPS URLs for security reasons. When you paste a slack:// or obsidian:// link into a Notion page, it either becomes unclickable or gets removed entirely. Shortlink solves this by wrapping the custom scheme URL in a standard HTTPS link.' } },
+                            { '@type': 'Question', name: 'Does Shortlink store my URLs?', acceptedAnswer: { '@type': 'Answer', text: 'No. Shortlink is completely stateless. Your URL is encoded directly into the link itself using client-side compression. There is no database, no server storage, and no tracking.' } },
+                            { '@type': 'Question', name: 'Is Shortlink free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, Shortlink is free and open source. There are no usage limits, no signup requirements, and no premium tiers.' } },
+                            { '@type': 'Question', name: 'How does the compression work?', acceptedAnswer: { '@type': 'Answer', text: 'Shortlink uses LZ-string compression with a custom dictionary of common URL patterns. The URL is first pattern-matched against known schemes, then compressed using LZ encoding, and finally made URL-safe. The entire process happens in your browser.' } },
+                        ],
+                    }),
+                }}
+            />
+            {/* Hero zone — header + title + marquee share the geometric bg */}
+            <div className="relative overflow-hidden">
+                <GeoBg />
+                <div className="relative z-10">
+                    <Header />
 
-        <div className="w-full px-4 sm:px-6 lg:px-8 pb-32">
-        {/* Hero Section */}
-        <section className="text-center mt-8 sm:mt-12 lg:mt-16 mb-12 max-w-4xl mx-auto">
-            <div className="inline-block bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-full px-4 py-2 mb-6 shadow-sm">
-                <span className="text-sm font-medium bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Free • No Signup • Instant</span>
+                    {/* Hero Banner */}
+                    <section className="w-full px-5 pt-12 sm:pt-20 pb-12 sm:pb-16">
+                        <div className="max-w-5xl mx-auto">
+                            <div className="flex items-center gap-3 mb-5">
+                                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 border border-zinc-700 px-2 py-0.5">Stateless</span>
+                                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 border border-zinc-700 px-2 py-0.5">v1.0</span>
+                                <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-600 border border-emerald-800 px-2 py-0.5">Free</span>
+                            </div>
+                            <h1 className="font-display text-6xl sm:text-8xl md:text-9xl font-bold text-white uppercase leading-[0.85] tracking-tighter">
+                                Short<br className="sm:hidden" />link
+                            </h1>
+                            <p className="font-mono text-xs sm:text-sm text-zinc-500 uppercase tracking-widest mt-5">
+                                Universal Link Converter
+                            </p>
+                        </div>
+                    </section>
+
+                    {/* Scrolling Marquee */}
+                    <div className="w-full border-t border-b border-zinc-800 overflow-hidden py-3">
+                        <div className="animate-marquee whitespace-nowrap flex">
+                            <span className="font-display text-sm sm:text-base font-bold uppercase tracking-wide text-zinc-400 mx-0">
+                                {marqueeText}{marqueeText}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Shorten & Fix Your Links <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Anywhere</span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Convert special links into short, universal links that work in Notion, Obsidian, Slack, and other apps
-            </p>
-        </section>
 
-        <article className="text-left border border-gray-200 rounded-lg shadow-sm bg-white w-full max-w-2xl mx-auto">
-            <section className="p-4 sm:p-6 lg:p-8">
-                <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Turn broken links into working links in 3 simple steps</h2>
-                <p className="text-gray-600 mb-6">Paste your link, choose how it opens, and get a short, shareable link that works everywhere.</p>
+            {/* Numbered Tool Panels */}
+            <section className="w-full max-w-5xl mx-auto px-5 py-8 sm:py-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-800">
 
-                {/* Input Field */}
-                <div className="mb-6">
-                    <input
-                        className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-                        autoCapitalize="off"
-                        autoComplete="off"
-                        autoCorrect="off"
-                        spellCheck="false"
-                        maxLength="256"
-                        onChange={e => setUrl(e.target.value.trim())}
-                        value={url}
-                        autoFocus={true}
-                        type="text"
-                        placeholder="Paste your link here (e.g., slack://channel/...)"
-                    />
+                    {/* Panel 01 — Input */}
+                    <div className="bg-zinc-950 p-5 sm:p-6 md:col-span-2">
+                        <div className="flex items-baseline gap-3 mb-5">
+                            <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">01</span>
+                            <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Input</span>
+                        </div>
+                        <label className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">Custom Scheme URL</label>
+                        <input
+                            className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-lg px-4 py-3.5 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                            autoCapitalize="off"
+                            autoComplete="off"
+                            autoCorrect="off"
+                            spellCheck="false"
+                            maxLength="256"
+                            onChange={e => setUrl(e.target.value.trim())}
+                            value={url}
+                            autoFocus={true}
+                            type="text"
+                            placeholder="slack://channel?team=T0..."
+                        />
+                        {/* Before/After readout */}
+                        <div className="mt-4 font-mono text-xs space-y-1 border-t border-zinc-800 pt-4">
+                            <div className="flex items-center gap-2">
+                                <span className="text-zinc-600 w-8 shrink-0">IN</span>
+                                <span className="text-zinc-500 truncate">{url || 'slack://channel/ABC123'}</span>
+                                <span className="text-red-400 text-[10px] ml-auto shrink-0">BROKEN</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="text-zinc-600 w-8 shrink-0">OUT</span>
+                                <span className="text-white truncate">shortlink.studio/s/...</span>
+                                <span className="text-emerald-500 text-[10px] ml-auto shrink-0">UNIVERSAL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Panel 02 — Options */}
+                    <div className="bg-zinc-950 p-5 sm:p-6">
+                        <div className="flex items-baseline gap-3 mb-5">
+                            <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">02</span>
+                            <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Options</span>
+                        </div>
+
+                        <label className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">Auto-Redirect</label>
+                        <div className="flex items-center justify-between mb-4">
+                            <span className="text-xs text-zinc-400">Open link on visit</span>
+                            <button
+                                onClick={() => setType(type === "1" ? "0" : "1")}
+                                className={`relative inline-flex h-5 w-9 items-center rounded-sm transition-colors focus:outline-none ${
+                                    type === "1" ? 'bg-emerald-600' : 'bg-zinc-700'
+                                }`}
+                                role="switch"
+                                aria-checked={type === "1"}
+                            >
+                                <span className={`inline-block h-3.5 w-3.5 transform rounded-sm bg-white transition-transform ${
+                                    type === "1" ? 'translate-x-[18px]' : 'translate-x-[3px]'
+                                }`} />
+                            </button>
+                        </div>
+
+                        {canCompress && <>
+                            <label className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">Compression</label>
+                            <div className="flex items-center justify-between mb-4">
+                                <span className="text-xs text-zinc-400">Stateless encoding</span>
+                                <button
+                                    onClick={() => setCompress(!compress)}
+                                    className={`relative inline-flex h-5 w-9 items-center rounded-sm transition-colors focus:outline-none ${
+                                        compress ? 'bg-emerald-600' : 'bg-zinc-700'
+                                    }`}
+                                    role="switch"
+                                    aria-checked={compress}
+                                >
+                                    <span className={`inline-block h-3.5 w-3.5 transform rounded-sm bg-white transition-transform ${
+                                        compress ? 'translate-x-[18px]' : 'translate-x-[3px]'
+                                    }`} />
+                                </button>
+                            </div>
+                        </>}
+
+                        <div className="mt-auto pt-2">
+                            <div className="font-mono text-[10px] text-zinc-600 flex justify-between">
+                                <span>MODE: {type === "1" ? "AUTO" : "MANUAL"}</span>
+                                <span>{canCompress && compress ? "LZ" : "RAW"}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Toggle Switch */}
-                <div className="flex items-center justify-between bg-gray-50 rounded-lg p-4 mb-4">
-                    <div className="flex-1">
-                        <h3 className="text-sm font-semibold text-gray-900 mb-1">Auto-open link</h3>
-                        <p className="text-xs text-gray-500">Automatically redirect when the link is visited</p>
+                {/* Full-width Output Panel */}
+                <div className="bg-zinc-950 border-t border-zinc-800 mt-px">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-800">
+                        <div className="bg-zinc-950 p-5 sm:p-6 md:col-span-2 flex items-center">
+                            <div className="flex items-baseline gap-3">
+                                <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">03</span>
+                                <div>
+                                    <span className="font-display text-sm font-bold uppercase tracking-wider text-white block">Output</span>
+                                    <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Click to generate and copy to clipboard</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-zinc-950 p-5 sm:p-6 flex items-center">
+                            <button
+                                className="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-display font-bold py-4 text-sm tracking-wider uppercase transition-all"
+                                onClick={generateUrl}
+                            >
+                                {buttonText}
+                            </button>
+                        </div>
                     </div>
-                    <button
-                        onClick={() => setType(type === "1" ? "0" : "1")}
-                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                            type === "1" ? 'bg-blue-600' : 'bg-gray-300'
-                        }`}
-                        role="switch"
-                        aria-checked={type === "1"}
-                    >
-                        <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
-                                type === "1" ? 'translate-x-6' : 'translate-x-1'
-                            }`}
-                        />
-                    </button>
                 </div>
-
-                {/* Compress Link Toggle — only shown when compression would shorten the URL */}
-                {canCompress && <div className="flex items-center justify-between bg-gray-50 rounded-lg p-4 mb-4">
-                    <div className="flex-1">
-                        <h3 className="text-sm font-semibold text-gray-900 mb-1">Shorten link</h3>
-                        <p className="text-xs text-gray-500">Compress the URL using stateless compression</p>
-                    </div>
-                    <button
-                        onClick={() => setCompress(!compress)}
-                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                            compress ? 'bg-blue-600' : 'bg-gray-300'
-                        }`}
-                        role="switch"
-                        aria-checked={compress}
-                    >
-                        <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
-                                compress ? 'translate-x-6' : 'translate-x-1'
-                            }`}
-                        />
-                    </button>
-                </div>}
             </section>
-            <footer className="border-t border-gray-200 bg-gray-50 p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                <div className="text-sm text-gray-500">
-                    <span>Your shareable link will be ready to paste.</span>
-                </div>
-                <button
-                    className="px-6 py-3 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md hover:bg-blue-700 hover:border-blue-700 transition-all duration-200 min-w-[120px] min-h-[44px]"
-                    onClick={generateUrl}
-                >
-                    {buttonText}
-                </button>
-            </footer>
-        </article>
 
-        {/* Use Cases Section */}
-        <section className="mt-12 w-full max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8">Perfect for...</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <div className="flex items-center mb-3">
-                        <span className="text-2xl mr-3">🔗</span>
-                        <h3 className="text-lg font-semibold text-gray-900">Notion</h3>
-                    </div>
-                    <p className="text-gray-600">Share Slack, Zoom, or app links in Notion pages that actually work when clicked.</p>
+            {/* Supported Schemes */}
+            <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16">
+                <div className="flex items-baseline gap-3 mb-8">
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">04</span>
+                    <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Supported Schemes</span>
                 </div>
-                <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <div className="flex items-center mb-3">
-                        <span className="text-2xl mr-3">📝</span>
-                        <h3 className="text-lg font-semibold text-gray-900">Obsidian</h3>
-                    </div>
-                    <p className="text-gray-600">Embed custom protocol links in your Obsidian notes that work across all platforms.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-zinc-800">
+                    {[
+                        { scheme: 'slack://', name: 'Slack', desc: 'Channels, messages, and DM deep links' },
+                        { scheme: 'obsidian://', name: 'Obsidian', desc: 'Vault, note, and Advanced URI links' },
+                        { scheme: 'zoom://', name: 'Zoom', desc: 'Meeting join and start links' },
+                        { scheme: 'notion://', name: 'Notion', desc: 'Page and database deep links' },
+                        { scheme: 'figma://', name: 'Figma', desc: 'File and prototype open links' },
+                        { scheme: '*://', name: 'Any Scheme', desc: 'Works with any custom protocol URL' },
+                    ].map(item => (
+                        <div key={item.scheme} className="bg-zinc-950 p-5 sm:p-6">
+                            <code className="font-mono text-emerald-500 text-sm block mb-2">{item.scheme}</code>
+                            <div className="text-white font-bold text-sm mb-1">{item.name}</div>
+                            <p className="text-zinc-500 text-xs leading-relaxed">{item.desc}</p>
+                        </div>
+                    ))}
                 </div>
-                <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <div className="flex items-center mb-3">
-                        <span className="text-2xl mr-3">📧</span>
-                        <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-                    </div>
-                    <p className="text-gray-600">Send clickable app links in email newsletters that work for all recipients.</p>
-                </div>
-                <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <div className="flex items-center mb-3">
-                        <span className="text-2xl mr-3">🎥</span>
-                        <h3 className="text-lg font-semibold text-gray-900">Zoom</h3>
-                    </div>
-                    <p className="text-gray-600">Send clickable app links in Zoom meetings that work for all recipients.</p>
-                </div>
-                <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <div className="flex items-center mb-3">
-                        <span className="text-2xl mr-3">📱</span>
-                        <h3 className="text-lg font-semibold text-gray-900">Mobile</h3>
-                    </div>
-                    <p className="text-gray-600">Share deep links that work across platforms and devices seamlessly.</p>
-                </div>
-                <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <div className="flex items-center mb-3">
-                        <span className="text-2xl mr-3">💼</span>
-                        <h3 className="text-lg font-semibold text-gray-900">Teams</h3>
-                    </div>
-                    <p className="text-gray-600">Share internal tool links in documentation that everyone can access.</p>
-                </div>
-            </div>
+            </section>
 
-            {/* Before/After Example */}
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">How it works</h3>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <div className="text-center">
-                        <div className="text-red-500 text-sm font-medium mb-2">❌ Before</div>
-                        <code className="bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 break-all">slack://channel/ABC123</code>
-                        <div className="text-xs text-gray-500 mt-1">(broken in Notion)</div>
+            {/* How It Works */}
+            <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16 border-t border-zinc-800">
+                <div className="flex items-baseline gap-3 mb-8">
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">05</span>
+                    <span className="font-display text-sm font-bold uppercase tracking-wider text-white">How It Works</span>
+                </div>
+                <div className="space-y-6 max-w-2xl">
+                    <div className="flex gap-4">
+                        <span className="font-mono text-emerald-600 text-sm shrink-0">01</span>
+                        <div>
+                            <h3 className="text-white font-bold text-sm mb-1">Paste your custom scheme URL</h3>
+                            <p className="text-zinc-500 text-xs leading-relaxed">
+                                Enter any URL that uses a custom protocol like slack://, obsidian://, zoom://, or notion://.
+                                These URLs break when embedded in web pages, emails, or documentation because browsers
+                                do not recognize them as valid links.
+                            </p>
+                        </div>
                     </div>
-                    <div className="text-gray-400 text-xl">→</div>
-                    <div className="text-center">
-                        <div className="text-green-500 text-sm font-medium mb-2">✅ After</div>
-                        <code className="bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 break-all">shortlink.studio/1/slack://channel/ABC123</code>
-                        <div className="text-xs text-gray-500 mt-1">(works everywhere!)</div>
+                    <div className="flex gap-4">
+                        <span className="font-mono text-emerald-600 text-sm shrink-0">02</span>
+                        <div>
+                            <h3 className="text-white font-bold text-sm mb-1">Choose your redirect mode</h3>
+                            <p className="text-zinc-500 text-xs leading-relaxed">
+                                Auto-redirect opens the link immediately when someone clicks it. Manual mode shows
+                                a confirmation page first. Compression uses stateless LZ encoding to shorten the URL
+                                without any database or server storage.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex gap-4">
+                        <span className="font-mono text-emerald-600 text-sm shrink-0">03</span>
+                        <div>
+                            <h3 className="text-white font-bold text-sm mb-1">Share the universal link</h3>
+                            <p className="text-zinc-500 text-xs leading-relaxed">
+                                Copy the generated HTTPS link and use it anywhere. It works in Notion pages, Obsidian notes,
+                                Slack messages, emails, documentation, and any other context where custom scheme URLs would break.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        {/* Trust Section */}
-        <section className="mt-8 w-full max-w-2xl mx-auto text-center">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                <p className="text-sm text-blue-800">
-                    <strong>Privacy first:</strong> We don't store your URLs. Everything happens in your browser.
-                </p>
-            </div>
-            <details className="text-sm text-gray-600">
-                <summary className="cursor-pointer hover:text-gray-800 font-medium">How does this work?</summary>
-                <div className="mt-3 text-left bg-white border border-gray-200 rounded p-4">
-                    <p className="mb-2">When you paste a special link (like <code>slack://</code> or <code>zoom://</code>), we create a short web link that:</p>
-                    <ul className="list-disc list-inside space-y-1 text-sm">
-                        <li>Is up to 65% shorter than the original URL</li>
-                        <li>Works in any app or website</li>
-                        <li>Opens your original link when clicked</li>
-                        <li>Doesn't require any downloads or signups</li>
-                    </ul>
+            {/* FAQ */}
+            <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16 border-t border-zinc-800">
+                <div className="flex items-baseline gap-3 mb-8">
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">06</span>
+                    <span className="font-display text-sm font-bold uppercase tracking-wider text-white">FAQ</span>
                 </div>
-            </details>
-        </section>
+                <div className="space-y-3 max-w-2xl">
+                    {[
+                        {
+                            q: 'What is a custom scheme URL?',
+                            a: 'A custom scheme URL uses a non-standard protocol like slack://, obsidian://, or zoom:// instead of https://. Apps register these schemes to handle deep links, but they break when pasted into web pages, emails, or documentation because browsers do not recognize them.',
+                        },
+                        {
+                            q: 'Why do custom scheme links break in Notion and Obsidian?',
+                            a: 'Web-based apps like Notion strip or block non-HTTPS URLs for security reasons. When you paste a slack:// or obsidian:// link into a Notion page, it either becomes unclickable or gets removed entirely. Shortlink solves this by wrapping the custom scheme URL in a standard HTTPS link.',
+                        },
+                        {
+                            q: 'Does Shortlink store my URLs?',
+                            a: 'No. Shortlink is completely stateless. Your URL is encoded directly into the link itself using client-side compression. There is no database, no server storage, and no tracking. The original URL can be decoded from the link without contacting any server.',
+                        },
+                        {
+                            q: 'Is Shortlink free?',
+                            a: 'Yes, Shortlink is free and open source. There are no usage limits, no signup requirements, and no premium tiers. The source code is available on GitHub.',
+                        },
+                        {
+                            q: 'How does the compression work?',
+                            a: 'Shortlink uses LZ-string compression with a custom dictionary of common URL patterns. The URL is first pattern-matched against known schemes, then compressed using LZ encoding, and finally made URL-safe. The entire process happens in your browser with zero server involvement.',
+                        },
+                    ].map((faq, i) => (
+                        <details key={i} className="group border border-zinc-800">
+                            <summary className="flex items-center justify-between p-4 cursor-pointer">
+                                <span className="text-white text-sm font-medium pr-4">{faq.q}</span>
+                                <span className="font-mono text-zinc-600 text-xs group-open:rotate-45 transition-transform shrink-0">+</span>
+                            </summary>
+                            <div className="px-4 pb-4">
+                                <p className="text-zinc-400 text-xs leading-relaxed">{faq.a}</p>
+                            </div>
+                        </details>
+                    ))}
+                </div>
+            </section>
 
-        <Footer />
-        </div>
-        </div>
-    </main>
+            <div className="flex-1" />
+            <Footer />
+        </main>
+    )
 }

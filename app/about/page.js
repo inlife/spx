@@ -1,159 +1,126 @@
-'use client'
-
 import Header from 'components/header'
 import Footer from 'components/footer'
 
+export const metadata = {
+    title: 'About',
+    description: 'Learn how Shortlink converts custom scheme URLs like slack://, obsidian://, and zoom:// into universal HTTPS links. Open source, stateless, no database.',
+    alternates: {
+        canonical: '/about',
+    },
+    openGraph: {
+        title: 'About Shortlink',
+        description: 'Learn how Shortlink converts custom scheme URLs into universal HTTPS links.',
+        url: 'https://www.shortlink.studio/about',
+    },
+}
+
 export default function AboutPage() {
-    return <main className="w-full min-h-screen flex justify-center flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-
-        {/* Content wrapper with relative positioning */}
-        <div className="relative z-10 w-full flex flex-col items-center">
+    return (
+        <main className="min-h-[100dvh] flex flex-col">
             <Header />
-            
-            <div className="w-full px-4 sm:px-6 lg:px-8 pb-32">
-            {/* Hero Section */}
-            <section className="text-center mt-8 sm:mt-12 lg:mt-16 mb-12 max-w-4xl mx-auto">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                    About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Shortlink</span>
+
+            <div className="flex-1 max-w-5xl mx-auto w-full px-5">
+                <h1 className="text-4xl md:text-5xl tracking-tighter leading-none font-bold text-white pt-12 sm:pt-16 pb-8">
+                    About
                 </h1>
-                <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                    Making custom scheme URLs work everywhere on the web
-                </p>
-            </section>
 
-            {/* Main Content */}
-            <article className="w-full max-w-3xl mx-auto space-y-8">
-                {/* What is Shortlink */}
-                <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">What is Shortlink?</h2>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                        Shortlink is a free tool that converts custom scheme URLs into universal web links that work in any application or platform.
+                {/* Intro */}
+                <section className="border-t border-zinc-800 py-8">
+                    <p className="text-zinc-400 leading-relaxed max-w-[55ch]">
+                        Modern applications like <code className="font-mono text-sm text-zinc-300">Slack</code>, <code className="font-mono text-sm text-zinc-300">Obsidian</code>, <code className="font-mono text-sm text-zinc-300">Zoom</code>, <code className="font-mono text-sm text-zinc-300">Notion</code>, and <code className="font-mono text-sm text-zinc-300">Figma</code> use custom URL schemes for deep linking &mdash; URIs like <code className="font-mono text-sm text-zinc-300">slack://channel</code> or <code className="font-mono text-sm text-zinc-300">obsidian://open?vault=wiki</code> that open specific views inside desktop and mobile apps.
                     </p>
-                    <p className="text-gray-600 leading-relaxed">
-                        Have you ever tried to share a <code className="bg-gray-100 px-2 py-1 rounded text-sm">slack://</code> or <code className="bg-gray-100 px-2 py-1 rounded text-sm">zoom://</code> link in Notion, Obsidian, or an email, only to find it doesn't work? Shortlink solves this problem by creating a clickable web link that properly redirects to your custom protocol.
+                    <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
+                        The problem: these links break the moment you paste them into a web page, a wiki, an email, or a chat message on a different platform. Browsers don&rsquo;t know how to handle them, firewalls strip them, and Markdown renderers refuse to turn them into clickable links. Shortlink fixes this by converting any custom scheme URL into a standard HTTPS link that works everywhere.
                     </p>
                 </section>
 
-                {/* Why We Built This */}
-                <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Why We Built This</h2>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                        Many modern apps use custom URL schemes for deep linking - like <code className="bg-gray-100 px-2 py-1 rounded text-sm">slack://</code>, <code className="bg-gray-100 px-2 py-1 rounded text-sm">notion://</code>, or <code className="bg-gray-100 px-2 py-1 rounded text-sm">obsidian://</code>. These work great when clicked directly from your browser or OS, but break when embedded in web apps, documentation, or shared content.
+                {/* Why */}
+                <section className="border-t border-zinc-800 py-8">
+                    <h2 className="text-lg font-bold text-white mb-3">Why</h2>
+                    <p className="text-zinc-400 leading-relaxed max-w-[55ch]">
+                        Custom scheme URLs break in almost every cross-app context. Shortlink exists because these workflows are common and currently painful:
                     </p>
-                    <p className="text-gray-600 leading-relaxed">
-                        We created Shortlink to bridge this gap and make deep linking truly universal.
-                    </p>
-                </section>
-
-                {/* How It Works */}
-                <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
-                    <div className="space-y-4">
-                        <div className="flex items-start">
-                            <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <span className="text-blue-600 font-bold text-sm">1</span>
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-gray-900 mb-1">Paste Your Link</h3>
-                                <p className="text-gray-600 text-sm">Enter any custom scheme URL (like <code className="bg-gray-100 px-2 py-1 rounded text-xs">slack://channel/ABC123</code>)</p>
-                            </div>
-                        </div>
-                        <div className="flex items-start">
-                            <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <span className="text-blue-600 font-bold text-sm">2</span>
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-gray-900 mb-1">Choose Your Mode</h3>
-                                <p className="text-gray-600 text-sm">Auto-redirect (instant) or manual mode (user clicks to open)</p>
-                            </div>
-                        </div>
-                        <div className="flex items-start">
-                            <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <span className="text-blue-600 font-bold text-sm">3</span>
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-gray-900 mb-1">Share Anywhere</h3>
-                                <p className="text-gray-600 text-sm">Your new link works in Notion, Obsidian, Slack, email, and everywhere else</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Key Features */}
-                <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Key Features</h2>
-                    <ul className="space-y-3">
-                        <li className="flex items-start">
-                            <span className="text-green-500 mr-3 text-xl">✓</span>
-                            <div>
-                                <strong className="text-gray-900">100% Free</strong>
-                                <p className="text-gray-600 text-sm">No signup, no subscription, no hidden costs</p>
-                            </div>
+                    <ul className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4 space-y-3 list-disc list-inside">
+                        <li>
+                            Documentation teams embedding <code className="font-mono text-sm text-zinc-300">slack://</code> channel links inside Notion wikis or Confluence pages, only to find they render as plain text.
                         </li>
-                        <li className="flex items-start">
-                            <span className="text-green-500 mr-3 text-xl">✓</span>
-                            <div>
-                                <strong className="text-gray-900">Privacy First</strong>
-                                <p className="text-gray-600 text-sm">We don't store your URLs - everything happens in your browser</p>
-                            </div>
+                        <li>
+                            Obsidian users sharing <code className="font-mono text-sm text-zinc-300">obsidian://</code> vault links in team chats where the protocol is stripped or blocked by IT policy.
                         </li>
-                        <li className="flex items-start">
-                            <span className="text-green-500 mr-3 text-xl">✓</span>
-                            <div>
-                                <strong className="text-gray-900">Instant</strong>
-                                <p className="text-gray-600 text-sm">Generate your link immediately, no waiting</p>
-                            </div>
+                        <li>
+                            Zoom meeting links using <code className="font-mono text-sm text-zinc-300">zoommtg://</code> pasted into project management tools like Linear, Jira, or Asana that refuse to parse non-HTTP schemes.
                         </li>
-                        <li className="flex items-start">
-                            <span className="text-green-500 mr-3 text-xl">✓</span>
-                            <div>
-                                <strong className="text-gray-900">Universal</strong>
-                                <p className="text-gray-600 text-sm">Works with any custom scheme URL protocol</p>
-                            </div>
-                        </li>
-                        <li className="flex items-start">
-                            <span className="text-green-500 mr-3 text-xl">✓</span>
-                            <div>
-                                <strong className="text-gray-900">Open Source</strong>
-                                <p className="text-gray-600 text-sm">View the code on <a href="https://github.com/inlife/spx" target="_blank" className="text-blue-600 hover:text-blue-700 underline">GitHub</a></p>
-                            </div>
+                        <li>
+                            Any cross-app workflow where a deep link needs to survive being pasted into a medium that only understands HTTPS.
                         </li>
                     </ul>
                 </section>
 
-                {/* Technology Stack */}
-                <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sm:p-8">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Built With</h2>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                        Shortlink is built with modern web technologies to ensure fast performance and reliability:
+                {/* How */}
+                <section className="border-t border-zinc-800 py-8">
+                    <h2 className="text-lg font-bold text-white mb-3">How</h2>
+                    <ol className="font-mono text-sm text-zinc-400 space-y-1">
+                        <li>1. Paste your custom scheme URL</li>
+                        <li>2. Choose auto-redirect or manual mode</li>
+                        <li>3. Copy the universal link</li>
+                    </ol>
+                    <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
+                        Under the hood, Shortlink uses stateless LZ-based compression with dictionary substitution to encode your original URL directly into the HTTPS link path. There is no database, no server storage, and no lookup table. The entire payload lives in the URL itself, decoded and redirected fully client-side. This means links never expire, never hit a rate limit, and never depend on a third-party service staying online.
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                        <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">Next.js 15</span>
-                        <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">React 19</span>
-                        <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
-                        <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">Vercel</span>
-                    </div>
                 </section>
 
-                {/* CTA Section */}
-                <section className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg shadow-sm p-6 sm:p-8 text-center">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to get started?</h2>
-                    <p className="text-gray-600 mb-6">Convert your first link in seconds</p>
-                    <a 
-                        href="/"
-                        className="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md hover:bg-blue-700 hover:border-blue-700 transition-all duration-200"
+                {/* Use Cases */}
+                <section className="border-t border-zinc-800 py-8">
+                    <h2 className="text-lg font-bold text-white mb-3">Use Cases</h2>
+                    <ul className="text-zinc-400 leading-relaxed max-w-[55ch] space-y-3 list-disc list-inside">
+                        <li>
+                            <span className="text-zinc-300 font-medium">Internal documentation</span> &mdash; Embed deep links in Notion, Confluence, or Google Docs without them breaking.
+                        </li>
+                        <li>
+                            <span className="text-zinc-300 font-medium">Knowledge management</span> &mdash; Share Obsidian and Roam Research vault links with teammates who use different tools.
+                        </li>
+                        <li>
+                            <span className="text-zinc-300 font-medium">Team communication</span> &mdash; Slack deep links and Zoom meeting links that survive being pasted into any chat or email client.
+                        </li>
+                        <li>
+                            <span className="text-zinc-300 font-medium">Developer workflows</span> &mdash; Custom protocol handlers, IDE deep links, and local dev-server URLs wrapped in a shareable HTTPS link.
+                        </li>
+                    </ul>
+                </section>
+
+                {/* Privacy */}
+                <section className="border-t border-zinc-800 py-8">
+                    <h2 className="text-lg font-bold text-white mb-3">Privacy</h2>
+                    <p className="text-zinc-400 leading-relaxed max-w-[55ch]">
+                        Shortlink is fully stateless. There is no database, no server-side storage, and no analytics tracking on generated links. Your original URL is encoded directly into the link itself using client-side compression &mdash; the server never sees, logs, or stores the target address.
+                    </p>
+                    <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
+                        No cookies, no telemetry, no user accounts. The entire codebase is open source, so you can verify every claim by reading the code yourself.
+                    </p>
+                </section>
+
+                {/* Stack */}
+                <section className="border-t border-zinc-800 py-8">
+                    <h2 className="text-lg font-bold text-white mb-3">Stack</h2>
+                    <p className="font-mono text-sm text-zinc-500">
+                        Next.js 15 / React 19 / Tailwind CSS / Vercel
+                    </p>
+                </section>
+
+                {/* Source */}
+                <section className="border-t border-zinc-800 py-8">
+                    <h2 className="text-lg font-bold text-white mb-3">Source</h2>
+                    <a
+                        href="https://github.com/inlife/spx"
+                        target="_blank"
+                        className="font-mono text-sm text-emerald-500 hover:text-emerald-400 transition-colors"
                     >
-                        Try Shortlink Now
+                        github.com/inlife/spx
                     </a>
                 </section>
-            </article>
+            </div>
 
             <Footer />
-            </div>
-        </div>
-    </main>
+        </main>
+    )
 }
