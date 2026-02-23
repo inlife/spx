@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -10,5 +11,16 @@
     @apply font-sans antialiased text-zinc-50 bg-zinc-950;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
   }
 }

@@ -1,6 +1,6 @@
 const Header = () =>
     <header className="w-full border-b border-zinc-800">
-        <div className="max-w-2xl mx-auto flex items-center justify-between py-5 px-5">
+        <div className="max-w-5xl mx-auto flex items-center justify-between py-5 px-5">
             <a href="/" className="flex items-center gap-2.5">
                 <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 11.5C8 10.6716 8.67157 10 9.5 10H13.5C14.3284 10 15 10.6716 15 11.5V12.5C15 13.3284 14.3284 14 13.5 14H9.5C8.67157 14 8 13.3284 8 12.5V11.5Z" fill="white"/>
