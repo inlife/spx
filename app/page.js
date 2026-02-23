@@ -32,6 +32,22 @@ export default function HomePage() {
 
     return (
         <main className="min-h-[100dvh] flex flex-col">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'FAQPage',
+                        mainEntity: [
+                            { '@type': 'Question', name: 'What is a custom scheme URL?', acceptedAnswer: { '@type': 'Answer', text: 'A custom scheme URL uses a non-standard protocol like slack://, obsidian://, or zoom:// instead of https://. Apps register these schemes to handle deep links, but they break when pasted into web pages, emails, or documentation because browsers do not recognize them.' } },
+                            { '@type': 'Question', name: 'Why do custom scheme links break in Notion and Obsidian?', acceptedAnswer: { '@type': 'Answer', text: 'Web-based apps like Notion strip or block non-HTTPS URLs for security reasons. When you paste a slack:// or obsidian:// link into a Notion page, it either becomes unclickable or gets removed entirely. Shortlink solves this by wrapping the custom scheme URL in a standard HTTPS link.' } },
+                            { '@type': 'Question', name: 'Does Shortlink store my URLs?', acceptedAnswer: { '@type': 'Answer', text: 'No. Shortlink is completely stateless. Your URL is encoded directly into the link itself using client-side compression. There is no database, no server storage, and no tracking.' } },
+                            { '@type': 'Question', name: 'Is Shortlink free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, Shortlink is free and open source. There are no usage limits, no signup requirements, and no premium tiers.' } },
+                            { '@type': 'Question', name: 'How does the compression work?', acceptedAnswer: { '@type': 'Answer', text: 'Shortlink uses LZ-string compression with a custom dictionary of common URL patterns. The URL is first pattern-matched against known schemes, then compressed using LZ encoding, and finally made URL-safe. The entire process happens in your browser.' } },
+                        ],
+                    }),
+                }}
+            />
             {/* Hero zone — header + title + marquee share the geometric bg */}
             <div className="relative overflow-hidden">
                 <GeoBg />
@@ -178,6 +194,114 @@ export default function HomePage() {
                             </button>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* Supported Schemes */}
+            <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16">
+                <div className="flex items-baseline gap-3 mb-8">
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">04</span>
+                    <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Supported Schemes</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-zinc-800">
+                    {[
+                        { scheme: 'slack://', name: 'Slack', desc: 'Channels, messages, and DM deep links' },
+                        { scheme: 'obsidian://', name: 'Obsidian', desc: 'Vault, note, and Advanced URI links' },
+                        { scheme: 'zoom://', name: 'Zoom', desc: 'Meeting join and start links' },
+                        { scheme: 'notion://', name: 'Notion', desc: 'Page and database deep links' },
+                        { scheme: 'figma://', name: 'Figma', desc: 'File and prototype open links' },
+                        { scheme: '*://', name: 'Any Scheme', desc: 'Works with any custom protocol URL' },
+                    ].map(item => (
+                        <div key={item.scheme} className="bg-zinc-950 p-5 sm:p-6">
+                            <code className="font-mono text-emerald-500 text-sm block mb-2">{item.scheme}</code>
+                            <div className="text-white font-bold text-sm mb-1">{item.name}</div>
+                            <p className="text-zinc-500 text-xs leading-relaxed">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* How It Works */}
+            <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16 border-t border-zinc-800">
+                <div className="flex items-baseline gap-3 mb-8">
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">05</span>
+                    <span className="font-display text-sm font-bold uppercase tracking-wider text-white">How It Works</span>
+                </div>
+                <div className="space-y-6 max-w-2xl">
+                    <div className="flex gap-4">
+                        <span className="font-mono text-emerald-600 text-sm shrink-0">01</span>
+                        <div>
+                            <h3 className="text-white font-bold text-sm mb-1">Paste your custom scheme URL</h3>
+                            <p className="text-zinc-500 text-xs leading-relaxed">
+                                Enter any URL that uses a custom protocol like slack://, obsidian://, zoom://, or notion://.
+                                These URLs break when embedded in web pages, emails, or documentation because browsers
+                                do not recognize them as valid links.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex gap-4">
+                        <span className="font-mono text-emerald-600 text-sm shrink-0">02</span>
+                        <div>
+                            <h3 className="text-white font-bold text-sm mb-1">Choose your redirect mode</h3>
+                            <p className="text-zinc-500 text-xs leading-relaxed">
+                                Auto-redirect opens the link immediately when someone clicks it. Manual mode shows
+                                a confirmation page first. Compression uses stateless LZ encoding to shorten the URL
+                                without any database or server storage.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex gap-4">
+                        <span className="font-mono text-emerald-600 text-sm shrink-0">03</span>
+                        <div>
+                            <h3 className="text-white font-bold text-sm mb-1">Share the universal link</h3>
+                            <p className="text-zinc-500 text-xs leading-relaxed">
+                                Copy the generated HTTPS link and use it anywhere. It works in Notion pages, Obsidian notes,
+                                Slack messages, emails, documentation, and any other context where custom scheme URLs would break.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16 border-t border-zinc-800">
+                <div className="flex items-baseline gap-3 mb-8">
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">06</span>
+                    <span className="font-display text-sm font-bold uppercase tracking-wider text-white">FAQ</span>
+                </div>
+                <div className="space-y-3 max-w-2xl">
+                    {[
+                        {
+                            q: 'What is a custom scheme URL?',
+                            a: 'A custom scheme URL uses a non-standard protocol like slack://, obsidian://, or zoom:// instead of https://. Apps register these schemes to handle deep links, but they break when pasted into web pages, emails, or documentation because browsers do not recognize them.',
+                        },
+                        {
+                            q: 'Why do custom scheme links break in Notion and Obsidian?',
+                            a: 'Web-based apps like Notion strip or block non-HTTPS URLs for security reasons. When you paste a slack:// or obsidian:// link into a Notion page, it either becomes unclickable or gets removed entirely. Shortlink solves this by wrapping the custom scheme URL in a standard HTTPS link.',
+                        },
+                        {
+                            q: 'Does Shortlink store my URLs?',
+                            a: 'No. Shortlink is completely stateless. Your URL is encoded directly into the link itself using client-side compression. There is no database, no server storage, and no tracking. The original URL can be decoded from the link without contacting any server.',
+                        },
+                        {
+                            q: 'Is Shortlink free?',
+                            a: 'Yes, Shortlink is free and open source. There are no usage limits, no signup requirements, and no premium tiers. The source code is available on GitHub.',
+                        },
+                        {
+                            q: 'How does the compression work?',
+                            a: 'Shortlink uses LZ-string compression with a custom dictionary of common URL patterns. The URL is first pattern-matched against known schemes, then compressed using LZ encoding, and finally made URL-safe. The entire process happens in your browser with zero server involvement.',
+                        },
+                    ].map((faq, i) => (
+                        <details key={i} className="group border border-zinc-800">
+                            <summary className="flex items-center justify-between p-4 cursor-pointer">
+                                <span className="text-white text-sm font-medium pr-4">{faq.q}</span>
+                                <span className="font-mono text-zinc-600 text-xs group-open:rotate-45 transition-transform shrink-0">+</span>
+                            </summary>
+                            <div className="px-4 pb-4">
+                                <p className="text-zinc-400 text-xs leading-relaxed">{faq.a}</p>
+                            </div>
+                        </details>
+                    ))}
                 </div>
             </section>
 

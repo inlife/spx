@@ -1,0 +1,16 @@
+{
+    "name": "Shortlink",
+    "short_name": "Shortlink",
+    "description": "Convert custom scheme URLs into universal HTTPS links.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#09090b",
+    "theme_color": "#059669",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
