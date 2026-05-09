@@ -10,6 +10,7 @@ const Header = () =>
                 <span className="text-xl font-bold text-white">Shortlink</span>
             </a>
             <nav className="flex items-center gap-6">
+                <a href="/tools/" className="text-sm text-zinc-500 hover:text-emerald-500 transition-colors">Tools</a>
                 <a href="/about" className="text-sm text-zinc-500 hover:text-emerald-500 transition-colors">About</a>
                 <a href="/contact" className="text-sm text-zinc-500 hover:text-emerald-500 transition-colors">Contact</a>
             </nav>

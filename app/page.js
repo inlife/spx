@@ -202,6 +202,9 @@ export default function HomePage() {
                 <div className="flex items-baseline gap-3 mb-8">
                     <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">04</span>
                     <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Supported Schemes</span>
+                    <a href="/tools/url-scheme-registry/" className="ml-auto font-mono text-[10px] uppercase tracking-widest text-emerald-600 hover:text-emerald-400 transition-colors">
+                        See all 50+ schemes →
+                    </a>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-zinc-800">
                     {[
