@@ -75,43 +75,8 @@ export default function UrlSchemeRegistryPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppLd) }}
             />
 
-            {/* Searchable client table */}
             <section className="py-10">
-                <RegistryClient schemes={URL_SCHEMES} />
-            </section>
-
-            {/* Static fallback table — duplicates the data for crawlers regardless of JS */}
-            <section className="border-t border-zinc-800 py-10" aria-hidden="false">
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
-                    Full URL scheme reference
-                </h2>
-                <p className="text-zinc-500 text-sm mb-6 max-w-[60ch]">
-                    The complete list, also indexable without JavaScript. {wrappable} of {URL_SCHEMES.length} schemes can be wrapped into a universal HTTPS link via Shortlink.
-                </p>
-                <div className="overflow-x-auto border border-zinc-800">
-                    <table className="w-full font-mono text-xs">
-                        <thead>
-                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[10px]">
-                                <th className="text-left p-3 border-b border-zinc-800">App</th>
-                                <th className="text-left p-3 border-b border-zinc-800">Scheme</th>
-                                <th className="text-left p-3 border-b border-zinc-800 hidden md:table-cell">Example</th>
-                                <th className="text-left p-3 border-b border-zinc-800 hidden lg:table-cell">Platforms</th>
-                                <th className="text-left p-3 border-b border-zinc-800">Wraps?</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {URL_SCHEMES.map(s => (
-                                <tr key={'static-' + s.app + s.scheme} className="border-b border-zinc-900">
-                                    <td className="p-3 text-white">{s.app}</td>
-                                    <td className="p-3 text-emerald-500">{s.scheme}</td>
-                                    <td className="p-3 text-zinc-500 hidden md:table-cell truncate max-w-[280px]">{s.example}</td>
-                                    <td className="p-3 text-zinc-500 hidden lg:table-cell">{s.platforms.join(', ')}</td>
-                                    <td className="p-3">{s.wraps ? <span className="text-emerald-500">Yes</span> : <span className="text-zinc-600">No</span>}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                <RegistryClient schemes={URL_SCHEMES} wrappable={wrappable} />
             </section>
 
             {/* Explainer sections */}

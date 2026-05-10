@@ -2,12 +2,11 @@
 
 import { useState, useMemo } from 'react'
 
-// Client island for the URL Scheme Registry. Renders the same table the
-// server already rendered, but with a search filter on top. The page server
-// component still renders the full static table for crawlers — this component
-// progressively replaces it once JS hydrates.
+// Client island for the URL Scheme Registry. Next.js SSRs this for the initial
+// HTML, so crawlers see every row without executing JS — search is a pure
+// progressive enhancement on top.
 
-export default function RegistryClient({ schemes }) {
+export default function RegistryClient({ schemes, wrappable }) {
     const [query, setQuery] = useState('')
 
     const filtered = useMemo(() => {
@@ -21,6 +20,11 @@ export default function RegistryClient({ schemes }) {
 
     return (
         <div className="space-y-5">
+            {typeof wrappable === 'number' && (
+                <p className="text-zinc-500 text-sm max-w-[60ch]">
+                    {wrappable} of {schemes.length} schemes can be wrapped into a universal HTTPS link via Shortlink.
+                </p>
+            )}
             <div>
                 <label className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">
                     Search the registry
