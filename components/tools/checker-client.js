@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { PLATFORMS, check, extractScheme } from 'utils/data/platform-rules'
 
 const STATUS_STYLES = {
@@ -12,61 +12,45 @@ const STATUS_STYLES = {
 
 export default function CheckerClient() {
     const [input, setInput] = useState('')
-    const [scheme, setScheme] = useState('')
-    const [results, setResults] = useState(null)
 
-    const handleCheck = () => {
-        const detected = extractScheme(input)
-        setScheme(detected)
-        if (!detected) {
-            setResults(null)
-            return
-        }
-        setResults(PLATFORMS.map(p => check(detected, p)))
-    }
+    const scheme = useMemo(() => extractScheme(input), [input])
+    const results = useMemo(
+        () => (scheme ? PLATFORMS.map(p => check(scheme, p)) : null),
+        [scheme]
+    )
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        handleCheck()
-    }
+    const trimmed = input.trim()
+    const showCannotDetect = trimmed.length >= 4 && !scheme
 
     return (
         <div className="space-y-6">
-            <form onSubmit={handleSubmit}>
+            <div>
                 <label htmlFor="checker-input" className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">
                     Paste any URL
                 </label>
-                <div className="flex gap-px bg-zinc-800">
-                    <input
-                        id="checker-input"
-                        type="text"
-                        value={input}
-                        onChange={e => setInput(e.target.value)}
-                        autoCapitalize="off"
-                        autoComplete="off"
-                        autoCorrect="off"
-                        spellCheck="false"
-                        placeholder="slack://channel?team=T0001&id=C0001"
-                        className="flex-1 bg-zinc-900 border border-zinc-700 text-white font-mono text-base px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
-                    />
-                    <button
-                        type="submit"
-                        className="bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-display font-bold py-3 px-6 text-xs tracking-wider uppercase transition-all whitespace-nowrap"
-                    >
-                        Check
-                    </button>
-                </div>
+                <input
+                    id="checker-input"
+                    type="text"
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    spellCheck="false"
+                    placeholder="slack://channel?team=T0001&id=C0001"
+                    className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                />
                 {scheme && (
                     <div className="mt-3 font-mono text-xs text-zinc-500">
                         Detected scheme: <span className="text-emerald-500">{scheme}://</span>
                     </div>
                 )}
-                {input && !scheme && results === null && (
+                {showCannotDetect && (
                     <div className="mt-3 font-mono text-xs text-amber-400">
                         Could not detect a URL scheme. Try a URL like <code>slack://...</code>.
                     </div>
                 )}
-            </form>
+            </div>
 
             {results && (
                 <div>
