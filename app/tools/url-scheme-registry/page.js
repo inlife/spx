@@ -1,16 +1,15 @@
 import ToolShell from 'components/tools/tool-shell'
 import Faq from 'components/tools/faq'
-import GeoGrid from 'components/tools/geo-grid'
 import RegistryClient from 'components/tools/registry-client'
 import { URL_SCHEMES } from 'utils/data/url-schemes'
 
 export const metadata = {
-    title: 'URL Scheme Registry',
-    description: 'Searchable registry of every app deep link URL scheme — Slack, Obsidian, Zoom, Notion, Figma, VS Code and 40+ more. Free reference for developers and PMs.',
+    title: 'URL Scheme List',
+    description: 'Deep link formats for Slack, Obsidian, Zoom, Notion, VS Code, Teams and other apps, with an example for each and links to the official docs.',
     alternates: { canonical: '/tools/url-scheme-registry' },
     openGraph: {
-        title: 'URL Scheme Registry — Shortlink',
-        description: 'Searchable reference for every app URL scheme.',
+        title: 'URL Scheme List | Shortlink',
+        description: 'Deep link formats for common apps, with examples and links to the official docs.',
         url: 'https://www.shortlink.studio/tools/url-scheme-registry',
         images: ['/preview.png'],
     },
@@ -18,57 +17,37 @@ export const metadata = {
 
 const FAQ_ITEMS = [
     {
-        q: 'What is a URL scheme?',
-        a: 'A URL scheme is the protocol prefix at the start of a URL, like https:// or slack://. Apps register custom schemes with the operating system so that links using their scheme open the app directly. Examples include obsidian://, zoom://, notion://, and vscode://.',
+        q: 'How do I find an app’s URL scheme?',
+        a: 'Start with the app’s developer docs. If there aren’t any, on macOS the schemes are listed in the app bundle: run /usr/libexec/PlistBuddy -c "Print :CFBundleURLTypes" /Applications/Slack.app/Contents/Info.plist (swap in the app you care about). On Windows, look under HKEY_CLASSES_ROOT for a key named after the scheme that has a "URL Protocol" value.',
     },
     {
-        q: 'How do I find an app’s custom URL scheme?',
-        a: 'Most apps publish their URL scheme in their developer documentation. On macOS you can also inspect an app’s Info.plist file under CFBundleURLSchemes. On iOS the same key is in the bundle. The Shortlink registry above documents the schemes for 50+ popular apps.',
+        q: 'Why does a link work on my laptop but not on my phone?',
+        a: 'The link only works where the app is installed and has registered the scheme. Mobile versions often register a different scheme, or none. Some desktop-only formats, such as vscode://file paths, mean nothing on a phone.',
     },
     {
-        q: 'What is the Slack URL scheme?',
-        a: 'Slack uses the slack:// scheme. Common formats include slack://channel?team=T0001&id=C0001 to open a channel and slack://user?team=T0001&id=U0001 to open a DM. These links work on macOS, Windows, iOS, and Android Slack clients.',
-    },
-    {
-        q: 'What is the zoom:// protocol?',
-        a: 'Zoom registers two schemes: zoommtg:// (used by the legacy desktop client) and zoomus:// (used by newer clients). The most common format is zoommtg://zoom.us/join?confno=123456789 to join a meeting by ID.',
-    },
-    {
-        q: 'How do I open VS Code from a browser link?',
-        a: 'Use the vscode:// scheme. Examples: vscode://file/path/to/file.js to open a specific file, vscode://settings to open settings, or vscode://vscode.git/clone?url=https://github.com/user/repo to clone a repository.',
-    },
-    {
-        q: 'Why don’t custom URL schemes work in browsers?',
-        a: 'Browsers can launch custom schemes via the OS handler, but most websites strip non-HTTP(S) URLs from rendered content for security. Pasting slack:// or obsidian:// into Notion, Confluence, or an email body usually results in plain text, not a clickable link. Wrapping the scheme in an HTTPS URL with Shortlink solves this.',
+        q: 'Can a web page open these links?',
+        a: 'Yes. When you click one, the browser asks the operating system which app handles the scheme, and most browsers show a confirmation prompt first. Links usually fail earlier than that: the site you pasted the link into removes it before anyone can click.',
     },
 ]
 
 export default function UrlSchemeRegistryPage() {
-    const wrappable = URL_SCHEMES.filter(s => s.wraps).length
-
     const webAppLd = {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
-        name: 'URL Scheme Registry',
-        url: 'https://www.shortlink.studio/tools/url-scheme-registry/',
+        name: 'URL Scheme List',
+        url: 'https://www.shortlink.studio/tools/url-scheme-registry',
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
         description: metadata.description,
-        featureList: [
-            'Searchable reference for 50+ app URL schemes',
-            'Per-app example deep link URL',
-            'Platform support details (macOS, Windows, Linux, iOS, Android)',
-            'Indicates which schemes Shortlink can wrap into HTTPS',
-        ],
     }
 
     return (
         <ToolShell
             slug="url-scheme-registry"
             eyebrow="Reference"
-            title="URL Scheme Registry"
-            intro={`A searchable reference for every app URL scheme — ${URL_SCHEMES.length} entries covering productivity, dev, and communication tools. Use this to look up the exact deep-link format an app expects, or to confirm whether a scheme exists at all.`}
+            title="URL Scheme List"
+            intro="Deep link formats for apps people link to from notes, docs and chat. Each row has an example you can copy and adapt, plus a link to the app’s own docs where there is one."
         >
             <script
                 type="application/ld+json"
@@ -76,47 +55,23 @@ export default function UrlSchemeRegistryPage() {
             />
 
             <section className="py-10">
-                <RegistryClient schemes={URL_SCHEMES} wrappable={wrappable} />
-            </section>
-
-            {/* Explainer sections */}
-            <section className="border-t border-zinc-800 py-10">
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
-                    What is a URL scheme?
-                </h2>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch] mb-4">
-                    A URL scheme is the protocol identifier at the start of a URL &mdash; the part before the colon. Standard schemes like <code className="font-mono text-sm text-zinc-300">https</code>, <code className="font-mono text-sm text-zinc-300">http</code>, <code className="font-mono text-sm text-zinc-300">mailto</code>, and <code className="font-mono text-sm text-zinc-300">tel</code> are recognized by every browser and platform.
-                </p>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch]">
-                    Custom URL schemes like <code className="font-mono text-sm text-zinc-300">slack://</code> or <code className="font-mono text-sm text-zinc-300">obsidian://</code> are registered by individual applications. When the operating system sees one of these schemes in a clicked link, it hands the URL to the app that registered it. This is how apps implement deep links into specific channels, vaults, files, or meetings.
+                <RegistryClient schemes={URL_SCHEMES} />
+                <p className="text-zinc-500 text-xs leading-relaxed mt-4 max-w-[60ch]">
+                    Missing an app, or found an example that doesn’t work? <a href="/contact" className="text-emerald-500 hover:text-emerald-400">Tell us</a> and we’ll fix the list.
                 </p>
             </section>
 
             <section className="border-t border-zinc-800 py-10">
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
-                    How apps register custom URL schemes
+                    How the operating system knows which app to open
                 </h2>
                 <p className="text-zinc-400 leading-relaxed max-w-[60ch] mb-4">
-                    On macOS and iOS, apps declare their schemes in <code className="font-mono text-sm text-zinc-300">Info.plist</code> under <code className="font-mono text-sm text-zinc-300">CFBundleURLTypes</code>. On Windows the registration lives in the Registry under <code className="font-mono text-sm text-zinc-300">HKEY_CLASSES_ROOT</code>. On Android, apps declare intent filters in their manifest with a custom scheme.
+                    The scheme is the part before the colon. Browsers handle <code className="font-mono text-sm text-zinc-300">https</code> themselves. For anything else they ask the operating system, and the OS looks up which installed app claimed that scheme.
                 </p>
                 <p className="text-zinc-400 leading-relaxed max-w-[60ch]">
-                    Once registered, clicking a link with that scheme prompts the OS to launch the app and pass it the full URL. The app then parses the URL’s host, path, and query parameters to decide what to open.
+                    Apps claim a scheme when they’re installed. On macOS and iOS it’s listed under <code className="font-mono text-sm text-zinc-300">CFBundleURLTypes</code> in the app’s <code className="font-mono text-sm text-zinc-300">Info.plist</code>. On Windows it’s a registry key under <code className="font-mono text-sm text-zinc-300">HKEY_CLASSES_ROOT</code>. On Android it’s an intent filter in the manifest, and on Linux it’s an <code className="font-mono text-sm text-zinc-300">x-scheme-handler/…</code> entry in the app’s <code className="font-mono text-sm text-zinc-300">.desktop</code> file.
                 </p>
             </section>
-
-            <section className="border-t border-zinc-800 py-10">
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
-                    Browser vs OS: who handles custom schemes?
-                </h2>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch] mb-4">
-                    The browser is the messenger; the OS is the dispatcher. When you click a custom-scheme link, the browser doesn’t try to fetch it &mdash; it asks the OS which app handles that scheme. The OS launches the app and passes it the URL.
-                </p>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch]">
-                    Problems arise when content platforms (Notion, Confluence, Gmail, GitHub) sanitize or strip non-HTTPS links before rendering. Even though the browser would correctly hand off the URL to the OS, these platforms never let the link reach the browser as a clickable element. Wrapping the scheme in an HTTPS link via <a href="/" className="text-emerald-500 hover:text-emerald-400">Shortlink</a> works around this.
-                </p>
-            </section>
-
-            <GeoGrid heading="Where these schemes get used" />
 
             <Faq items={FAQ_ITEMS} />
         </ToolShell>

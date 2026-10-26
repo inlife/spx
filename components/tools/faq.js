@@ -1,25 +1,10 @@
-// Server component: renders FAQ accordion + emits FAQPage JSON-LD.
-// Q&A bodies appear in the DOM (Google requires this for rich results).
+// Server component: a short list of questions as an accordion.
 
-export default function Faq({ items, heading = 'FAQ' }) {
+export default function Faq({ items, heading = 'Questions' }) {
     if (!items || items.length === 0) return null
-
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: items.map(({ q, a }) => ({
-            '@type': 'Question',
-            name: q,
-            acceptedAnswer: { '@type': 'Answer', text: a },
-        })),
-    }
 
     return (
         <section className="border-t border-zinc-800 py-10">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-6">
                 {heading}
             </h2>

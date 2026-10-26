@@ -5,7 +5,7 @@ import { PLATFORMS, check, extractScheme } from 'utils/data/platform-rules'
 
 const STATUS_STYLES = {
     works: { label: 'Works', cls: 'text-emerald-500' },
-    partial: { label: 'Partial', cls: 'text-amber-400' },
+    partial: { label: 'Depends', cls: 'text-amber-400' },
     broken: { label: 'Broken', cls: 'text-red-400' },
     unknown: { label: 'Unknown', cls: 'text-zinc-500' },
 }
