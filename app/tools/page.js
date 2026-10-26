@@ -4,13 +4,13 @@ import { ALL_TOOLS } from 'components/tools/tool-shell'
 
 export const metadata = {
     title: 'Tools',
-    description: 'Free interactive tools for working with custom scheme URLs and deep links: compatibility checker, deep link builder, markdown link generator, and a registry of every app URL scheme.',
+    description: 'Small tools for working with deep links: check where a link will break, build Slack or Obsidian links, format links for Markdown, and look up app URL schemes.',
     alternates: {
         canonical: '/tools',
     },
     openGraph: {
-        title: 'Shortlink Tools — Deep Link & URL Scheme Utilities',
-        description: 'Free interactive tools for working with custom scheme URLs and deep links.',
+        title: 'Tools | Shortlink',
+        description: 'Small tools for working with deep links and custom URL schemes.',
         url: 'https://www.shortlink.studio/tools',
         images: ['/preview.png'],
     },
@@ -26,7 +26,7 @@ export default function ToolsIndex() {
         hasPart: ALL_TOOLS.map(t => ({
             '@type': 'WebApplication',
             name: t.name,
-            url: `https://www.shortlink.studio/tools/${t.slug}/`,
+            url: `https://www.shortlink.studio/tools/${t.slug}`,
             description: t.tagline,
             applicationCategory: 'UtilitiesApplication',
             operatingSystem: 'Any',
@@ -57,8 +57,7 @@ export default function ToolsIndex() {
                         Tools
                     </h1>
                     <p className="text-zinc-400 leading-relaxed max-w-[60ch] mt-5">
-                        Free, stateless utilities for working with custom URL schemes and deep links.
-                        Each tool runs entirely in your browser — no signup, no tracking, no server calls.
+                        Small helpers for deep links, the slack:// and obsidian:// kind. Everything runs in your browser, and nothing you type is sent to a server.
                     </p>
                 </header>
 
@@ -67,7 +66,7 @@ export default function ToolsIndex() {
                         {ALL_TOOLS.map(t => (
                             <a
                                 key={t.slug}
-                                href={`/tools/${t.slug}/`}
+                                href={`/tools/${t.slug}`}
                                 className="bg-zinc-950 p-6 sm:p-8 hover:bg-zinc-900 transition-colors block group"
                             >
                                 <div className="font-display text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">

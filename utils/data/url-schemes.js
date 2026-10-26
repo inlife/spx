@@ -1,71 +1,203 @@
-// Registry of known URL schemes — primary data source for Tools 1, 4, 7.
+// URL schemes shown on /tools/url-scheme-registry and used by the other tools.
 //
 // Each entry:
-//   app:        display name
-//   scheme:     full prefix (e.g. "slack://")
-//   example:    a representative example URL
-//   platforms:  array of supported OSes/clients
-//   docs:       optional URL to the official scheme docs
-//   wraps:      true if Shortlink can wrap it into a universal HTTPS link
+//   app:      display name
+//   scheme:   the prefix, exactly as the app expects it
+//   example:  a working example URL (placeholder IDs are fine)
+//   note:     optional, anything that trips people up
+//   docs:     optional, link to the app's own documentation
 //
-// When adding entries, prefer apps with verified, documented schemes.
+// Only add schemes you've checked against the app's docs or tried yourself.
+// A short accurate list is worth more than a long guessed one.
 
 export const URL_SCHEMES = [
-    { app: 'Slack', scheme: 'slack://', example: 'slack://channel?team=T0001&id=C0001', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: 'https://api.slack.com/reference/deep-linking', wraps: true },
-    { app: 'Obsidian', scheme: 'obsidian://', example: 'obsidian://open?vault=MyVault&file=Note', platforms: ['macOS', 'Windows', 'Linux', 'iOS', 'Android'], docs: 'https://help.obsidian.md/Concepts/Obsidian+URI', wraps: true },
-    { app: 'Zoom', scheme: 'zoommtg://', example: 'zoommtg://zoom.us/join?confno=123456789', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: 'https://developers.zoom.us/docs/meeting-sdk/', wraps: true },
-    { app: 'Notion', scheme: 'notion://', example: 'notion://www.notion.so/page-id', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Figma', scheme: 'figma://', example: 'figma://file/abc123/FileName', platforms: ['macOS', 'Windows'], docs: null, wraps: true },
-    { app: 'Linear', scheme: 'linear://', example: 'linear://issue/ENG-123', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'VS Code', scheme: 'vscode://', example: 'vscode://file/path/to/file.js:10:5', platforms: ['macOS', 'Windows', 'Linux'], docs: 'https://code.visualstudio.com/docs/configure/command-line', wraps: true },
-    { app: 'Cursor', scheme: 'cursor://', example: 'cursor://file/path/to/file.js', platforms: ['macOS', 'Windows', 'Linux'], docs: null, wraps: true },
-    { app: 'GitHub Desktop', scheme: 'x-github-client://', example: 'x-github-client://openRepo/https://github.com/user/repo', platforms: ['macOS', 'Windows'], docs: null, wraps: true },
-    { app: 'Spotify', scheme: 'spotify://', example: 'spotify://track/6rqhFgbbKwnb9MLmUQDhG6', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Apple Music', scheme: 'music://', example: 'music://music.apple.com/album/123456', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: '1Password', scheme: 'onepassword://', example: 'onepassword://item/uuid', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'Discord', scheme: 'discord://', example: 'discord://discord.com/channels/123/456', platforms: ['macOS', 'Windows', 'Linux', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Telegram', scheme: 'tg://', example: 'tg://resolve?domain=username', platforms: ['macOS', 'Windows', 'Linux', 'iOS', 'Android'], docs: 'https://core.telegram.org/api/links', wraps: true },
-    { app: 'WhatsApp', scheme: 'whatsapp://', example: 'whatsapp://send?phone=15551234567', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: 'https://faq.whatsapp.com/5913398998672934', wraps: true },
-    { app: 'Signal', scheme: 'sgnl://', example: 'sgnl://signal.me/#p/+15551234567', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Microsoft Teams', scheme: 'msteams://', example: 'msteams://l/channel/19:abc/General?tenantId=...', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: 'https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/deep-links', wraps: true },
-    { app: 'Webex', scheme: 'webex://', example: 'webex://meet?meetingNumber=123456789', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Asana', scheme: 'asana://', example: 'asana://0/0/123456789', platforms: ['macOS', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Trello', scheme: 'trello://', example: 'trello://board/abc123', platforms: ['iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Jira', scheme: 'jira://', example: 'jira://issue?key=PROJ-123', platforms: ['iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Confluence', scheme: 'confluence://', example: 'confluence://page?pageId=123456', platforms: ['iOS', 'Android'], docs: null, wraps: true },
-    { app: 'ClickUp', scheme: 'clickup://', example: 'clickup://t/abc123', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Monday', scheme: 'monday://', example: 'monday://boards/123456', platforms: ['iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Airtable', scheme: 'airtable://', example: 'airtable://base/appXXX/tblYYY', platforms: ['macOS', 'Windows', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Coda', scheme: 'coda://', example: 'coda://doc/abc123', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'Craft', scheme: 'craftdocs://', example: 'craftdocs://open?blockId=abc&spaceId=xyz', platforms: ['macOS', 'iOS'], docs: 'https://www.craft.do/s/H8ZZ58Bj7hgEC2', wraps: true },
-    { app: 'Drafts', scheme: 'drafts://', example: 'drafts://x-callback-url/create?text=Hello', platforms: ['macOS', 'iOS'], docs: 'https://docs.getdrafts.com/docs/automation/urlschemes', wraps: true },
-    { app: 'Fantastical', scheme: 'fantastical2://', example: 'fantastical2://parse?sentence=Lunch+tomorrow', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'OmniFocus', scheme: 'omnifocus://', example: 'omnifocus:///add?name=New+Task', platforms: ['macOS', 'iOS'], docs: 'https://inside.omnifocus.com/url-schemes', wraps: true },
-    { app: 'Things', scheme: 'things://', example: 'things:///add?title=Buy+milk', platforms: ['macOS', 'iOS'], docs: 'https://culturedcode.com/things/support/articles/2803573/', wraps: true },
-    { app: 'Bear', scheme: 'bear://', example: 'bear://x-callback-url/open-note?id=abc123', platforms: ['macOS', 'iOS'], docs: 'https://bear.app/faq/x-callback-url-scheme-documentation/', wraps: true },
-    { app: 'DEVONthink', scheme: 'x-devonthink-item://', example: 'x-devonthink-item://uuid', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'Hookmark', scheme: 'hook://', example: 'hook://file/abc?p=...', platforms: ['macOS'], docs: 'https://hookproductivity.com/help/integration/using-hooks-deep-links/', wraps: true },
-    { app: 'Logseq', scheme: 'logseq://', example: 'logseq://graph/MyGraph?page=Note', platforms: ['macOS', 'Windows', 'Linux', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Roam Research', scheme: 'roam://', example: 'roam://#/app/graph/page/Title', platforms: ['macOS', 'Windows', 'Linux', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Anytype', scheme: 'anytype://', example: 'anytype://object?objectId=abc', platforms: ['macOS', 'Windows', 'Linux', 'iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Tana', scheme: 'tana://', example: 'tana://node/abc123', platforms: ['macOS', 'Windows', 'iOS'], docs: null, wraps: true },
-    { app: 'Capacities', scheme: 'capacities://', example: 'capacities://open?spaceId=abc&objectId=xyz', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'Reflect', scheme: 'reflect://', example: 'reflect://note/abc', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'Mem', scheme: 'mem://', example: 'mem://m/abc123', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'Sublime Text', scheme: 'subl://', example: 'subl://open?url=file:///path/to/file', platforms: ['macOS', 'Windows', 'Linux'], docs: null, wraps: true },
-    { app: 'JetBrains', scheme: 'jetbrains://', example: 'jetbrains://idea/navigate/reference?project=name&path=src/Main.java', platforms: ['macOS', 'Windows', 'Linux'], docs: 'https://www.jetbrains.com/help/idea/settings-tools-web-browsers.html', wraps: true },
-    { app: 'Warp', scheme: 'warp://', example: 'warp://action/new_tab', platforms: ['macOS'], docs: null, wraps: true },
-    { app: 'iTerm', scheme: 'iterm2://', example: 'iterm2://app/start?profile=Default', platforms: ['macOS'], docs: null, wraps: true },
-    { app: 'Tower', scheme: 'gittower://', example: 'gittower://openRepo/https://github.com/user/repo', platforms: ['macOS', 'Windows'], docs: null, wraps: true },
-    { app: 'Sourcetree', scheme: 'sourcetree://', example: 'sourcetree://cloneRepo?cloneUrl=https://github.com/user/repo', platforms: ['macOS', 'Windows'], docs: null, wraps: true },
-    { app: 'YouTube Music', scheme: 'youtubemusic://', example: 'youtubemusic://watch?v=abc123', platforms: ['iOS', 'Android'], docs: null, wraps: true },
-    { app: 'Apple Mail', scheme: 'message://', example: 'message://%3Cmessage-id%40example.com%3E', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
-    { app: 'Mail (mailto)', scheme: 'mailto:', example: 'mailto:hello@example.com?subject=Hi', platforms: ['Universal'], docs: 'https://datatracker.ietf.org/doc/html/rfc6068', wraps: false },
-    { app: 'Phone', scheme: 'tel:', example: 'tel:+15551234567', platforms: ['Universal'], docs: 'https://datatracker.ietf.org/doc/html/rfc3966', wraps: false },
-    { app: 'SMS', scheme: 'sms:', example: 'sms:+15551234567?body=Hi', platforms: ['Universal'], docs: null, wraps: false },
-    { app: 'FaceTime', scheme: 'facetime://', example: 'facetime://+15551234567', platforms: ['macOS', 'iOS'], docs: null, wraps: true },
+    {
+        app: 'Slack',
+        scheme: 'slack://',
+        example: 'slack://channel?team=T0001&id=C0001',
+        note: 'Also slack://user, slack://file and slack://open. There is no app-scheme link to a single message; use the message permalink for that.',
+        docs: 'https://docs.slack.dev/interactivity/deep-linking/',
+    },
+    {
+        app: 'Obsidian',
+        scheme: 'obsidian://',
+        example: 'obsidian://open?vault=Notes&file=Inbox',
+        note: 'To jump to a heading, put it inside the file value: file=Inbox%23Todo.',
+        docs: 'https://obsidian.md/help/Extending+Obsidian/Obsidian+URI',
+    },
+    {
+        app: 'Obsidian Advanced URI',
+        scheme: 'obsidian://adv-uri',
+        example: 'obsidian://adv-uri?vault=Notes&filepath=Inbox.md',
+        note: 'Needs the Advanced URI community plugin. Older links use obsidian://advanced-uri.',
+        docs: 'https://vinzent03.github.io/obsidian-advanced-uri/',
+    },
+    {
+        app: 'Zoom',
+        scheme: 'zoommtg://',
+        example: 'zoommtg://zoom.us/join?action=join&confno=123456789',
+        note: 'Add &pwd= for the passcode. A regular zoom.us/j/ link also opens the app, after a browser prompt.',
+    },
+    {
+        app: 'Notion',
+        scheme: 'notion://',
+        example: 'notion://www.notion.so/My-Page-0123456789abcdef0123456789abcdef',
+        note: 'Take the page URL from your browser and replace https:// with notion://.',
+    },
+    {
+        app: 'Figma',
+        scheme: 'figma://',
+        example: 'figma://file/AbC123xYz',
+        note: 'Opens the file in the desktop app.',
+    },
+    {
+        app: 'VS Code',
+        scheme: 'vscode://',
+        example: 'vscode://file/c:/myProject/package.json:5:10',
+        note: 'Line and column are optional. Insiders builds use vscode-insiders://.',
+        docs: 'https://code.visualstudio.com/docs/configure/command-line',
+    },
+    {
+        app: 'Cursor',
+        scheme: 'cursor://',
+        example: 'cursor://file/Users/me/project/src/index.js',
+    },
+    {
+        app: 'JetBrains Toolbox',
+        scheme: 'jetbrains://',
+        example: 'jetbrains://idea/navigate/reference?project=MyProject&path=src/Main.java',
+    },
+    {
+        app: 'GitHub Desktop',
+        scheme: 'x-github-client://',
+        example: 'x-github-client://openRepo/https://github.com/inlife/spx',
+    },
+    {
+        app: 'Warp',
+        scheme: 'warp://',
+        example: 'warp://action/new_tab?path=/Users/me/code',
+        docs: 'https://docs.warp.dev/terminal/more-features/uri-scheme',
+    },
+    {
+        app: 'Microsoft Teams',
+        scheme: 'msteams://',
+        example: 'msteams://teams.microsoft.com/l/chat/0/0?users=alex@example.com',
+        note: 'Skips the browser and opens the desktop client. Microsoft suggests the https://teams.microsoft.com/l/ form unless everyone has the desktop app.',
+        docs: 'https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/deep-links',
+    },
+    {
+        app: 'Telegram',
+        scheme: 'tg://',
+        example: 'tg://resolve?domain=durov',
+        docs: 'https://core.telegram.org/api/links',
+    },
+    {
+        app: 'WhatsApp',
+        scheme: 'whatsapp://',
+        example: 'whatsapp://send?phone=15551234567&text=Hi',
+        note: 'https://wa.me/15551234567 does the same thing and works in browsers.',
+    },
+    {
+        app: 'FaceTime',
+        scheme: 'facetime://',
+        example: 'facetime://+15551234567',
+        note: 'facetime-audio:// starts an audio-only call.',
+    },
+    {
+        app: 'Apple Mail',
+        scheme: 'message://',
+        example: 'message://%3Cmessage-id@example.com%3E',
+        note: 'Uses the email’s Message-ID header, wrapped in encoded angle brackets.',
+    },
+    {
+        app: 'Apple Shortcuts',
+        scheme: 'shortcuts://',
+        example: 'shortcuts://run-shortcut?name=Log%20Water',
+        docs: 'https://support.apple.com/guide/shortcuts/run-a-shortcut-from-a-url-apd624386f42/ios',
+    },
+    {
+        app: 'Things',
+        scheme: 'things:///',
+        example: 'things:///add?title=Buy%20milk',
+        note: 'Three slashes, because there is no host.',
+        docs: 'https://culturedcode.com/things/support/articles/2803573/',
+    },
+    {
+        app: 'OmniFocus',
+        scheme: 'omnifocus:///',
+        example: 'omnifocus:///add?name=Call%20Sam',
+        docs: 'https://inside.omnifocus.com/url-schemes',
+    },
+    {
+        app: 'Bear',
+        scheme: 'bear://',
+        example: 'bear://x-callback-url/open-note?id=7E4B681B',
+        docs: 'https://bear.app/faq/x-callback-url-scheme-documentation/',
+    },
+    {
+        app: 'Drafts',
+        scheme: 'drafts://',
+        example: 'drafts://x-callback-url/create?text=Hello',
+        docs: 'https://docs.getdrafts.com/docs/automation/urlschemes',
+    },
+    {
+        app: 'Craft',
+        scheme: 'craftdocs://',
+        example: 'craftdocs://open?blockId=BLOCK_ID&spaceId=SPACE_ID',
+    },
+    {
+        app: 'DEVONthink',
+        scheme: 'x-devonthink-item://',
+        example: 'x-devonthink-item://9A1B2C3D-0000-0000-0000-000000000000',
+    },
+    {
+        app: 'Logseq',
+        scheme: 'logseq://',
+        example: 'logseq://graph/MyGraph?page=Inbox',
+    },
+    {
+        app: 'Zotero',
+        scheme: 'zotero://',
+        example: 'zotero://select/library/items/ABCD2345',
+        note: 'Common in Obsidian notes that cite papers.',
+    },
+    {
+        app: 'Spotify',
+        scheme: 'spotify:',
+        example: 'spotify:track:6rqhFgbbKwnb9MLmUQDhG6',
+        note: 'Spotify URIs use colons, not slashes.',
+        docs: 'https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids',
+    },
+    {
+        app: 'Steam',
+        scheme: 'steam://',
+        example: 'steam://run/440',
+        docs: 'https://developer.valvesoftware.com/wiki/Steam_browser_protocol',
+    },
+    {
+        app: 'AltStore',
+        scheme: 'altstore://',
+        example: 'altstore://install?url=https://example.com/app.ipa',
+        note: 'altstore://source?url= adds a source instead of a single app.',
+    },
+    {
+        app: 'Email',
+        scheme: 'mailto:',
+        example: 'mailto:hello@example.com?subject=Hi',
+        note: 'Standard scheme. Most apps already make it clickable.',
+        docs: 'https://datatracker.ietf.org/doc/html/rfc6068',
+    },
+    {
+        app: 'Phone',
+        scheme: 'tel:',
+        example: 'tel:+15551234567',
+        note: 'Standard scheme. Most apps already make it clickable.',
+        docs: 'https://datatracker.ietf.org/doc/html/rfc3966',
+    },
+    {
+        app: 'SMS',
+        scheme: 'sms:',
+        example: 'sms:+15551234567',
+        docs: 'https://datatracker.ietf.org/doc/html/rfc5724',
+    },
 ]
-
-export const SCHEMES_BY_PREFIX = Object.fromEntries(
-    URL_SCHEMES.map(s => [s.scheme.replace(/[/:].*$/, ''), s])
-)

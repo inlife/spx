@@ -1,106 +1,94 @@
-// Platform compatibility rules for URL schemes.
+// How each platform treats a pasted or typed link, by scheme.
 //
-// Each platform entry documents which schemes render as clickable links.
-//   allows:   schemes (without "://") that the platform reliably renders.
-//   blocks:   schemes the platform actively strips, blocks, or renders as plain text.
-//             "*" means the platform allows ONLY the schemes in `allows`.
-//   notes:    short user-facing explanation of why links break.
+//   allows:   schemes (without "://") that come out as a clickable link
+//   partial:  schemes that work only in some cases, or "*" for every scheme
+//             not in `allows` (see notes for which cases)
+//   blocks:   schemes that end up as plain text or get removed, or "*" for
+//             every scheme not in `allows` / `partial`
+//   notes:    one or two plain sentences shown to the user
 //
-// Status returned by check(scheme):
-//   "works"   — scheme is in allows
-//   "broken"  — scheme is in blocks (or blocks is "*" and scheme not in allows)
-//   "partial" — desktop client supports it but the web/mobile surface does not
-//               (encoded as scheme appearing in `partial`)
+// Platforms change this behaviour now and then. Keep the notes specific so
+// they're easy to re-check.
 
 export const PLATFORMS = [
     {
         id: 'notion',
         name: 'Notion',
         allows: ['https', 'http', 'mailto', 'tel'],
-        blocks: '*',
         partial: [],
-        notes: 'Notion strips non-HTTPS schemes when pasted into pages. Custom scheme URLs render as plain text.',
+        blocks: '*',
+        notes: 'Links with any other scheme lose their link and stay as plain text.',
     },
     {
         id: 'obsidian',
         name: 'Obsidian',
         allows: ['https', 'http', 'mailto', 'obsidian'],
-        blocks: ['slack', 'zoommtg', 'figma', 'notion'],
-        partial: [],
-        notes: 'Obsidian renders https:// and obsidian:// links natively but blocks most third-party schemes for security.',
+        partial: '*',
+        blocks: [],
+        notes: 'Written as a Markdown link, [label](scheme://…), a custom-scheme link opens the app on click if it’s installed. A bare URL pasted on its own may stay plain text.',
     },
     {
         id: 'slack',
         name: 'Slack',
-        allows: ['https', 'http', 'mailto', 'tel', 'slack'],
-        blocks: ['obsidian', 'notion', 'figma', 'zoommtg'],
+        allows: ['https', 'http', 'mailto'],
         partial: [],
-        notes: 'Slack auto-links https:// and its own slack:// scheme, but other custom schemes render as plain text.',
+        blocks: '*',
+        notes: 'Messages link http(s) and mailto. Other schemes show up as plain text.',
     },
     {
         id: 'gmail',
         name: 'Gmail',
         allows: ['https', 'http', 'mailto', 'tel'],
+        partial: [],
         blocks: '*',
-        partial: [],
-        notes: 'Gmail web only renders standard HTTP(S), mailto, and tel links. All custom schemes render as plain text.',
-    },
-    {
-        id: 'msteams',
-        name: 'MS Teams',
-        allows: ['https', 'http', 'mailto', 'tel', 'msteams'],
-        blocks: ['slack', 'obsidian', 'zoommtg', 'figma', 'notion'],
-        partial: [],
-        notes: 'Teams supports msteams:// deep links but blocks competing custom schemes.',
+        notes: 'Links with other schemes are removed from the email, so the text arrives without a link.',
     },
     {
         id: 'linear',
         name: 'Linear',
-        allows: ['https', 'http', 'mailto', 'linear'],
-        blocks: '*',
+        allows: ['https', 'http', 'mailto'],
         partial: [],
-        notes: 'Linear allows HTTPS and its own linear:// scheme. Other custom schemes render as plain text in issue descriptions.',
+        blocks: '*',
+        notes: 'Issue descriptions and comments keep http(s) and mailto links. Other schemes show as plain text.',
     },
     {
         id: 'confluence',
         name: 'Confluence',
         allows: ['https', 'http', 'mailto'],
-        blocks: '*',
         partial: [],
-        notes: 'Confluence sanitizes URLs and rejects custom schemes entirely. Wrap them in HTTPS first.',
+        blocks: '*',
+        notes: 'The link dialog rejects custom schemes, and pasted ones are not turned into links.',
     },
     {
         id: 'github',
         name: 'GitHub',
         allows: ['https', 'http', 'mailto'],
-        blocks: '*',
         partial: [],
-        notes: 'GitHub Markdown only auto-links HTTPS, HTTP, and mailto. Custom schemes are stripped from issue/PR/README rendering.',
+        blocks: '*',
+        notes: 'GitHub’s Markdown sanitizer drops the link target for other schemes, so READMEs, issues and PRs show the label without a link.',
     },
     {
         id: 'markdown',
-        name: 'Markdown (generic)',
-        allows: ['https', 'http', 'mailto', 'ftp'],
+        name: 'Markdown (other)',
+        allows: ['https', 'http', 'mailto'],
+        partial: '*',
         blocks: [],
-        partial: [],
-        notes: 'CommonMark spec only auto-links HTTPS/HTTP/mailto/ftp. Custom schemes work in [label](url) syntax IF the renderer permits them.',
+        notes: 'The CommonMark spec allows any scheme in [label](url), but each renderer decides what to keep. Bare-URL autolinking (GitHub style) only covers http(s), www. and mailto.',
     },
 ]
 
-// Returns: { status: 'works' | 'broken' | 'partial' | 'unknown', platform, notes }
+// Returns: { status: 'works' | 'partial' | 'broken' | 'unknown', platform, notes }
 export function check(scheme, platform) {
     const lower = (scheme || '').toLowerCase().replace(/:.*$/, '')
     if (!lower) return { status: 'unknown', platform, notes: 'No scheme detected.' }
 
-    if (platform.allows.includes(lower)) {
-        return { status: 'works', platform, notes: platform.notes }
-    }
-    if (Array.isArray(platform.partial) && platform.partial.includes(lower)) {
-        return { status: 'partial', platform, notes: platform.notes }
-    }
-    if (platform.blocks === '*' || (Array.isArray(platform.blocks) && platform.blocks.includes(lower))) {
-        return { status: 'broken', platform, notes: platform.notes }
-    }
+    const inList = (list) => list === '*' || (Array.isArray(list) && list.includes(lower))
+
+    if (platform.allows.includes(lower)) return { status: 'works', platform, notes: platform.notes }
+    if (Array.isArray(platform.partial) && platform.partial.includes(lower)) return { status: 'partial', platform, notes: platform.notes }
+    if (Array.isArray(platform.blocks) && platform.blocks.includes(lower)) return { status: 'broken', platform, notes: platform.notes }
+    if (inList(platform.partial)) return { status: 'partial', platform, notes: platform.notes }
+    if (inList(platform.blocks)) return { status: 'broken', platform, notes: platform.notes }
     return { status: 'unknown', platform, notes: platform.notes }
 }
 

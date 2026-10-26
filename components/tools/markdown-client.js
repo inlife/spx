@@ -32,42 +32,41 @@ export default function MarkdownClient() {
 
     const formats = useMemo(() => {
         if (!finalUrl) return []
+        // Spaces or parentheses break a plain (url) target; CommonMark allows <url> instead
+        const mdTarget = /[\s()]/.test(finalUrl) ? `<${finalUrl}>` : finalUrl
+        const mdLabel = finalLabel.replace(/([[\]])/g, '\\$1')
+        const htmlHref = finalUrl.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
+        const htmlLabel = finalLabel.replaceAll('&', '&amp;').replaceAll('<', '&lt;')
         return [
             {
                 id: 'markdown',
-                name: 'Markdown / Notion',
-                value: `[${finalLabel}](${finalUrl})`,
-                hint: 'Standard CommonMark. Works in Notion, Bear, Logseq, GitHub READMEs.',
-            },
-            {
-                id: 'wikilink',
-                name: 'Obsidian wikilink',
-                value: `[[${finalUrl}|${finalLabel}]]`,
-                hint: 'Native Obsidian syntax. Note: wikilinks are designed for internal vault notes — for external URLs prefer the Markdown format above.',
+                name: 'Markdown',
+                value: `[${mdLabel}](${mdTarget})`,
+                hint: 'Notion, Obsidian, GitHub, Bear, Logseq and most other Markdown editors.',
             },
             {
                 id: 'slack',
                 name: 'Slack mrkdwn',
                 value: `<${finalUrl}|${finalLabel}>`,
-                hint: 'For Slack messages, posts, and Block Kit text fields.',
+                hint: 'For messages sent through the Slack API or Block Kit. The Slack message box doesn’t read this; there, select text and use the link button.',
             },
             {
                 id: 'html',
-                name: 'HTML anchor',
-                value: `<a href="${finalUrl}">${finalLabel}</a>`,
-                hint: 'For email signatures, raw HTML emails, or any HTML-rendering surface.',
+                name: 'HTML',
+                value: `<a href="${htmlHref}">${htmlLabel}</a>`,
+                hint: 'Email signatures, HTML emails, web pages.',
             },
             {
                 id: 'rst',
                 name: 'reStructuredText',
                 value: `\`${finalLabel} <${finalUrl}>\`_`,
-                hint: 'For Sphinx docs and Python project READMEs.',
+                hint: 'Sphinx and other reStructuredText docs.',
             },
             {
                 id: 'plain',
                 name: 'Plain URL',
                 value: finalUrl,
-                hint: 'For surfaces that auto-link bare URLs (Slack, Discord, Twitter).',
+                hint: 'For places that turn bare URLs into links on their own, like Slack, Discord or GitHub comments.',
             },
         ]
     }, [finalUrl, finalLabel])
@@ -102,7 +101,7 @@ export default function MarkdownClient() {
                         type="text"
                         value={label}
                         onChange={e => setLabel(e.target.value)}
-                        placeholder="Click here"
+                        placeholder="Project notes"
                         className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                 </div>
@@ -113,10 +112,10 @@ export default function MarkdownClient() {
                 <div className="bg-zinc-950 border border-emerald-900/40 p-4 sm:p-5 flex items-center justify-between gap-4">
                     <div>
                         <div className="text-white font-bold text-sm mb-1">
-                            Detected custom scheme: <code className="text-emerald-500 font-mono">{detectedScheme}://</code>
+                            This is a <code className="text-emerald-500 font-mono">{detectedScheme}:</code> link
                         </div>
                         <p className="text-zinc-500 text-xs leading-relaxed max-w-[55ch]">
-                            Most platforms strip non-HTTPS schemes. Toggle on to wrap this URL in a Shortlink so it renders as a clickable link in Notion, Gmail, Confluence, GitHub, etc.
+                            Notion, Gmail, GitHub and most wikis will drop it. Switch this on to use an https version instead.
                         </p>
                     </div>
                     <button
@@ -127,6 +126,7 @@ export default function MarkdownClient() {
                         }`}
                         role="switch"
                         aria-checked={useShortlink}
+                        aria-label="Use an https version"
                     >
                         <span className={`inline-block h-3.5 w-3.5 transform rounded-sm bg-white transition-transform ${
                             useShortlink ? 'translate-x-[18px]' : 'translate-x-[3px]'
@@ -139,11 +139,11 @@ export default function MarkdownClient() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800">
                 {formats.length === 0 && (
                     <div className="bg-zinc-950 p-8 text-center text-zinc-500 sm:col-span-2">
-                        Enter a URL above to see formatted link snippets.
+                        Type a URL to see the formats.
                     </div>
                 )}
                 {formats.map(f => (
-                    <div key={f.id} className="bg-zinc-950 p-5">
+                    <div key={f.id} className={`bg-zinc-950 p-5 ${f.id === 'plain' ? 'sm:col-span-2' : ''}`}>
                         <div className="flex items-center justify-between mb-3">
                             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
                                 {f.name}
