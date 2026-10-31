@@ -81,6 +81,9 @@ export default function ObsidianLinksPage() {
                         <li>Paste that https link wherever you need it. In Markdown: <code className={code}>[Open in Obsidian](https://linkopen.app/s/…)</code>.</li>
                         <li>Clicking it opens a page on linkopen.app, which passes the original link on to Obsidian.</li>
                     </ol>
+                    <p className="text-zinc-300 leading-relaxed max-w-[60ch]">
+                        To skip the converter, the <a href="/integrations#obsidian" className="text-emerald-500 hover:text-emerald-400">LinkOpen plugin</a> copies the https link straight from Obsidian, for a note, a heading or a block. Find it under Settings › Community plugins by searching for LinkOpen.
+                    </p>
                 </section>
 
                 <section className="border-t border-zinc-800 py-10">

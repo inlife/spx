@@ -19,4 +19,4 @@ How it works: paste a custom scheme link into the converter and copy the https l
 ## Source
 
 - [GitHub repository](https://github.com/inlife/linkopen)
-- [Obsidian plugin](https://github.com/inlife/obsidian-linkopen)
+- [Obsidian plugin source](https://github.com/inlife/obsidian-linkopen), listed in Obsidian's community plugins as [LinkOpen](https://community.obsidian.md/plugins/linkopen)

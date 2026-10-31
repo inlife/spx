@@ -39,7 +39,7 @@ https://linkopen.app/s/1kAHHUPYE4NaPAHCyBTBAXAlgOwOYFIBMAGdMZBAZyA
 - README badges: `https://linkopen.app/badge/<app>.svg`, with a builder at [/tools/readme-badge](https://linkopen.app/tools/readme-badge). The badge at the top of this file is one.
 - Link API: `GET https://linkopen.app/api/link?url=…&mode=auto|manual` returns the same link the converter makes, as plain text (or JSON with `&format=json`).
 - [Integrations](https://linkopen.app/integrations): Apple Shortcuts, Raycast and the shell.
-- Obsidian plugin: copies a link to the current note, heading or block. It lives in [inlife/obsidian-linkopen](https://github.com/inlife/obsidian-linkopen) and is on its way into Obsidian's community plugins.
+- Obsidian plugin: copies a link to the current note, heading or block. Install it from Obsidian's community plugins ([directory page](https://community.obsidian.md/plugins/linkopen)). The source is in [inlife/obsidian-linkopen](https://github.com/inlife/obsidian-linkopen).
 
 ## Privacy
 

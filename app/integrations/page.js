@@ -249,7 +249,7 @@ export default function IntegrationsPage() {
                         The LinkOpen plugin for Obsidian adds three commands: copy a link to the current note, to the heading or block under the cursor, or a Markdown link to the note. It also adds a &ldquo;Copy LinkOpen link&rdquo; item to the file menu. Links are built on your device; the plugin makes no network calls.
                     </p>
                     <p className={`${p} mt-4`}>
-                        It&rsquo;s on its way into Obsidian&rsquo;s community plugins. Until then you can install it with the BRAT plugin: add the beta plugin <code className={code}>inlife/obsidian-linkopen</code>. The source is at <a href="https://github.com/inlife/obsidian-linkopen" className={link}>github.com/inlife/obsidian-linkopen</a>. For more on the links themselves, see <a href="/obsidian-links" className={link}>Sharing Obsidian links</a>.
+                        Install it from Obsidian&rsquo;s community plugins: open Settings › Community plugins, select Browse and search for LinkOpen. It also has a page in the <a href="https://community.obsidian.md/plugins/linkopen" className={link}>community directory</a>. The source is at <a href="https://github.com/inlife/obsidian-linkopen" className={link}>github.com/inlife/obsidian-linkopen</a>. For more on the links themselves, see <a href="/obsidian-links" className={link}>Sharing Obsidian links</a>.
                     </p>
                 </section>
             </div>
