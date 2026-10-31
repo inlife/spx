@@ -1,6 +1,7 @@
 node_modules/
 .next/
 .now/
-.claude/
+.claude/*
+!.claude/settings.json
 .ds_store
 skills/
