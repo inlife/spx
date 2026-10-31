@@ -36,13 +36,10 @@ https://linkopen.app/s/1kAHHUPYE4NaPAHCyBTBAXAlgOwOYFIBMAGdMZBAZyA
 - [Converter](https://linkopen.app): paste a link, pick auto or manual, copy the result.
 - [Tools](https://linkopen.app/tools): a URL compatibility checker, a deep link builder, a Markdown link generator and a list of URL schemes for common apps.
 - [Obsidian guide](https://linkopen.app/obsidian-links): how to share links to notes in a vault.
-
-New in this release:
-
 - README badges: `https://linkopen.app/badge/<app>.svg`, with a builder at [/tools/readme-badge](https://linkopen.app/tools/readme-badge). The badge at the top of this file is one.
-- Link API: `GET https://linkopen.app/api/link?url=…&mode=auto|manual` returns the same link the converter makes.
+- Link API: `GET https://linkopen.app/api/link?url=…&mode=auto|manual` returns the same link the converter makes, as plain text (or JSON with `&format=json`).
 - [Integrations](https://linkopen.app/integrations): Apple Shortcuts, Raycast and the shell.
-- Obsidian plugin. Source in [`integrations/obsidian-plugin`](integrations/obsidian-plugin).
+- Obsidian plugin: copies a link to the current note, heading or block. Source in [`integrations/obsidian-plugin`](integrations/obsidian-plugin); it will be in Obsidian's community plugins once it's reviewed.
 
 ## Privacy
 
