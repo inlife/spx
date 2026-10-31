@@ -1,0 +1,36 @@
+# Checks the live site after every production deploy, every Monday, and on
+# demand. A failure here (and the email GitHub sends about it) means pages,
+# old shortlink.studio links, badges or the link API are broken.
+# After a successful production deploy it also pings IndexNow (Bing etc.).
+
+name: Production checks
+
+on:
+  deployment_status:
+  schedule:
+    - cron: '17 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    # deployment_status fires for every Vercel deployment; only run for successful production ones
+    if: >-
+      github.event_name != 'deployment_status' ||
+      (github.event.deployment_status.state == 'success' &&
+       startsWith(github.event.deployment.environment, 'Production'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check linkopen.app
+        run: node scripts/check-site.mjs --retries ${{ github.event_name == 'deployment_status' && '4' || '1' }}
+      - name: Ping IndexNow
+        if: github.event_name == 'deployment_status'
+        run: npm run indexnow

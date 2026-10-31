@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { shouldCompress } from 'utils/codec'
+import { makeLink } from 'utils/make-link'
 import CopyButton from 'components/tools/copy-button'
 
 const APPS = [
@@ -99,9 +99,12 @@ export default function BuilderClient() {
 
     const shortlinkUrl = useMemo(() => {
         if (!rawUrl) return ''
-        const result = shouldCompress(rawUrl, '1')
-        const path = result.useCompression ? `s/${result.compressed}` : result.legacy
-        return `https://linkopen.app/${path}`
+        try {
+            return makeLink(rawUrl)
+        } catch {
+            // Refused by the link policy (javascript: and friends)
+            return ''
+        }
     }, [rawUrl])
 
     const handleField = (id, val) => setValues(v => ({ ...v, [id]: val }))

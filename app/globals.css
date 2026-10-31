@@ -2,8 +2,9 @@
 
 @theme {
   --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  /* Set by next/font in app/layout.js (class on <html>) */
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {

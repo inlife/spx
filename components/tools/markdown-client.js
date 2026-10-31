@@ -1,15 +1,17 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { shouldCompress } from 'utils/codec'
+import { makeLink } from 'utils/make-link'
 import { extractScheme } from 'utils/data/platform-rules'
 import CopyButton from 'components/tools/copy-button'
 
 function buildShortlink(url) {
-    if (!url) return ''
-    const result = shouldCompress(url, '1')
-    const path = result.useCompression ? `s/${result.compressed}` : result.legacy
-    return `https://linkopen.app/${path}`
+    try {
+        return makeLink(url)
+    } catch {
+        // Empty, or refused by the link policy: keep the original URL
+        return ''
+    }
 }
 
 export default function MarkdownClient() {

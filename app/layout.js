@@ -1,6 +1,22 @@
 import './globals.css'
-import Script from 'next/script'
-import { Analytics } from "@vercel/analytics/next"
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import SiteAnalytics from 'components/site-analytics'
+
+// Self-hosted at build time by next/font: no render-blocking request to Google.
+// globals.css maps these variables to font-display / font-mono.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: '700',
+  display: 'swap',
+  variable: '--font-space-grotesk',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
+})
 
 export const metadata = {
   metadataBase: new URL('https://linkopen.app'),
@@ -62,36 +78,23 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="HandheldFriendly" content="True" />
         <meta property="fb:admins" content="100000470641337" />
         <meta property="fb:profile_id" content="100000470641337" />
 
-        {/* Fonts: Satoshi (Fontshare) + JetBrains Mono + Space Grotesk (Google Fonts) */}
+        {/* Satoshi comes from Fontshare. Its license (ITF FFL) allows self-hosting on
+            our own site but not distributing the files through a public repository,
+            so the font files stay on Fontshare instead of in this repo. */}
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
 
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-CG6KC5KZLG"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-CG6KC5KZLG');
-          `}
-        </Script>
       </head>
       <body className="antialiased" suppressHydrationWarning>
-        <Analytics />
+        <SiteAnalytics />
         {children}
       </body>
     </html>

@@ -10,6 +10,7 @@ const ALL_TOOLS = [
     { slug: 'deep-link-builder', name: 'Deep Link Builder', tagline: 'Slack, Obsidian, Zoom, Notion and Figma links from a form' },
     { slug: 'markdown-link-generator', name: 'Markdown Link Generator', tagline: 'One link as Markdown, Slack, HTML and more' },
     { slug: 'url-scheme-registry', name: 'URL Scheme List', tagline: 'Deep link formats for common apps' },
+    { slug: 'readme-badge', name: 'README Badge Maker', tagline: 'Open in VS Code, Obsidian or Slack badges for a README' },
 ]
 
 export default function ToolShell({ slug, eyebrow, title, intro, children }) {
@@ -55,7 +56,7 @@ export default function ToolShell({ slug, eyebrow, title, intro, children }) {
                     <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-5">
                         Other tools
                     </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-800">
                         {others.map(t => (
                             <a
                                 key={t.slug}

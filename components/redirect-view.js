@@ -1,6 +1,6 @@
 import Footer from 'components/footer'
 import AutoOpen from 'components/auto-open'
-import { isWebUrl } from 'utils/link-policy'
+import { isWebUrl, schemeOf } from 'utils/link-policy'
 
 // The page someone sees after clicking a shared link. Rendered on the server so
 // it has real content (and a link home) before any JavaScript runs.
@@ -10,7 +10,8 @@ export default function RedirectView({ url, type, invalid = false }) {
     const auto = !invalid && type === '1' && !web
 
     return (
-        <main className="min-h-[100dvh] flex flex-col">
+        // data-link-scheme lets analytics record which app a link opens, never the link itself
+        <main className="min-h-[100dvh] flex flex-col" data-link-scheme={invalid ? 'invalid' : schemeOf(url) || 'unknown'}>
             <div className="flex-1 flex items-center justify-center px-5 py-16">
                 <div className="text-center max-w-md w-full">
                     {invalid ? (

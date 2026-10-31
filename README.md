@@ -1,89 +1,66 @@
-# SPX - Make Your Links Work Anywhere 🔗
+# LinkOpen
 
-<div align="center">
+[![Open in VS Code](https://linkopen.app/badge/vscode.svg)](https://linkopen.app/s/1G4Zwxg9gJgpgXAegaSsB0BzAlgFwWAGwgDsYB.AVwCcCBeACxxwAcQBSAZgEE2AmAMT79sOehQBGaSAFshWYgSwAzGEJDMAHkA)
 
-### Free • No Signup • Instant
+[LinkOpen](https://linkopen.app) turns app links like `slack://`, `obsidian://`, `vscode://` and `zoommtg://` into https links. Notion, GitHub, Gmail, Slack and many wikis don't make links like these clickable, so an app link pasted there ends up as plain text. A LinkOpen link is a normal https link. When someone clicks it, a page on linkopen.app passes the original link to the app. It's free, needs no account, and the code is in this repo.
 
-**Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else.**
+![Typing an obsidian:// link into the converter, copying the LinkOpen link, and opening it](docs/media/demo.gif)
 
-[**🚀 Try it now →**](https://linkopen.app)
+## Example
 
-<img src="https://linkopen.app/preview.png" width="600" />
+Before. GitHub drops the link and shows plain text:
 
-</div>
+[Meeting notes](obsidian://open?vault=Work&file=Meeting%20notes)
 
----
+After. The same note through LinkOpen:
 
-## 🎯 What is SPX?
+[Meeting notes](https://linkopen.app/s/1kAHHUPYE4NaPAHCyBTBAXAlgOwOYFIBMAGdMZBAZyA)
 
-SPX (Scheme Proxy) is a free tool that solves a common frustration: **broken custom scheme links**. Ever tried to share a `slack://`, `zoom://`, or `obsidian://` link in Notion and it just won't work? SPX fixes that.
-
-## ✨ Why Use SPX?
-
-- 🔗 **Universal Compatibility** - Share links that work in Notion, Obsidian, email, and any platform
-- ⚡ **Instant Conversion** - No signup required, get your link in seconds
-- 🔒 **Privacy First** - We don't store your URLs, everything happens in your browser
-- 🎨 **Beautiful & Simple** - Clean, modern interface that just works
-- 📱 **Mobile Friendly** - Works seamlessly on desktop and mobile devices
-
-## 🚀 How It Works
-
-1. **Paste** your custom scheme link (e.g., `slack://channel/ABC123`)
-2. **Toggle** auto-open if you want automatic redirection
-3. **Copy** your universal link and share it anywhere!
-
-* **Before:** `slack://channel/ABC123` ❌ (broken in Notion)
-* **After:** `linkopen.app/1/slack://channel/ABC123` ✅ (works everywhere!)
-
-## 💡 Perfect For
-
-- **📝 Notion Users** - Share app links in your workspace
-- **✍️ Obsidian Users** - Embed custom protocol links in your notes
-- **📧 Email Campaigns** - Send clickable app links to recipients
-- **💼 Documentation** - Share internal tool links with your team
-- **🎥 Zoom/Slack** - Share meeting and channel links universally
-
-## 🌐 Use It Online
-
-**👉 [linkopen.app](https://linkopen.app)**
-
-No installation needed. Just visit the website and start converting links!
-
-## 🛠️ Self-Hosting
-
-Want to run your own instance? This is an open-source project built with:
-
-- **Next.js 15** - React framework
-- **Tailwind CSS 4** - Utility-first CSS
-- **Vercel Analytics** - Performance tracking
-
-Clone this repo and deploy to your favorite platform:
-
-```bash
-npm install
-npm run dev
+```
+obsidian://open?vault=Work&file=Meeting%20notes
+https://linkopen.app/s/1kAHHUPYE4NaPAHCyBTBAXAlgOwOYFIBMAGdMZBAZyA
 ```
 
-## 🔒 Privacy & Security
+## How it works
 
-- **No data storage** - URLs are processed client-side only
-- **No tracking of your links** - We only track page visits for analytics
-- **Open source** - Fully transparent, inspect the code yourself
+- The link carries the URL. Common pieces such as `obsidian://open?vault=` or `https://github.com/` are swapped for single characters from a small dictionary, then the result is compressed with [LZ-string](https://github.com/pieroxy/lz-string) into URL-safe text. See [`utils/codec.js`](utils/codec.js).
+- There is no database. Nothing is saved when you make a link, and links don't expire.
+- Opening a link loads a page on linkopen.app that decodes the URL and hands it to the app. Auto links (`/s/1…`) open the app right away. Manual links (`/s/0…`) show an Open link button first.
+- Links to websites (http and https) always get the confirmation page, never an automatic redirect. `javascript:`, `data:` and `vbscript:` links are refused. See [`utils/link-policy.js`](utils/link-policy.js).
+- When compression wouldn't make a link shorter, the converter uses the plain form `https://linkopen.app/1/<url-encoded link>` instead.
 
-## ⭐ Star Us!
+![The converter on linkopen.app with an obsidian:// link filled in](docs/media/converter.png)
 
-If SPX helps you share links more easily, give us a star on GitHub! It helps others discover the tool.
+## What's on the site
 
-## 📄 License
+- [Converter](https://linkopen.app): paste a link, pick auto or manual, copy the result.
+- [Tools](https://linkopen.app/tools): a URL compatibility checker, a deep link builder, a Markdown link generator and a list of URL schemes for common apps.
+- [Obsidian guide](https://linkopen.app/obsidian-links): how to share links to notes in a vault.
+- README badges: `https://linkopen.app/badge/<app>.svg`, with a builder at [/tools/readme-badge](https://linkopen.app/tools/readme-badge). The badge at the top of this file is one.
+- Link API: `GET https://linkopen.app/api/link?url=…&mode=auto|manual` returns the same link the converter makes, as plain text (or JSON with `&format=json`).
+- [Integrations](https://linkopen.app/integrations): Apple Shortcuts, Raycast and the shell.
+- Obsidian plugin: copies a link to the current note, heading or block. Source in [`integrations/obsidian-plugin`](integrations/obsidian-plugin); it will be in Obsidian's community plugins once it's reviewed.
 
-ISC License - feel free to use and modify as needed.
+## Privacy
 
----
+There's no database and no accounts. The URL lives inside the link, so LinkOpen has nothing to store. It is compressed, not encrypted: anyone who has the link can read the URL in it.
 
-<div align="center">
+Analytics never get the link itself. Shared-link pages (`/s/…`, `/0/…`, `/1/…`) don't load Google Analytics, and Vercel Analytics records them with the link replaced by the app it opens, for example `/s/obsidian` (see [`utils/analytics.js`](utils/analytics.js)). They also send only `https://linkopen.app/` as the referrer. The rest of the site uses Google Analytics and Vercel Analytics; Google Analytics sets cookies to count visits.
 
-**Made with ❤️ by [inlife](https://twitter.com/inlife360)**
+## Development
 
-[Try SPX Now](https://linkopen.app) • [Report Issue](https://github.com/inlife/spx/issues) • [Star on GitHub](https://github.com/inlife/spx)
+```
+npm install
+npm run dev
+npm test
+```
 
-</div>
+`npm run dev` starts Next.js on http://localhost:3000. The stack is Next.js 15 (app router), React 19 and Tailwind CSS 4. Before you change the dictionary in `utils/codec.js`, read the comment above it: existing entries must never change, or old links stop working.
+
+## Name
+
+This started as SPX (scheme proxy), was renamed Shortlink at shortlink.studio, and is now LinkOpen. Old shortlink.studio links redirect to linkopen.app.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

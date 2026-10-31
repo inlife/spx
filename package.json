@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "next",
     "test": "vitest",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "badges": "node scripts/build-badges.cjs"
   },
   "keywords": [],
   "author": "inlife",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.14",
     "@vercel/analytics": "^1.5.0",
