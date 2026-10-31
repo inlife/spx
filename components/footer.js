@@ -8,7 +8,7 @@ const Footer = () =>
                 <span className="text-zinc-600" aria-hidden="true">/</span>
                 <a href="/contact" className="hover:text-emerald-500 transition-colors">Contact</a>
                 <span className="text-zinc-600" aria-hidden="true">/</span>
-                <a href="https://github.com/inlife/spx" target="_blank" className="hover:text-emerald-500 transition-colors">Source</a>
+                <a href="https://github.com/inlife/linkopen" target="_blank" className="hover:text-emerald-500 transition-colors">Source</a>
                 <span className="text-zinc-600" aria-hidden="true">/</span>
                 <span>by <a href="https://twitter.com/inlife360" target="_blank" className="hover:text-emerald-500 transition-colors">inlife</a></span>
             </nav>

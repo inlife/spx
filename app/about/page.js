@@ -103,7 +103,7 @@ export default function AboutPage() {
                 <section className="border-t border-zinc-800 py-8">
                     <h2 className="text-lg font-bold text-white mb-3">Name</h2>
                     <p className="text-zinc-300 leading-relaxed max-w-[55ch]">
-                        LinkOpen used to be called Shortlink, at shortlink.studio. Links made there still work: shortlink.studio forwards every one of them here. The code lives in the <code className="font-mono text-sm text-zinc-300">spx</code> repository, after the project&rsquo;s first name, scheme proxy.
+                        LinkOpen used to be called Shortlink, at shortlink.studio. Links made there still work: shortlink.studio forwards every one of them here. Before that it was SPX, short for scheme proxy.
                     </p>
                 </section>
 
@@ -119,11 +119,11 @@ export default function AboutPage() {
                 <section className="border-t border-zinc-800 py-8">
                     <h2 className="text-lg font-bold text-white mb-3">Source</h2>
                     <a
-                        href="https://github.com/inlife/spx"
+                        href="https://github.com/inlife/linkopen"
                         target="_blank"
                         className="font-mono text-sm text-emerald-500 hover:text-emerald-400 transition-colors"
                     >
-                        github.com/inlife/spx
+                        github.com/inlife/linkopen
                     </a>
                 </section>
             </div>

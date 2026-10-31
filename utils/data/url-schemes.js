@@ -70,7 +70,7 @@ export const URL_SCHEMES = [
     {
         app: 'GitHub Desktop',
         scheme: 'x-github-client://',
-        example: 'x-github-client://openRepo/https://github.com/inlife/spx',
+        example: 'x-github-client://openRepo/https://github.com/inlife/linkopen',
     },
     {
         app: 'Warp',

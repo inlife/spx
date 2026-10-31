@@ -100,7 +100,7 @@ export default function ContactPage() {
                 <section className="border-t border-zinc-800 mt-12 py-8 space-y-4">
                     <div>
                         <div className="text-sm text-zinc-300 mb-1">GitHub</div>
-                        <a href="https://github.com/inlife/spx" target="_blank" className="font-mono text-sm text-emerald-500 hover:text-emerald-400 transition-colors">github.com/inlife/spx</a>
+                        <a href="https://github.com/inlife/linkopen" target="_blank" className="font-mono text-sm text-emerald-500 hover:text-emerald-400 transition-colors">github.com/inlife/spx</a>
                     </div>
                     <div>
                         <div className="text-sm text-zinc-300 mb-1">Twitter / X</div>
