@@ -90,6 +90,7 @@ export default function RootLayout({ children }) {
             our own site but not distributing the files through a public repository,
             so the font files stay on Fontshare instead of in this repo. */}
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
 
         {/* Google Analytics */}
