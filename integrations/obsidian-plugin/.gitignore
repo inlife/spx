@@ -1,0 +1,12 @@
+# npm
+node_modules
+
+# Built by `npm run build`. Attach it to GitHub releases instead of committing it.
+# Anchored with / so it doesn't also match src/main.js.
+/main.js
+*.map
+
+# Plugin settings saved when the folder is used as a vault plugin folder
+data.json
+
+.DS_Store
