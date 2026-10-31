@@ -2,7 +2,7 @@ import Footer from 'components/footer'
 import AutoOpen from 'components/auto-open'
 import { isWebUrl } from 'utils/link-policy'
 
-// The page someone sees after clicking a shortlink. Rendered on the server so
+// The page someone sees after clicking a shared link. Rendered on the server so
 // it has real content (and a link home) before any JavaScript runs.
 
 export default function RedirectView({ url, type, invalid = false }) {
@@ -26,7 +26,7 @@ export default function RedirectView({ url, type, invalid = false }) {
                             </h1>
                             {web && (
                                 <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-                                    Check the address below before you continue. Shortlink doesn’t check where links go.
+                                    Check the address below before you continue. LinkOpen doesn’t check where links go.
                                 </p>
                             )}
                             <a
@@ -47,7 +47,7 @@ export default function RedirectView({ url, type, invalid = false }) {
                 </div>
             </div>
             <div className="border-t border-zinc-800 px-5 py-5 text-center text-xs text-zinc-500">
-                Made with <a href="/" className="text-emerald-500 hover:text-emerald-400">Shortlink</a>, which turns slack://, obsidian:// and other app links into links that stay clickable in Notion, GitHub and email.
+                Made with <a href="/" className="text-emerald-500 hover:text-emerald-400">LinkOpen</a>, which turns slack://, obsidian:// and other app links into links that stay clickable in Notion, GitHub and email.
             </div>
             <Footer />
         </main>

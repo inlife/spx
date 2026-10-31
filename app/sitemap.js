@@ -2,7 +2,7 @@
 // every page changes on every deploy, which they learn to ignore.
 
 export default function sitemap() {
-    const baseUrl = 'https://www.shortlink.studio'
+    const baseUrl = 'https://linkopen.app'
 
     const tools = [
         'url-compatibility-checker',

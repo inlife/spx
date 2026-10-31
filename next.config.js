@@ -17,6 +17,18 @@ const nextConfig = {
         return config
     },
 
+    // Links made before the rename point at shortlink.studio and never expire,
+    // so those hosts forward every path (and query) to linkopen.app for good.
+    // www.linkopen.app goes to the bare domain, which keeps shared links short.
+    async redirects() {
+        return ['shortlink.studio', 'www.shortlink.studio', 'www.linkopen.app'].map(host => ({
+            source: '/:path*',
+            has: [{ type: 'host', value: host }],
+            destination: 'https://linkopen.app/:path*',
+            permanent: true,
+        }))
+    },
+
     async headers() {
         return [
             {

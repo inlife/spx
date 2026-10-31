@@ -9,10 +9,10 @@ export const metadata = {
         canonical: '/tools',
     },
     openGraph: {
-        title: 'Tools | Shortlink',
+        title: 'Tools | LinkOpen',
         description: 'Small tools for working with deep links and custom URL schemes.',
-        url: 'https://www.shortlink.studio/tools',
-        images: ['/preview.png'],
+        url: 'https://linkopen.app/tools',
+        images: ['/preview.png?v=2'],
     },
 }
 
@@ -20,13 +20,13 @@ export default function ToolsIndex() {
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        name: 'Shortlink Tools',
-        url: 'https://www.shortlink.studio/tools',
+        name: 'LinkOpen Tools',
+        url: 'https://linkopen.app/tools',
         description: metadata.description,
         hasPart: ALL_TOOLS.map(t => ({
             '@type': 'WebApplication',
             name: t.name,
-            url: `https://www.shortlink.studio/tools/${t.slug}`,
+            url: `https://linkopen.app/tools/${t.slug}`,
             description: t.tagline,
             applicationCategory: 'UtilitiesApplication',
             operatingSystem: 'Any',

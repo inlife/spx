@@ -3,14 +3,14 @@ import Footer from 'components/footer'
 
 export const metadata = {
     title: 'About',
-    description: 'How Shortlink turns slack://, obsidian:// and zoommtg:// links into https links that stay clickable, what it stores (nothing) and what the site tracks.',
+    description: 'How LinkOpen turns slack://, obsidian:// and zoommtg:// links into https links that stay clickable, what it stores (nothing) and what the site tracks.',
     alternates: {
         canonical: '/about',
     },
     openGraph: {
-        title: 'About Shortlink',
-        description: 'How Shortlink turns custom scheme links into https links that stay clickable.',
-        url: 'https://www.shortlink.studio/about',
+        title: 'About LinkOpen',
+        description: 'How LinkOpen turns custom scheme links into https links that stay clickable.',
+        url: 'https://linkopen.app/about',
     },
 }
 
@@ -30,7 +30,7 @@ export default function AboutPage() {
                         Modern applications like <code className="font-mono text-sm text-zinc-300">Slack</code>, <code className="font-mono text-sm text-zinc-300">Obsidian</code>, <code className="font-mono text-sm text-zinc-300">Zoom</code>, <code className="font-mono text-sm text-zinc-300">Notion</code>, and <code className="font-mono text-sm text-zinc-300">Figma</code> use custom URL schemes for deep linking &mdash; URIs like <code className="font-mono text-sm text-zinc-300">slack://channel</code> or <code className="font-mono text-sm text-zinc-300">obsidian://open?vault=wiki</code> that open specific views inside desktop and mobile apps.
                     </p>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
-                        The problem: these links stop working the moment you paste them into a wiki, an email, or a chat on another platform. Those tools only make web links clickable, so the deep link shows up as plain text. Shortlink converts it into a standard https link that those tools accept, and opening that link hands the original to the app.
+                        The problem: these links stop working the moment you paste them into a wiki, an email, or a chat on another platform. Those tools only make web links clickable, so the deep link shows up as plain text. LinkOpen converts it into a standard https link that those tools accept, and opening that link hands the original to the app.
                     </p>
                 </section>
 
@@ -38,7 +38,7 @@ export default function AboutPage() {
                 <section className="border-t border-zinc-800 py-8">
                     <h2 className="text-lg font-bold text-white mb-3">Why</h2>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch]">
-                        Custom scheme URLs break in almost every cross-app context. Shortlink exists because these workflows are common and currently painful:
+                        Custom scheme URLs break in almost every cross-app context. LinkOpen exists because these workflows are common and currently painful:
                     </p>
                     <ul className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4 space-y-3 list-disc list-inside">
                         <li>
@@ -65,7 +65,7 @@ export default function AboutPage() {
                         <li>3. Copy the https link</li>
                     </ol>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
-                        Under the hood, Shortlink uses LZ-based compression with dictionary substitution to encode your original URL directly into the https link path. There is no database, no server storage, and no lookup table. The entire payload lives in the URL itself, and the page you land on decodes it and passes it to the app. This means links never expire and don&rsquo;t depend on a database staying online.
+                        Under the hood, LinkOpen uses LZ-based compression with dictionary substitution to encode your original URL directly into the https link path. There is no database, no server storage, and no lookup table. The entire payload lives in the URL itself, and the page you land on decodes it and passes it to the app. This means links never expire and don&rsquo;t depend on a database staying online.
                     </p>
                 </section>
 
@@ -92,10 +92,18 @@ export default function AboutPage() {
                 <section className="border-t border-zinc-800 py-8">
                     <h2 className="text-lg font-bold text-white mb-3">Privacy</h2>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch]">
-                        Shortlink doesn&rsquo;t store links. There is no database, no server-side storage and no user accounts: your URL is compressed into the link itself, and the page you land on decodes it.
+                        LinkOpen doesn&rsquo;t store links. There is no database, no server-side storage and no user accounts: your URL is compressed into the link itself, and the page you land on decodes it.
                     </p>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
-                        The site does use analytics. Google Analytics and Vercel Analytics record which pages are visited, and for a shortlink the page address contains the encoded URL. Google Analytics also sets cookies to count visits. The code is open source, so you can check this yourself.
+                        The site does use analytics. Google Analytics and Vercel Analytics record which pages are visited, and for a shared link the page address contains the encoded URL. Google Analytics also sets cookies to count visits. The code is open source, so you can check this yourself.
+                    </p>
+                </section>
+
+                {/* Name */}
+                <section className="border-t border-zinc-800 py-8">
+                    <h2 className="text-lg font-bold text-white mb-3">Name</h2>
+                    <p className="text-zinc-400 leading-relaxed max-w-[55ch]">
+                        LinkOpen used to be called Shortlink, at shortlink.studio. Links made there still work: shortlink.studio forwards every one of them here. The code lives in the <code className="font-mono text-sm text-zinc-300">spx</code> repository, after the project&rsquo;s first name, scheme proxy.
                     </p>
                 </section>
 

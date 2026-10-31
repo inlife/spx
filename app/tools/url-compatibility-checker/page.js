@@ -8,17 +8,17 @@ export const metadata = {
     description: 'Paste a slack://, obsidian:// or zoommtg:// link and see whether Notion, Slack, Gmail, GitHub, Linear and Confluence will keep it clickable.',
     alternates: { canonical: '/tools/url-compatibility-checker' },
     openGraph: {
-        title: 'URL Compatibility Checker | Shortlink',
+        title: 'URL Compatibility Checker | LinkOpen',
         description: 'See which apps keep a custom-scheme link clickable and which turn it into plain text.',
-        url: 'https://www.shortlink.studio/tools/url-compatibility-checker',
-        images: ['/preview.png'],
+        url: 'https://linkopen.app/tools/url-compatibility-checker',
+        images: ['/preview.png?v=2'],
     },
 }
 
 const FAQ_ITEMS = [
     {
         q: 'Why is my Slack link broken in Notion?',
-        a: 'Notion only keeps links that start with http, https, mailto or tel. A slack:// link loses its link and stays as text. The easiest fix is Slack’s own "Copy link" option, which gives you an https://…slack.com/archives/… address that works in Notion and still opens the Slack app. If you need the slack:// form, wrap it with Shortlink first.',
+        a: 'Notion only keeps links that start with http, https, mailto or tel. A slack:// link loses its link and stays as text. The easiest fix is Slack’s own "Copy link" option, which gives you an https://…slack.com/archives/… address that works in Notion and still opens the Slack app. If you need the slack:// form, wrap it with LinkOpen first.',
     },
     {
         q: 'Can I put a Zoom link in a Notion page?',
@@ -59,7 +59,7 @@ export default function UrlCompatibilityCheckerPage() {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: 'URL Compatibility Checker',
-        url: 'https://www.shortlink.studio/tools/url-compatibility-checker',
+        url: 'https://linkopen.app/tools/url-compatibility-checker',
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -106,7 +106,7 @@ export default function UrlCompatibilityCheckerPage() {
                         <span className="text-zinc-300">In Obsidian or other Markdown tools,</span> write it as <code className="font-mono text-sm text-zinc-300">[label](scheme://…)</code> rather than pasting the bare URL. Some renderers will then keep it.
                     </li>
                     <li>
-                        <span className="text-zinc-300">Otherwise, wrap it.</span> <a href="/" className="text-emerald-500 hover:text-emerald-400">Shortlink</a> turns the custom-scheme URL into an https link. The original is encoded in the link itself, and opening it sends the browser on to the app.
+                        <span className="text-zinc-300">Otherwise, wrap it.</span> <a href="/" className="text-emerald-500 hover:text-emerald-400">LinkOpen</a> turns the custom-scheme URL into an https link. The original is encoded in the link itself, and opening it sends the browser on to the app.
                     </li>
                 </ol>
             </section>

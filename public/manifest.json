@@ -1,7 +1,7 @@
 {
-    "name": "Shortlink",
-    "short_name": "Shortlink",
-    "description": "Convert custom scheme URLs into universal HTTPS links.",
+    "name": "LinkOpen",
+    "short_name": "LinkOpen",
+    "description": "Make slack://, obsidian:// and other app links clickable in Notion, GitHub and email.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#09090b",

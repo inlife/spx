@@ -78,7 +78,7 @@ export default function CheckerClient() {
                             <p className="text-zinc-300 text-sm">
                                 Some platforms above strip this scheme.{' '}
                                 <a href="/" className="text-emerald-500 hover:text-emerald-400 font-medium">
-                                    Wrap it in a Shortlink →
+                                    Wrap it with LinkOpen →
                                 </a>
                             </p>
                         </div>

@@ -11,8 +11,8 @@ export async function generateMetadata({ params }) {
 
     return {
         title: scheme ? `Opening ${scheme} link` : 'Opening link',
-        description: 'A Shortlink that opens an app link, such as slack:// or obsidian://.',
-        // Keep shortlinks out of search results, but let crawlers follow the link home
+        description: 'Opens an app link, such as slack:// or obsidian://, through LinkOpen.',
+        // Keep shared links out of search results, but let crawlers follow the link home
         robots: {
             index: false,
             follow: true,

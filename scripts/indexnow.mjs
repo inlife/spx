@@ -3,7 +3,7 @@
 //   npm run indexnow
 // The key file lives at public/a1cccb780ba2cbcb2e123d0e037f417d.txt; keep the two in sync.
 
-const HOST = 'www.shortlink.studio'
+const HOST = 'linkopen.app'
 const KEY = 'a1cccb780ba2cbcb2e123d0e037f417d'
 
 const sitemap = await fetch(`https://${HOST}/sitemap.xml`).then(r => r.text())

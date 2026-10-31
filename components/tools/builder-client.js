@@ -101,7 +101,7 @@ export default function BuilderClient() {
         if (!rawUrl) return ''
         const result = shouldCompress(rawUrl, '1')
         const path = result.useCompression ? `s/${result.compressed}` : result.legacy
-        return `https://www.shortlink.studio/${path}`
+        return `https://linkopen.app/${path}`
     }, [rawUrl])
 
     const handleField = (id, val) => setValues(v => ({ ...v, [id]: val }))

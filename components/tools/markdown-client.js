@@ -9,7 +9,7 @@ function buildShortlink(url) {
     if (!url) return ''
     const result = shouldCompress(url, '1')
     const path = result.useCompression ? `s/${result.compressed}` : result.legacy
-    return `https://www.shortlink.studio/${path}`
+    return `https://linkopen.app/${path}`
 }
 
 export default function MarkdownClient() {
