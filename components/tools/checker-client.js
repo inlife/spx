@@ -7,7 +7,7 @@ const STATUS_STYLES = {
     works: { label: 'Works', cls: 'text-emerald-500' },
     partial: { label: 'Depends', cls: 'text-amber-400' },
     broken: { label: 'Broken', cls: 'text-red-400' },
-    unknown: { label: 'Unknown', cls: 'text-zinc-500' },
+    unknown: { label: 'Unknown', cls: 'text-zinc-400' },
 }
 
 export default function CheckerClient() {
@@ -25,7 +25,7 @@ export default function CheckerClient() {
     return (
         <div className="space-y-6">
             <div>
-                <label htmlFor="checker-input" className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">
+                <label htmlFor="checker-input" className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">
                     Paste any URL
                 </label>
                 <input
@@ -38,10 +38,10 @@ export default function CheckerClient() {
                     autoCorrect="off"
                     spellCheck="false"
                     placeholder="slack://channel?team=T0001&id=C0001"
-                    className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full bg-zinc-900 border border-zinc-600 text-white font-mono text-base px-4 py-3 rounded-none placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
                 />
                 {scheme && (
-                    <div className="mt-3 font-mono text-xs text-zinc-500">
+                    <div className="mt-3 font-mono text-xs text-zinc-400">
                         Detected scheme: <span className="text-emerald-500">{scheme}://</span>
                     </div>
                 )}
@@ -64,11 +64,11 @@ export default function CheckerClient() {
                                 <div key={r.platform.id} className="bg-zinc-950 p-5">
                                     <div className="flex items-center justify-between mb-2">
                                         <span className="text-white font-bold text-sm">{r.platform.name}</span>
-                                        <span className={`font-mono text-[10px] uppercase tracking-widest ${style.cls}`}>
+                                        <span className={`font-mono text-[11px] uppercase tracking-widest ${style.cls}`}>
                                             {style.label}
                                         </span>
                                     </div>
-                                    <p className="text-zinc-500 text-xs leading-relaxed">{r.notes}</p>
+                                    <p className="text-zinc-400 text-sm leading-relaxed">{r.notes}</p>
                                 </div>
                             )
                         })}

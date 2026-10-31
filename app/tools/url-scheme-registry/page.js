@@ -56,7 +56,7 @@ export default function UrlSchemeRegistryPage() {
 
             <section className="py-10">
                 <RegistryClient schemes={URL_SCHEMES} />
-                <p className="text-zinc-500 text-xs leading-relaxed mt-4 max-w-[60ch]">
+                <p className="text-zinc-400 text-sm leading-relaxed mt-4 max-w-[60ch]">
                     Missing an app, or found an example that doesn’t work? <a href="/contact" className="text-emerald-500 hover:text-emerald-400">Tell us</a> and we’ll fix the list.
                 </p>
             </section>
@@ -65,10 +65,10 @@ export default function UrlSchemeRegistryPage() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
                     How the operating system knows which app to open
                 </h2>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch] mb-4">
+                <p className="text-zinc-300 leading-relaxed max-w-[60ch] mb-4">
                     The scheme is the part before the colon. Browsers handle <code className="font-mono text-sm text-zinc-300">https</code> themselves. For anything else they ask the operating system, and the OS looks up which installed app claimed that scheme.
                 </p>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch]">
+                <p className="text-zinc-300 leading-relaxed max-w-[60ch]">
                     Apps claim a scheme when they’re installed. On macOS and iOS it’s listed under <code className="font-mono text-sm text-zinc-300">CFBundleURLTypes</code> in the app’s <code className="font-mono text-sm text-zinc-300">Info.plist</code>. On Windows it’s a registry key under <code className="font-mono text-sm text-zinc-300">HKEY_CLASSES_ROOT</code>. On Android it’s an intent filter in the manifest, and on Linux it’s an <code className="font-mono text-sm text-zinc-300">x-scheme-handler/…</code> entry in the app’s <code className="font-mono text-sm text-zinc-300">.desktop</code> file.
                 </p>
             </section>

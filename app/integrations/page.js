@@ -89,13 +89,13 @@ const PARAMS = [
 const code = 'font-mono text-sm text-zinc-300'
 const link = 'text-emerald-500 hover:text-emerald-400'
 const h2 = 'font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4'
-const p = 'text-zinc-400 leading-relaxed max-w-[60ch]'
+const p = 'text-zinc-300 leading-relaxed max-w-[60ch]'
 
 function Snippet({ value, label }) {
     return (
         <div className="border border-zinc-800 bg-zinc-950 my-4">
             <div className="flex items-center justify-between gap-4 border-b border-zinc-800 px-4 py-2">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">{label}</span>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400">{label}</span>
                 <CopyButton value={value} />
             </div>
             <pre className="overflow-x-auto p-4 font-mono text-xs sm:text-sm leading-relaxed text-emerald-500"><code>{value}</code></pre>
@@ -106,7 +106,7 @@ function Snippet({ value, label }) {
 function Output({ value }) {
     return (
         <div className="border border-zinc-800 border-dashed my-4">
-            <div className="border-b border-zinc-800 border-dashed px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-zinc-600">Response</div>
+            <div className="border-b border-zinc-800 border-dashed px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-zinc-400">Response</div>
             <pre className="overflow-x-auto p-4 font-mono text-xs sm:text-sm leading-relaxed text-zinc-300 whitespace-pre-wrap break-all"><code>{value}</code></pre>
         </div>
     )
@@ -128,9 +128,9 @@ export default function IntegrationsPage() {
 
             <div className="flex-1 max-w-5xl mx-auto w-full px-5">
                 <nav aria-label="Breadcrumb" className="pt-8 sm:pt-10">
-                    <ol className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+                    <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
                         <li><a href="/" className="hover:text-emerald-500 transition-colors">Home</a></li>
-                        <li className="text-zinc-700">/</li>
+                        <li className="text-zinc-600" aria-hidden="true">/</li>
                         <li className="text-zinc-300">Integrations</li>
                     </ol>
                 </nav>
@@ -142,9 +142,9 @@ export default function IntegrationsPage() {
                     <p className={`${p} mt-5`}>
                         Make LinkOpen links without opening the site. There’s a small API, a link that opens the converter with your link filled in, and recipes for Apple Shortcuts, Raycast and the shell. They all follow the same rules as the <a href="/" className={link}>converter</a>.
                     </p>
-                    <ul className="flex flex-wrap gap-x-5 gap-y-2 mt-6 font-mono text-[10px] uppercase tracking-widest">
+                    <ul className="flex flex-wrap gap-x-5 gap-y-2 mt-6 font-mono text-[11px] uppercase tracking-widest">
                         {SECTIONS.map(([id, name]) => (
-                            <li key={id}><a href={`#${id}`} className="text-zinc-500 hover:text-emerald-500 transition-colors">{name}</a></li>
+                            <li key={id}><a href={`#${id}`} className="text-zinc-400 hover:text-emerald-500 transition-colors">{name}</a></li>
                         ))}
                     </ul>
                 </header>
@@ -160,7 +160,7 @@ export default function IntegrationsPage() {
                     <div className="overflow-x-auto border border-zinc-800 my-6">
                         <table className="w-full font-mono text-xs">
                             <thead>
-                                <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[10px]">
+                                <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[11px]">
                                     <th className="text-left p-3 border-b border-zinc-800">Parameter</th>
                                     <th className="text-left p-3 border-b border-zinc-800">Values</th>
                                     <th className="text-left p-3 border-b border-zinc-800">Notes</th>

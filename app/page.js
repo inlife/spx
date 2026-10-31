@@ -84,15 +84,15 @@ export default function HomePage() {
                     <section className="w-full px-5 pt-12 sm:pt-20 pb-12 sm:pb-16">
                         <div className="max-w-5xl mx-auto">
                             <div className="flex items-center gap-3 mb-5">
-                                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 border border-zinc-700 px-2 py-0.5">Stateless</span>
-                                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 border border-zinc-700 px-2 py-0.5">v1.0</span>
-                                <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-600 border border-emerald-800 px-2 py-0.5">Free</span>
+                                <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 border border-zinc-600 px-2 py-0.5">Stateless</span>
+                                <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 border border-zinc-600 px-2 py-0.5">v1.0</span>
+                                <span className="font-mono text-[11px] uppercase tracking-widest text-emerald-500 border border-emerald-800 px-2 py-0.5">Free</span>
                             </div>
                             <h1>
                                 <span className="block font-display text-6xl sm:text-8xl md:text-9xl font-bold text-white uppercase leading-[0.85] tracking-tighter">
                                     Link<br className="sm:hidden" />Open
                                 </span>
-                                <span className="block font-mono text-xs sm:text-sm text-zinc-500 uppercase tracking-widest mt-5">
+                                <span className="block font-mono text-xs sm:text-sm text-zinc-400 uppercase tracking-widest mt-5">
                                     Make slack:// and obsidian:// links clickable
                                 </span>
                             </h1>
@@ -117,12 +117,12 @@ export default function HomePage() {
                     {/* Panel 01 — Input */}
                     <div className="bg-zinc-950 p-5 sm:p-6 md:col-span-2">
                         <div className="flex items-baseline gap-3 mb-5">
-                            <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">01</span>
+                            <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-700" aria-hidden="true">01</span>
                             <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Input</span>
                         </div>
-                        <label className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">Custom Scheme URL</label>
+                        <label className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">Custom Scheme URL</label>
                         <input
-                            className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-lg px-4 py-3.5 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                            className="w-full bg-zinc-900 border border-zinc-600 text-white font-mono text-base sm:text-lg px-4 py-3.5 rounded-none placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
                             autoCapitalize="off"
                             autoComplete="off"
                             autoCorrect="off"
@@ -137,14 +137,14 @@ export default function HomePage() {
                         {/* Before/After readout */}
                         <div className="mt-4 font-mono text-xs space-y-1 border-t border-zinc-800 pt-4">
                             <div className="flex items-center gap-2">
-                                <span className="text-zinc-600 w-8 shrink-0">IN</span>
-                                <span className="text-zinc-500 truncate">{url || 'slack://channel/ABC123'}</span>
-                                <span className="text-red-400 text-[10px] ml-auto shrink-0">BROKEN</span>
+                                <span className="text-zinc-400 w-8 shrink-0">IN</span>
+                                <span className="text-zinc-400 truncate">{url || 'slack://channel/ABC123'}</span>
+                                <span className="text-red-400 text-[11px] ml-auto shrink-0">BROKEN</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-zinc-600 w-8 shrink-0">OUT</span>
+                                <span className="text-zinc-400 w-8 shrink-0">OUT</span>
                                 <span className="text-white truncate">linkopen.app/s/...</span>
-                                <span className="text-emerald-500 text-[10px] ml-auto shrink-0">CLICKABLE</span>
+                                <span className="text-emerald-500 text-[11px] ml-auto shrink-0">CLICKABLE</span>
                             </div>
                         </div>
                     </div>
@@ -152,18 +152,18 @@ export default function HomePage() {
                     {/* Panel 02 — Options */}
                     <div className="bg-zinc-950 p-5 sm:p-6">
                         <div className="flex items-baseline gap-3 mb-5">
-                            <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">02</span>
+                            <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-700" aria-hidden="true">02</span>
                             <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Options</span>
                         </div>
 
-                        <label className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">Auto-Redirect</label>
+                        <label className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">Auto-Redirect</label>
                         <div className="flex items-center justify-between mb-4">
                             <span className="text-xs text-zinc-400">{isWeb ? 'Website links always ask first' : 'Open link on visit'}</span>
                             <button
                                 onClick={() => setType(type === "1" ? "0" : "1")}
                                 disabled={isWeb}
                                 className={`relative inline-flex h-5 w-9 items-center rounded-sm transition-colors focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed ${
-                                    linkType === "1" ? 'bg-emerald-600' : 'bg-zinc-700'
+                                    linkType === "1" ? 'bg-emerald-500' : 'bg-zinc-600'
                                 }`}
                                 role="switch"
                                 aria-checked={linkType === "1"}
@@ -176,13 +176,13 @@ export default function HomePage() {
                         </div>
 
                         {canCompress && <>
-                            <label className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">Compression</label>
+                            <label className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">Compression</label>
                             <div className="flex items-center justify-between mb-4">
                                 <span className="text-xs text-zinc-400">Stateless encoding</span>
                                 <button
                                     onClick={() => setCompress(!compress)}
                                     className={`relative inline-flex h-5 w-9 items-center rounded-sm transition-colors focus:outline-none ${
-                                        compress ? 'bg-emerald-600' : 'bg-zinc-700'
+                                        compress ? 'bg-emerald-500' : 'bg-zinc-600'
                                     }`}
                                     role="switch"
                                     aria-checked={compress}
@@ -195,7 +195,7 @@ export default function HomePage() {
                         </>}
 
                         <div className="mt-auto pt-2">
-                            <div className="font-mono text-[10px] text-zinc-600 flex justify-between">
+                            <div className="font-mono text-[11px] text-zinc-400 flex justify-between">
                                 <span>MODE: {linkType === "1" ? "AUTO" : "MANUAL"}</span>
                                 <span>{canCompress && compress ? "LZ" : "RAW"}</span>
                             </div>
@@ -208,16 +208,16 @@ export default function HomePage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-800">
                         <div className="bg-zinc-950 p-5 sm:p-6 md:col-span-2 flex items-center">
                             <div className="flex items-baseline gap-3">
-                                <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">03</span>
+                                <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-700" aria-hidden="true">03</span>
                                 <div>
                                     <span className="font-display text-sm font-bold uppercase tracking-wider text-white block">Output</span>
-                                    <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Click to generate and copy to clipboard</span>
+                                    <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-widest">Click to generate and copy to clipboard</span>
                                 </div>
                             </div>
                         </div>
                         <div className="bg-zinc-950 p-5 sm:p-6 flex items-center">
                             <button
-                                className="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-display font-bold py-4 text-sm tracking-wider uppercase transition-all"
+                                className="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-zinc-950 font-display font-bold py-4 text-sm tracking-wider uppercase transition-all"
                                 onClick={generateUrl}
                             >
                                 {buttonText}
@@ -230,9 +230,9 @@ export default function HomePage() {
             {/* Supported Schemes */}
             <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16">
                 <div className="flex items-baseline gap-3 mb-8">
-                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">04</span>
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-700" aria-hidden="true">04</span>
                     <span className="font-display text-sm font-bold uppercase tracking-wider text-white">Supported Schemes</span>
-                    <a href="/tools/url-scheme-registry" className="ml-auto font-mono text-[10px] uppercase tracking-widest text-emerald-600 hover:text-emerald-400 transition-colors">
+                    <a href="/tools/url-scheme-registry" className="ml-auto font-mono text-[11px] uppercase tracking-widest text-emerald-500 hover:text-emerald-400 transition-colors">
                         More apps →
                     </a>
                 </div>
@@ -248,11 +248,11 @@ export default function HomePage() {
                         <div key={item.scheme} className="bg-zinc-950 p-5 sm:p-6">
                             <code className="font-mono text-emerald-500 text-sm block mb-2">{item.scheme}</code>
                             <div className="text-white font-bold text-sm mb-1">{item.name}</div>
-                            <p className="text-zinc-500 text-xs leading-relaxed">{item.desc}</p>
+                            <p className="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
                         </div>
                     ))}
                 </div>
-                <p className="mt-6 text-zinc-500 text-xs">
+                <p className="mt-6 text-zinc-400 text-xs">
                     Sharing notes from a vault? See <a href="/obsidian-links" className="text-emerald-500 hover:text-emerald-400">how to share Obsidian links</a>.
                 </p>
             </section>
@@ -260,15 +260,15 @@ export default function HomePage() {
             {/* How It Works */}
             <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16 border-t border-zinc-800">
                 <div className="flex items-baseline gap-3 mb-8">
-                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">05</span>
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-700" aria-hidden="true">05</span>
                     <span className="font-display text-sm font-bold uppercase tracking-wider text-white">How It Works</span>
                 </div>
                 <div className="space-y-6 max-w-2xl">
                     <div className="flex gap-4">
-                        <span className="font-mono text-emerald-600 text-sm shrink-0">01</span>
+                        <span className="font-mono text-emerald-500 text-sm shrink-0">01</span>
                         <div>
                             <h3 className="text-white font-bold text-sm mb-1">Paste your custom scheme URL</h3>
-                            <p className="text-zinc-500 text-xs leading-relaxed">
+                            <p className="text-zinc-400 text-sm leading-relaxed">
                                 Enter any URL that uses a custom protocol like slack://, obsidian://, zoommtg://, or notion://.
                                 Web pages, email and most documentation tools only make web links clickable, so these
                                 end up as plain text.
@@ -276,10 +276,10 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <span className="font-mono text-emerald-600 text-sm shrink-0">02</span>
+                        <span className="font-mono text-emerald-500 text-sm shrink-0">02</span>
                         <div>
                             <h3 className="text-white font-bold text-sm mb-1">Choose your redirect mode</h3>
-                            <p className="text-zinc-500 text-xs leading-relaxed">
+                            <p className="text-zinc-400 text-sm leading-relaxed">
                                 Auto-redirect opens the link immediately when someone clicks it. Manual mode shows
                                 a confirmation page first. Links to websites (http and https) always get the confirmation
                                 page. Compression uses LZ encoding to shorten the URL without a database.
@@ -287,10 +287,10 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <span className="font-mono text-emerald-600 text-sm shrink-0">03</span>
+                        <span className="font-mono text-emerald-500 text-sm shrink-0">03</span>
                         <div>
                             <h3 className="text-white font-bold text-sm mb-1">Share the link</h3>
-                            <p className="text-zinc-500 text-xs leading-relaxed">
+                            <p className="text-zinc-400 text-sm leading-relaxed">
                                 Copy the generated https link and paste it where the original wouldn&rsquo;t work: Notion pages,
                                 Slack messages, emails, GitHub READMEs, wikis. Clicking it opens the original link in the app.
                             </p>
@@ -302,7 +302,7 @@ export default function HomePage() {
             {/* FAQ */}
             <section className="w-full max-w-5xl mx-auto px-5 py-12 sm:py-16 border-t border-zinc-800">
                 <div className="flex items-baseline gap-3 mb-8">
-                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-800">06</span>
+                    <span className="font-display text-4xl sm:text-5xl font-bold text-zinc-700" aria-hidden="true">06</span>
                     <span className="font-display text-sm font-bold uppercase tracking-wider text-white">FAQ</span>
                 </div>
                 <div className="space-y-3 max-w-2xl">
@@ -331,10 +331,10 @@ export default function HomePage() {
                         <details key={i} className="group border border-zinc-800">
                             <summary className="flex items-center justify-between p-4 cursor-pointer">
                                 <span className="text-white text-sm font-medium pr-4">{faq.q}</span>
-                                <span className="font-mono text-zinc-600 text-xs group-open:rotate-45 transition-transform shrink-0">+</span>
+                                <span className="font-mono text-zinc-400 text-xs group-open:rotate-45 transition-transform shrink-0">+</span>
                             </summary>
                             <div className="px-4 pb-4">
-                                <p className="text-zinc-400 text-xs leading-relaxed">{faq.a}</p>
+                                <p className="text-zinc-400 text-sm leading-relaxed">{faq.a}</p>
                             </div>
                         </details>
                     ))}

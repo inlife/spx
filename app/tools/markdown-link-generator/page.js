@@ -67,7 +67,7 @@ export default function MarkdownLinkGeneratorPage() {
 
             <section className="py-10">
                 <MarkdownClient />
-                <p className="text-zinc-500 text-xs leading-relaxed mt-4 max-w-[60ch]">
+                <p className="text-zinc-400 text-sm leading-relaxed mt-4 max-w-[60ch]">
                     Pasting a slack://, obsidian:// or zoommtg:// link? Correct syntax won’t help if the app drops the scheme. The <a href="/tools/url-compatibility-checker" className="text-emerald-500 hover:text-emerald-400">compatibility checker</a> shows which ones do.
                 </p>
             </section>
@@ -79,7 +79,7 @@ export default function MarkdownLinkGeneratorPage() {
                 <div className="overflow-x-auto border border-zinc-800">
                     <table className="w-full font-mono text-xs">
                         <thead>
-                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[10px]">
+                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[11px]">
                                 <th className="text-left p-3 border-b border-zinc-800">Where</th>
                                 <th className="text-left p-3 border-b border-zinc-800">Syntax</th>
                                 <th className="text-left p-3 border-b border-zinc-800 hidden md:table-cell">Notes</th>
@@ -90,7 +90,7 @@ export default function MarkdownLinkGeneratorPage() {
                                 <tr key={row.surface} className="border-b border-zinc-900 align-top">
                                     <td className="p-3 text-white">{row.surface}</td>
                                     <td className="p-3 text-emerald-500 break-all">{row.syntax}</td>
-                                    <td className="p-3 text-zinc-500 font-sans hidden md:table-cell">{row.notes}</td>
+                                    <td className="p-3 text-zinc-400 font-sans hidden md:table-cell">{row.notes}</td>
                                 </tr>
                             ))}
                         </tbody>

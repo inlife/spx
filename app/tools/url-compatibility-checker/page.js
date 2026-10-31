@@ -45,7 +45,7 @@ const SYMBOLS = {
     works: { mark: '✓', cls: 'text-emerald-500' },
     partial: { mark: '~', cls: 'text-amber-400' },
     broken: { mark: '✕', cls: 'text-red-400' },
-    unknown: { mark: '?', cls: 'text-zinc-600' },
+    unknown: { mark: '?', cls: 'text-zinc-400' },
 }
 
 export default function UrlCompatibilityCheckerPage() {
@@ -86,10 +86,10 @@ export default function UrlCompatibilityCheckerPage() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
                     Why these links break
                 </h2>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch] mb-4">
+                <p className="text-zinc-300 leading-relaxed max-w-[60ch] mb-4">
                     A link like <code className="font-mono text-sm text-zinc-300">slack://channel?team=T0001&amp;id=C0001</code> is fine as far as your computer is concerned. Click it and the OS opens Slack. The trouble is the step before the click. Notion, Gmail, GitHub and most wikis check every link you paste against a short list of allowed schemes, usually just <code className="font-mono text-sm text-zinc-300">http</code>, <code className="font-mono text-sm text-zinc-300">https</code> and <code className="font-mono text-sm text-zinc-300">mailto</code>. Anything else keeps its text and loses the link.
                 </p>
-                <p className="text-zinc-400 leading-relaxed max-w-[60ch]">
+                <p className="text-zinc-300 leading-relaxed max-w-[60ch]">
                     They do this on purpose. An unknown scheme could launch any app on the reader’s machine, so blocking them is the safe default.
                 </p>
             </section>
@@ -98,7 +98,7 @@ export default function UrlCompatibilityCheckerPage() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
                     Ways around it
                 </h2>
-                <ol className="text-zinc-400 leading-relaxed max-w-[60ch] space-y-3 list-decimal list-inside">
+                <ol className="text-zinc-300 leading-relaxed max-w-[60ch] space-y-3 list-decimal list-inside">
                     <li>
                         <span className="text-zinc-300">Check whether the app has an https version.</span> Several do: <code className="font-mono text-sm text-zinc-300">zoom.us/j/…</code> for Zoom, <code className="font-mono text-sm text-zinc-300">teams.microsoft.com/l/…</code> for Teams, <code className="font-mono text-sm text-zinc-300">wa.me/…</code> for WhatsApp, and Slack’s "Copy link". Use those when you can.
                     </li>
@@ -115,13 +115,13 @@ export default function UrlCompatibilityCheckerPage() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
                     Which apps keep which links
                 </h2>
-                <p className="text-zinc-500 text-sm mb-6 max-w-[60ch]">
+                <p className="text-zinc-400 text-sm mb-6 max-w-[60ch]">
                     <span className="text-emerald-500">✓</span> stays clickable, <span className="text-amber-400">~</span> depends on how it’s written, <span className="text-red-400">✕</span> ends up as plain text. Apps change their link handling from time to time, so treat this as a starting point. If something here is wrong, <a href="/contact" className="text-emerald-500 hover:text-emerald-400">let us know</a>.
                 </p>
                 <div className="overflow-x-auto border border-zinc-800">
                     <table className="w-full font-mono text-xs">
                         <thead>
-                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[10px]">
+                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[11px]">
                                 <th className="text-left p-3 border-b border-zinc-800">Scheme</th>
                                 {PLATFORMS.map(p => (
                                     <th key={p.id} className="text-center p-3 border-b border-l border-zinc-800">

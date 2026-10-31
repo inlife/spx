@@ -45,9 +45,9 @@ export default function ToolsIndex() {
             <div className="flex-1 max-w-5xl mx-auto w-full px-5">
                 {/* Breadcrumb */}
                 <nav aria-label="Breadcrumb" className="pt-8 sm:pt-10">
-                    <ol className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+                    <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
                         <li><a href="/" className="hover:text-emerald-500 transition-colors">Home</a></li>
-                        <li className="text-zinc-700">/</li>
+                        <li className="text-zinc-600" aria-hidden="true">/</li>
                         <li className="text-zinc-300">Tools</li>
                     </ol>
                 </nav>
@@ -56,7 +56,7 @@ export default function ToolsIndex() {
                     <h1 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-tighter leading-[0.95] font-bold text-white">
                         Tools
                     </h1>
-                    <p className="text-zinc-400 leading-relaxed max-w-[60ch] mt-5">
+                    <p className="text-zinc-300 leading-relaxed max-w-[60ch] mt-5">
                         Small helpers for deep links, the slack:// and obsidian:// kind. Everything runs in your browser, and nothing you type is sent to a server.
                     </p>
                 </header>
@@ -72,10 +72,10 @@ export default function ToolsIndex() {
                                 <div className="font-display text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
                                     {t.name}
                                 </div>
-                                <p className="text-zinc-500 text-sm leading-relaxed">
+                                <p className="text-zinc-400 text-sm leading-relaxed">
                                     {t.tagline}
                                 </p>
-                                <div className="mt-4 font-mono text-[10px] uppercase tracking-widest text-emerald-600">
+                                <div className="mt-4 font-mono text-[11px] uppercase tracking-widest text-emerald-500">
                                     Open tool →
                                 </div>
                             </a>

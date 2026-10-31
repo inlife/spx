@@ -20,7 +20,7 @@ export default function RegistryClient({ schemes }) {
     return (
         <div className="space-y-5">
             <div>
-                <label htmlFor="registry-search" className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">
+                <label htmlFor="registry-search" className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">
                     Filter
                 </label>
                 <input
@@ -29,10 +29,10 @@ export default function RegistryClient({ schemes }) {
                     value={query}
                     onChange={e => setQuery(e.target.value)}
                     placeholder="slack, obsidian, vscode..."
-                    className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full bg-zinc-900 border border-zinc-600 text-white font-mono text-base px-4 py-3 rounded-none placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
                 />
                 {query && (
-                    <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-zinc-600">
+                    <div className="mt-2 font-mono text-[11px] uppercase tracking-widest text-zinc-400">
                         {filtered.length} of {schemes.length}
                     </div>
                 )}
@@ -41,7 +41,7 @@ export default function RegistryClient({ schemes }) {
             <div className="overflow-x-auto border border-zinc-800">
                 <table className="w-full font-mono text-xs">
                     <thead>
-                        <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[10px]">
+                        <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[11px]">
                             <th className="text-left p-3 border-b border-zinc-800">App</th>
                             <th className="text-left p-3 border-b border-zinc-800">Scheme</th>
                             <th className="text-left p-3 border-b border-zinc-800">Example</th>
@@ -57,7 +57,7 @@ export default function RegistryClient({ schemes }) {
                                             href={s.docs}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="block text-[10px] text-zinc-500 hover:text-emerald-500 mt-1"
+                                            className="block text-[11px] text-zinc-400 hover:text-emerald-500 mt-1"
                                         >
                                             docs
                                         </a>
@@ -67,14 +67,14 @@ export default function RegistryClient({ schemes }) {
                                 <td className="p-3 text-zinc-400 min-w-[260px]">
                                     <span className="break-all">{s.example}</span>
                                     {s.note && (
-                                        <p className="font-sans text-zinc-500 mt-1.5 leading-relaxed">{s.note}</p>
+                                        <p className="font-sans text-zinc-400 mt-1.5 leading-relaxed">{s.note}</p>
                                     )}
                                 </td>
                             </tr>
                         ))}
                         {filtered.length === 0 && (
                             <tr>
-                                <td colSpan={3} className="p-6 text-center text-zinc-500">
+                                <td colSpan={3} className="p-6 text-center text-zinc-400">
                                     Nothing matches &ldquo;{query}&rdquo;.
                                 </td>
                             </tr>

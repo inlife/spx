@@ -78,7 +78,7 @@ export default function MarkdownClient() {
             {/* Inputs */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
                 <div className="bg-zinc-950 p-5">
-                    <label htmlFor="md-url" className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">
+                    <label htmlFor="md-url" className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">
                         URL
                     </label>
                     <input
@@ -91,11 +91,11 @@ export default function MarkdownClient() {
                         value={url}
                         onChange={e => setUrl(e.target.value)}
                         placeholder="https://example.com or slack://channel?team=..."
-                        className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                        className="w-full bg-zinc-900 border border-zinc-600 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                 </div>
                 <div className="bg-zinc-950 p-5">
-                    <label htmlFor="md-label" className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">
+                    <label htmlFor="md-label" className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">
                         Label (visible text)
                     </label>
                     <input
@@ -104,7 +104,7 @@ export default function MarkdownClient() {
                         value={label}
                         onChange={e => setLabel(e.target.value)}
                         placeholder="Project notes"
-                        className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                        className="w-full bg-zinc-900 border border-zinc-600 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                 </div>
             </div>
@@ -116,7 +116,7 @@ export default function MarkdownClient() {
                         <div className="text-white font-bold text-sm mb-1">
                             This is a <code className="text-emerald-500 font-mono">{detectedScheme}:</code> link
                         </div>
-                        <p className="text-zinc-500 text-xs leading-relaxed max-w-[55ch]">
+                        <p className="text-zinc-400 text-sm leading-relaxed max-w-[55ch]">
                             Notion, Gmail, GitHub and most wikis will drop it. Switch this on to use an https version instead.
                         </p>
                     </div>
@@ -124,7 +124,7 @@ export default function MarkdownClient() {
                         type="button"
                         onClick={() => setUseShortlink(!useShortlink)}
                         className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-sm transition-colors focus:outline-none ${
-                            useShortlink ? 'bg-emerald-600' : 'bg-zinc-700'
+                            useShortlink ? 'bg-emerald-500' : 'bg-zinc-600'
                         }`}
                         role="switch"
                         aria-checked={useShortlink}
@@ -140,14 +140,14 @@ export default function MarkdownClient() {
             {/* Output tiles */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800">
                 {formats.length === 0 && (
-                    <div className="bg-zinc-950 p-8 text-center text-zinc-500 sm:col-span-2">
+                    <div className="bg-zinc-950 p-8 text-center text-zinc-400 sm:col-span-2">
                         Type a URL to see the formats.
                     </div>
                 )}
                 {formats.map(f => (
                     <div key={f.id} className={`bg-zinc-950 p-5 ${f.id === 'plain' ? 'sm:col-span-2' : ''}`}>
                         <div className="flex items-center justify-between mb-3">
-                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
+                            <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400">
                                 {f.name}
                             </span>
                             <CopyButton value={f.value} />
@@ -155,7 +155,7 @@ export default function MarkdownClient() {
                         <code className="block font-mono text-xs text-emerald-500 break-all whitespace-pre-wrap mb-2">
                             {f.value}
                         </code>
-                        <p className="text-zinc-500 text-[11px] leading-relaxed">{f.hint}</p>
+                        <p className="text-zinc-400 text-sm leading-relaxed">{f.hint}</p>
                     </div>
                 ))}
             </div>
