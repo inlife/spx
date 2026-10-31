@@ -3,13 +3,13 @@ import Footer from 'components/footer'
 
 export const metadata = {
     title: 'About',
-    description: 'Learn how Shortlink converts custom scheme URLs like slack://, obsidian://, and zoom:// into universal HTTPS links. Open source, stateless, no database.',
+    description: 'How Shortlink turns slack://, obsidian:// and zoommtg:// links into https links that stay clickable, what it stores (nothing) and what the site tracks.',
     alternates: {
         canonical: '/about',
     },
     openGraph: {
         title: 'About Shortlink',
-        description: 'Learn how Shortlink converts custom scheme URLs into universal HTTPS links.',
+        description: 'How Shortlink turns custom scheme links into https links that stay clickable.',
         url: 'https://www.shortlink.studio/about',
     },
 }
@@ -30,7 +30,7 @@ export default function AboutPage() {
                         Modern applications like <code className="font-mono text-sm text-zinc-300">Slack</code>, <code className="font-mono text-sm text-zinc-300">Obsidian</code>, <code className="font-mono text-sm text-zinc-300">Zoom</code>, <code className="font-mono text-sm text-zinc-300">Notion</code>, and <code className="font-mono text-sm text-zinc-300">Figma</code> use custom URL schemes for deep linking &mdash; URIs like <code className="font-mono text-sm text-zinc-300">slack://channel</code> or <code className="font-mono text-sm text-zinc-300">obsidian://open?vault=wiki</code> that open specific views inside desktop and mobile apps.
                     </p>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
-                        The problem: these links break the moment you paste them into a web page, a wiki, an email, or a chat message on a different platform. Browsers don&rsquo;t know how to handle them, firewalls strip them, and Markdown renderers refuse to turn them into clickable links. Shortlink fixes this by converting any custom scheme URL into a standard HTTPS link that works everywhere.
+                        The problem: these links stop working the moment you paste them into a wiki, an email, or a chat on another platform. Those tools only make web links clickable, so the deep link shows up as plain text. Shortlink converts it into a standard https link that those tools accept, and opening that link hands the original to the app.
                     </p>
                 </section>
 
@@ -62,10 +62,10 @@ export default function AboutPage() {
                     <ol className="font-mono text-sm text-zinc-400 space-y-1">
                         <li>1. Paste your custom scheme URL</li>
                         <li>2. Choose auto-redirect or manual mode</li>
-                        <li>3. Copy the universal link</li>
+                        <li>3. Copy the https link</li>
                     </ol>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
-                        Under the hood, Shortlink uses stateless LZ-based compression with dictionary substitution to encode your original URL directly into the HTTPS link path. There is no database, no server storage, and no lookup table. The entire payload lives in the URL itself, decoded and redirected fully client-side. This means links never expire, never hit a rate limit, and never depend on a third-party service staying online.
+                        Under the hood, Shortlink uses LZ-based compression with dictionary substitution to encode your original URL directly into the https link path. There is no database, no server storage, and no lookup table. The entire payload lives in the URL itself, and the page you land on decodes it and passes it to the app. This means links never expire and don&rsquo;t depend on a database staying online.
                     </p>
                 </section>
 
@@ -77,7 +77,7 @@ export default function AboutPage() {
                             <span className="text-zinc-300 font-medium">Internal documentation</span> &mdash; Embed deep links in Notion, Confluence, or Google Docs without them breaking.
                         </li>
                         <li>
-                            <span className="text-zinc-300 font-medium">Knowledge management</span> &mdash; Share Obsidian and Roam Research vault links with teammates who use different tools.
+                            <span className="text-zinc-300 font-medium">Knowledge management</span> &mdash; Share Obsidian vault links and Roam Research graph links with teammates who use different tools.
                         </li>
                         <li>
                             <span className="text-zinc-300 font-medium">Team communication</span> &mdash; Slack deep links and Zoom meeting links that survive being pasted into any chat or email client.
@@ -92,10 +92,10 @@ export default function AboutPage() {
                 <section className="border-t border-zinc-800 py-8">
                     <h2 className="text-lg font-bold text-white mb-3">Privacy</h2>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch]">
-                        Shortlink is fully stateless. There is no database, no server-side storage, and no analytics tracking on generated links. Your original URL is encoded directly into the link itself using client-side compression &mdash; the server never sees, logs, or stores the target address.
+                        Shortlink doesn&rsquo;t store links. There is no database, no server-side storage and no user accounts: your URL is compressed into the link itself, and the page you land on decodes it.
                     </p>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
-                        No cookies, no telemetry, no user accounts. The entire codebase is open source, so you can verify every claim by reading the code yourself.
+                        The site does use analytics. Google Analytics and Vercel Analytics record which pages are visited, and for a shortlink the page address contains the encoded URL. Google Analytics also sets cookies to count visits. The code is open source, so you can check this yourself.
                     </p>
                 </section>
 

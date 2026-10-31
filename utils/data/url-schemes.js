@@ -28,7 +28,7 @@ export const URL_SCHEMES = [
     {
         app: 'Obsidian Advanced URI',
         scheme: 'obsidian://adv-uri',
-        example: 'obsidian://adv-uri?vault=Notes&filepath=Inbox.md',
+        example: 'obsidian://adv-uri?vault=Notes&filepath=Inbox&heading=Todo',
         note: 'Needs the Advanced URI community plugin. Older links use obsidian://advanced-uri.',
         docs: 'https://vinzent03.github.io/obsidian-advanced-uri/',
     },
@@ -178,7 +178,8 @@ export const URL_SCHEMES = [
         app: 'AltStore',
         scheme: 'altstore://',
         example: 'altstore://install?url=https://example.com/app.ipa',
-        note: 'altstore://source?url= adds a source instead of a single app.',
+        note: 'altstore://source?url= adds a source instead. For a "Download on AltStore" badge, AltStore publishes https links (altstore.io/source/…) that work on GitHub without wrapping.',
+        docs: 'https://faq.altstore.io/developers/download-on-altstore-badge',
     },
     {
         app: 'Email',
