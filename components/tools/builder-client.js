@@ -125,7 +125,7 @@ export default function BuilderClient() {
                         className={`px-4 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${
                             activeId === a.id
                                 ? 'bg-zinc-950 text-emerald-500'
-                                : 'bg-zinc-900 text-zinc-500 hover:text-zinc-300'
+                                : 'bg-zinc-900 text-zinc-400 hover:text-zinc-300'
                         }`}
                     >
                         {a.name}
@@ -137,8 +137,8 @@ export default function BuilderClient() {
             <div className="bg-zinc-950 border border-zinc-800 p-5 sm:p-6 space-y-5">
                 {active.fields.map(f => (
                     <div key={f.id}>
-                        <label htmlFor={`builder-${active.id}-${f.id}`} className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-2">
-                            {f.label}{f.required && <span className="text-emerald-600 ml-1">*</span>}
+                        <label htmlFor={`builder-${active.id}-${f.id}`} className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-2">
+                            {f.label}{f.required && <span className="text-emerald-500 ml-1">*</span>}
                         </label>
                         <input
                             id={`builder-${active.id}-${f.id}`}
@@ -150,10 +150,10 @@ export default function BuilderClient() {
                             value={values[f.id] || ''}
                             onChange={e => handleField(f.id, e.target.value)}
                             placeholder={f.placeholder}
-                            className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                            className="w-full bg-zinc-900 border border-zinc-600 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
                         />
                         {f.hint && (
-                            <p className="mt-1.5 text-zinc-500 text-xs leading-relaxed">{f.hint}</p>
+                            <p className="mt-1.5 text-zinc-400 text-sm leading-relaxed">{f.hint}</p>
                         )}
                     </div>
                 ))}
@@ -163,24 +163,24 @@ export default function BuilderClient() {
             <div className="grid grid-cols-1 gap-px bg-zinc-800 border border-zinc-800">
                 <div className="bg-zinc-950 p-5 sm:p-6">
                     <div className="flex items-center justify-between mb-3">
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+                        <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400">
                             {active.id === 'other' ? 'Deep link' : `${active.name} deep link`}
                         </span>
                         <CopyButton value={rawUrl} disabled={!rawUrl} />
                     </div>
                     <code className="block font-mono text-sm text-emerald-500 break-all whitespace-pre-wrap min-h-[1.5em]">
-                        {rawUrl || <span className="text-zinc-600">Fill in the required fields…</span>}
+                        {rawUrl || <span className="text-zinc-400">Fill in the required fields…</span>}
                     </code>
                 </div>
                 <div className="bg-zinc-950 p-5 sm:p-6">
                     <div className="flex items-center justify-between mb-3">
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+                        <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400">
                             Same link as https, for Notion, email, GitHub…
                         </span>
                         <CopyButton value={shortlinkUrl} disabled={!shortlinkUrl} />
                     </div>
                     <code className="block font-mono text-sm text-white break-all whitespace-pre-wrap min-h-[1.5em]">
-                        {shortlinkUrl || <span className="text-zinc-600">Appears once the link above is ready</span>}
+                        {shortlinkUrl || <span className="text-zinc-400">Appears once the link above is ready</span>}
                     </code>
                 </div>
             </div>

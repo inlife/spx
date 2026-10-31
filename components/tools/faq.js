@@ -13,10 +13,10 @@ export default function Faq({ items, heading = 'Questions' }) {
                     <details key={i} className="group border border-zinc-800">
                         <summary className="flex items-center justify-between p-4 cursor-pointer">
                             <span className="text-white text-sm font-medium pr-4">{faq.q}</span>
-                            <span className="font-mono text-zinc-600 text-xs group-open:rotate-45 transition-transform shrink-0">+</span>
+                            <span className="font-mono text-zinc-400 text-xs group-open:rotate-45 transition-transform shrink-0">+</span>
                         </summary>
                         <div className="px-4 pb-4">
-                            <p className="text-zinc-400 text-xs leading-relaxed whitespace-pre-line">{faq.a}</p>
+                            <p className="text-zinc-400 text-sm leading-relaxed whitespace-pre-line">{faq.a}</p>
                         </div>
                     </details>
                 ))}

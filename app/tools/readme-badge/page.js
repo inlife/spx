@@ -63,7 +63,7 @@ export default function ReadmeBadgePage() {
 
             <section className="py-10">
                 <BadgeClient />
-                <p className="text-zinc-500 text-xs leading-relaxed mt-4 max-w-[60ch]">
+                <p className="text-zinc-400 text-sm leading-relaxed mt-4 max-w-[60ch]">
                     Need to write the app link first? The <a href="/tools/deep-link-builder" className="text-emerald-500 hover:text-emerald-400">deep link builder</a> makes Slack, Obsidian, Zoom, Notion and Figma links, and the <a href="/tools/url-scheme-registry" className="text-emerald-500 hover:text-emerald-400">URL scheme list</a> has formats for more apps.
                 </p>
             </section>
@@ -93,11 +93,11 @@ export default function ReadmeBadgePage() {
                         The badge links to linkopen.app. The app link is compressed into that address, so nothing is stored on a server. Clicking it opens a short page that passes the link on to the app.
                     </li>
                 </ol>
-                <p className="text-zinc-500 text-xs leading-relaxed mt-4 max-w-[65ch]">
+                <p className="text-zinc-400 text-sm leading-relaxed mt-4 max-w-[65ch]">
                     Links to websites (http and https) open a page that asks people to confirm instead of redirecting straight away. GitHub keeps those links anyway, so you can use them in a README directly.
                 </p>
                 <div className="border border-zinc-800 bg-zinc-950 p-5 mt-6">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-3">
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 block mb-3">
                         Example: clone this repository in VS Code
                     </span>
                     <code className="block font-mono text-xs text-emerald-500 break-all whitespace-pre-wrap">{example}</code>
@@ -106,13 +106,13 @@ export default function ReadmeBadgePage() {
 
             <section className="border-t border-zinc-800 py-10">
                 <h2 className={h2}>Badges</h2>
-                <p className="text-zinc-500 text-sm mb-6 max-w-[60ch]">
+                <p className="text-zinc-400 text-sm mb-6 max-w-[60ch]">
                     Each one is a static SVG, 20px tall, in the flat style shields.io uses, so it lines up with other README badges. Text only, no logos.
                 </p>
                 <div className="overflow-x-auto border border-zinc-800">
                     <table className="w-full font-mono text-xs">
                         <thead>
-                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[10px]">
+                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[11px]">
                                 <th className="text-left p-3 border-b border-zinc-800">Badge</th>
                                 <th className="text-left p-3 border-b border-zinc-800">Image URL</th>
                                 <th className="text-left p-3 border-b border-zinc-800 hidden md:table-cell">Picked for</th>
@@ -125,7 +125,7 @@ export default function ReadmeBadgePage() {
                                         <img src={`/badge/${b.id}.svg`} alt={badgeAlt(b)} height="20" className="block h-5 w-auto max-w-none" />
                                     </td>
                                     <td className="p-3 text-emerald-500 break-all">{badgeImageUrl(b)}</td>
-                                    <td className="p-3 text-zinc-500 hidden md:table-cell">
+                                    <td className="p-3 text-zinc-400 hidden md:table-cell">
                                         {b.schemes.length > 0 ? b.schemes.map(s => `${s}:`).join(', ') : 'any other scheme'}
                                     </td>
                                 </tr>

@@ -47,7 +47,7 @@ export default function ContactPage() {
         }
     }
 
-    const inputClass = "w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+    const inputClass = "w-full bg-zinc-900 border border-zinc-600 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
 
     return (
         <main className="min-h-[100dvh] flex flex-col">
@@ -89,7 +89,7 @@ export default function ContactPage() {
                     <button
                         type="submit"
                         disabled={status.type === 'loading'}
-                        className={`w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3 text-sm tracking-wide uppercase transition-colors ${
+                        className={`w-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-medium py-3 text-sm tracking-wide uppercase transition-colors ${
                             status.type === 'loading' ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                     >

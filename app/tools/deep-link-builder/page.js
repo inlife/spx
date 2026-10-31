@@ -64,7 +64,7 @@ export default function DeepLinkBuilderPage() {
 
             <section className="py-10">
                 <BuilderClient />
-                <p className="text-zinc-500 text-xs leading-relaxed mt-4 max-w-[60ch]">
+                <p className="text-zinc-400 text-sm leading-relaxed mt-4 max-w-[60ch]">
                     Not sure where the link will end up? The <a href="/tools/url-compatibility-checker" className="text-emerald-500 hover:text-emerald-400">compatibility checker</a> shows which apps keep custom-scheme links and which don’t.
                 </p>
             </section>
@@ -73,13 +73,13 @@ export default function DeepLinkBuilderPage() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
                     Formats
                 </h2>
-                <p className="text-zinc-500 text-sm mb-6 max-w-[60ch]">
+                <p className="text-zinc-400 text-sm mb-6 max-w-[60ch]">
                     If you’d rather write the link by hand. More apps are in the <a href="/tools/url-scheme-registry" className="text-emerald-500 hover:text-emerald-400">URL scheme list</a>.
                 </p>
                 <div className="overflow-x-auto border border-zinc-800">
                     <table className="w-full font-mono text-xs">
                         <thead>
-                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[10px]">
+                            <tr className="bg-zinc-900 text-zinc-400 uppercase tracking-widest text-[11px]">
                                 <th className="text-left p-3 border-b border-zinc-800">App</th>
                                 <th className="text-left p-3 border-b border-zinc-800">Format</th>
                                 <th className="text-left p-3 border-b border-zinc-800 hidden md:table-cell">Notes</th>
@@ -90,7 +90,7 @@ export default function DeepLinkBuilderPage() {
                                 <tr key={row.app} className="border-b border-zinc-900 align-top">
                                     <td className="p-3 text-white">{row.app}</td>
                                     <td className="p-3 text-emerald-500 break-all">{row.format}</td>
-                                    <td className="p-3 text-zinc-500 font-sans hidden md:table-cell">{row.notes}</td>
+                                    <td className="p-3 text-zinc-400 font-sans hidden md:table-cell">{row.notes}</td>
                                 </tr>
                             ))}
                         </tbody>
