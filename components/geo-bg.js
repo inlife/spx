@@ -99,21 +99,38 @@ function gridFragment(ctx, cx, cy, size, rotation, cells) {
 
 // --- Main component ---
 
+const GREY = 'rgba(161, 161, 170, '
+const EMERALD = 'rgba(5, 150, 105, '
+const LINK_DISTANCE = 160
+
 export default function GeoBg({ className = '' }) {
     const canvasRef = useRef(null)
-    const animRef = useRef(null)
-    const objectsRef = useRef(null)
-    const linesRef = useRef(null)
 
     useEffect(() => {
         const canvas = canvasRef.current
         if (!canvas) return
         const ctx = canvas.getContext('2d')
-        let w, h, dpr
+        let w = 0, h = 0, dpr = 0
+        let objs = []
+        let lines = []
+        let posX = new Float64Array(0)
+        let posY = new Float64Array(0)
+
+        // Animation clock (ms). It only moves forward while frames are drawn, so
+        // pausing and resuming carries on from the same picture instead of jumping.
+        let clock = null
+        let lastTs = null
+        let raf = 0
+        let onScreen = true
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
         function resize() {
-            dpr = Math.min(window.devicePixelRatio || 1, 2)
             const rect = canvas.parentElement.getBoundingClientRect()
+            const nextDpr = Math.min(window.devicePixelRatio || 1, 2)
+            // Mobile browsers fire resize as the URL bar slides in and out; only
+            // rebuild the scene when the hero's size actually changed.
+            if (rect.width === w && rect.height === h && nextDpr === dpr) return
+            dpr = nextDpr
             w = rect.width
             h = rect.height
             canvas.width = w * dpr
@@ -122,8 +139,12 @@ export default function GeoBg({ className = '' }) {
             canvas.style.height = h + 'px'
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-            objectsRef.current = generateObjects(w, h)
-            linesRef.current = generateLines(w, h)
+            objs = generateObjects(w, h)
+            lines = generateLines(w, h)
+            posX = new Float64Array(objs.length)
+            posY = new Float64Array(objs.length)
+            // Resizing clears the canvas; repaint now in case no frame is coming
+            drawStill()
         }
 
         function generateObjects(w, h) {
@@ -153,7 +174,11 @@ export default function GeoBg({ className = '' }) {
                     lineWidth: isBig ? (0.6 + Math.random() * 0.6) : (0.4 + Math.random() * 0.8),
                 })
             }
-            objs.forEach(o => { o.baseX = o.x; o.baseY = o.y })
+            objs.forEach(o => {
+                o.baseX = o.x
+                o.baseY = o.y
+                o.color = (o.emerald ? EMERALD : GREY) + o.opacity + ')'
+            })
             return objs
         }
 
@@ -176,6 +201,7 @@ export default function GeoBg({ className = '' }) {
                     lineWidth: 0.4 + Math.random() * 0.6,
                 })
             }
+            lines.forEach(ln => { ln.color = (ln.emerald ? EMERALD : GREY) + ln.opacity + ')' })
             return lines
         }
 
@@ -184,36 +210,30 @@ export default function GeoBg({ className = '' }) {
             ctx.clearRect(0, 0, w, h)
 
             // --- Traversal lines ---
-            const lines = linesRef.current
-            if (lines) {
-                for (const ln of lines) {
-                    const drift = Math.sin(time * ln.driftFreq + ln.phase) * ln.driftAmp
-                    const isH = Math.abs(ln.y1 - ln.y2) < 1
-                    const ox = isH ? 0 : drift
-                    const oy = isH ? drift : 0
-                    ctx.lineWidth = ln.lineWidth
-                    ctx.strokeStyle = ln.emerald
-                        ? `rgba(5, 150, 105, ${ln.opacity})`
-                        : `rgba(161, 161, 170, ${ln.opacity})`
-                    dashedLine(ctx, ln.x1 + ox, ln.y1 + oy, ln.x2 + ox, ln.y2 + oy, ln.dashLen)
-                }
+            for (const ln of lines) {
+                const drift = Math.sin(time * ln.driftFreq + ln.phase) * ln.driftAmp
+                const isH = Math.abs(ln.y1 - ln.y2) < 1
+                const ox = isH ? 0 : drift
+                const oy = isH ? drift : 0
+                ctx.lineWidth = ln.lineWidth
+                ctx.strokeStyle = ln.color
+                dashedLine(ctx, ln.x1 + ox, ln.y1 + oy, ln.x2 + ox, ln.y2 + oy, ln.dashLen)
             }
 
             // --- Geometric objects ---
-            const objs = objectsRef.current
-            if (!objs) return
-
-            for (const obj of objs) {
+            for (let i = 0; i < objs.length; i++) {
+                const obj = objs[i]
                 const rot = time * obj.rotSpeed + obj.phase
                 const dx = Math.sin(time * obj.driftFreqX + obj.phase) * obj.driftAmpX
                 const dy = Math.cos(time * obj.driftFreqY + obj.phase * 1.3) * obj.driftAmpY
                 const cx = obj.baseX + dx
                 const cy = obj.baseY + dy
+                // Reused by the connection pass below
+                posX[i] = cx
+                posY[i] = cy
 
                 ctx.lineWidth = obj.lineWidth
-                ctx.strokeStyle = obj.emerald
-                    ? `rgba(5, 150, 105, ${obj.opacity})`
-                    : `rgba(161, 161, 170, ${obj.opacity})`
+                ctx.strokeStyle = obj.color
 
                 switch (obj.type) {
                     case 'hex':
@@ -263,23 +283,20 @@ export default function GeoBg({ className = '' }) {
             }
 
             // --- Connection lines ---
+            ctx.lineWidth = 0.4
             for (let i = 0; i < objs.length; i++) {
-                const a = objs[i]
-                const ax = a.baseX + Math.sin(time * a.driftFreqX + a.phase) * a.driftAmpX
-                const ay = a.baseY + Math.cos(time * a.driftFreqY + a.phase * 1.3) * a.driftAmpY
+                const ax = posX[i]
+                const ay = posY[i]
+                const aEm = objs[i].emerald
                 for (let j = i + 1; j < objs.length; j++) {
-                    const b = objs[j]
-                    const bx = b.baseX + Math.sin(time * b.driftFreqX + b.phase) * b.driftAmpX
-                    const by = b.baseY + Math.cos(time * b.driftFreqY + b.phase * 1.3) * b.driftAmpY
+                    const bx = posX[j]
+                    const by = posY[j]
                     const dist = Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2)
-                    const threshold = 160
-                    if (dist < threshold) {
-                        const fade = 1 - dist / threshold
-                        const isEm = a.emerald || b.emerald
-                        ctx.lineWidth = 0.4
-                        ctx.strokeStyle = isEm
-                            ? `rgba(5, 150, 105, ${fade * 0.15})`
-                            : `rgba(161, 161, 170, ${fade * 0.08})`
+                    if (dist < LINK_DISTANCE) {
+                        const fade = 1 - dist / LINK_DISTANCE
+                        ctx.strokeStyle = aEm || objs[j].emerald
+                            ? EMERALD + (fade * 0.15) + ')'
+                            : GREY + (fade * 0.08) + ')'
                         ctx.beginPath()
                         ctx.moveTo(ax, ay)
                         ctx.lineTo(bx, by)
@@ -287,17 +304,55 @@ export default function GeoBg({ className = '' }) {
                     }
                 }
             }
+        }
 
-            animRef.current = requestAnimationFrame(draw)
+        function frame(ts) {
+            if (clock === null) clock = ts
+            else if (lastTs !== null) clock += ts - lastTs
+            lastTs = ts
+            draw(clock)
+            raf = requestAnimationFrame(frame)
+        }
+
+        function drawStill() {
+            if (clock === null) clock = performance.now()
+            draw(clock)
+        }
+
+        // Animate only while someone can see it: hero on screen, tab visible,
+        // and no reduced-motion preference (that gets one still frame instead).
+        function update() {
+            const run = onScreen && !document.hidden && !reducedMotion.matches
+            if (run && !raf) {
+                lastTs = null
+                raf = requestAnimationFrame(frame)
+            } else if (!run && raf) {
+                cancelAnimationFrame(raf)
+                raf = 0
+            }
         }
 
         resize()
-        animRef.current = requestAnimationFrame(draw)
+        update()
+
+        const io = typeof IntersectionObserver === 'function'
+            ? new IntersectionObserver(entries => {
+                onScreen = entries[entries.length - 1].isIntersecting
+                update()
+            })
+            : null
+        io?.observe(canvas)
         window.addEventListener('resize', resize)
+        document.addEventListener('visibilitychange', update)
+        reducedMotion.addEventListener?.('change', update)
 
         return () => {
-            cancelAnimationFrame(animRef.current)
+            cancelAnimationFrame(raf)
+            raf = 0
+            io?.disconnect()
             window.removeEventListener('resize', resize)
+            document.removeEventListener('visibilitychange', update)
+            reducedMotion.removeEventListener?.('change', update)
         }
     }, [])
 
