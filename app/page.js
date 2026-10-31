@@ -3,7 +3,7 @@
 import Header from 'components/header'
 import Footer from 'components/footer'
 import GeoBg from 'components/geo-bg'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {shouldCompress} from 'utils/codec'
 import {isWebUrl} from 'utils/link-policy'
 
@@ -12,6 +12,15 @@ export default function HomePage() {
     const [type, setType] = useState("1")
     const [compress, setCompress] = useState(true)
     const [buttonText, setButtonText] = useState("COPY LINK")
+
+    // Prefill from /?url=<encoded link>&mode=manual (see /integrations).
+    // Read after mount so the page stays static and needs no Suspense boundary.
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search)
+        const prefill = params.get('url')
+        if (prefill) setUrl(prefill.trim())
+        if (params.get('mode') === 'manual') setType("0")
+    }, [])
 
     // Links to websites always get a confirmation page (see utils/link-policy)
     const isWeb = isWebUrl(url)
