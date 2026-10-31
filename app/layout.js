@@ -68,8 +68,6 @@ export default function RootLayout({ children }) {
         <meta name="HandheldFriendly" content="True" />
         <meta property="fb:admins" content="100000470641337" />
         <meta property="fb:profile_id" content="100000470641337" />
-        <meta name="google-adsense-account" content="ca-pub-2466083603668341" />
-
 
         {/* Fonts: Satoshi (Fontshare) + JetBrains Mono + Space Grotesk (Google Fonts) */}
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
@@ -91,12 +89,6 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-CG6KC5KZLG');
           `}
         </Script>
-        {/* google adsense */}
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2466083603668341"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <Analytics />

@@ -95,7 +95,7 @@ export default function AboutPage() {
                         Shortlink doesn&rsquo;t store links. There is no database, no server-side storage and no user accounts: your URL is compressed into the link itself, and the page you land on decodes it.
                     </p>
                     <p className="text-zinc-400 leading-relaxed max-w-[55ch] mt-4">
-                        The site does use analytics and ads. Google Analytics and Vercel Analytics record which pages are visited, and for a shortlink the page address contains the encoded URL. Google AdSense loads on every page and may set cookies. The code is open source, so you can check all of this yourself.
+                        The site does use analytics. Google Analytics and Vercel Analytics record which pages are visited, and for a shortlink the page address contains the encoded URL. Google Analytics also sets cookies to count visits. The code is open source, so you can check this yourself.
                     </p>
                 </section>
 
