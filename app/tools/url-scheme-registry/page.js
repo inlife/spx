@@ -8,10 +8,10 @@ export const metadata = {
     description: 'Deep link formats for Slack, Obsidian, Zoom, Notion, VS Code, Teams and other apps, with an example for each and links to the official docs.',
     alternates: { canonical: '/tools/url-scheme-registry' },
     openGraph: {
-        title: 'URL Scheme List | Shortlink',
+        title: 'URL Scheme List | LinkOpen',
         description: 'Deep link formats for common apps, with examples and links to the official docs.',
-        url: 'https://www.shortlink.studio/tools/url-scheme-registry',
-        images: ['/preview.png'],
+        url: 'https://linkopen.app/tools/url-scheme-registry',
+        images: ['/preview.png?v=2'],
     },
 }
 
@@ -35,7 +35,7 @@ export default function UrlSchemeRegistryPage() {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: 'URL Scheme List',
-        url: 'https://www.shortlink.studio/tools/url-scheme-registry',
+        url: 'https://linkopen.app/tools/url-scheme-registry',
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

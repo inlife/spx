@@ -1,6 +1,6 @@
-// Rules for where a shortlink may send people.
+// Rules for where a shared link may send people.
 //
-// Links to websites (http/https) never auto-redirect: Shortlink exists for
+// Links to websites (http/https) never auto-redirect: LinkOpen exists for
 // app links, and an auto-forwarding https shortener is exactly what phishing
 // campaigns look for. Those always get a confirmation page instead.
 

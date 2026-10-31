@@ -6,9 +6,9 @@
 
 **Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and anywhere else.**
 
-[**🚀 Try it now →**](https://www.shortlink.studio)
+[**🚀 Try it now →**](https://linkopen.app)
 
-<img src="https://www.shortlink.studio/preview.png" width="600" />
+<img src="https://linkopen.app/preview.png" width="600" />
 
 </div>
 
@@ -33,7 +33,7 @@ SPX (Scheme Proxy) is a free tool that solves a common frustration: **broken cus
 3. **Copy** your universal link and share it anywhere!
 
 * **Before:** `slack://channel/ABC123` ❌ (broken in Notion)
-* **After:** `shortlink.studio/1/slack://channel/ABC123` ✅ (works everywhere!)
+* **After:** `linkopen.app/1/slack://channel/ABC123` ✅ (works everywhere!)
 
 ## 💡 Perfect For
 
@@ -45,7 +45,7 @@ SPX (Scheme Proxy) is a free tool that solves a common frustration: **broken cus
 
 ## 🌐 Use It Online
 
-**👉 [www.shortlink.studio](https://www.shortlink.studio)**
+**👉 [linkopen.app](https://linkopen.app)**
 
 No installation needed. Just visit the website and start converting links!
 
@@ -84,6 +84,6 @@ ISC License - feel free to use and modify as needed.
 
 **Made with ❤️ by [inlife](https://twitter.com/inlife360)**
 
-[Try SPX Now](https://www.shortlink.studio) • [Report Issue](https://github.com/inlife/spx/issues) • [Star on GitHub](https://github.com/inlife/spx)
+[Try SPX Now](https://linkopen.app) • [Report Issue](https://github.com/inlife/spx/issues) • [Star on GitHub](https://github.com/inlife/spx)
 
 </div>

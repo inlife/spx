@@ -1,6 +1,6 @@
 export const metadata = {
     title: {
-        template: '%s | Shortlink Tools',
+        template: '%s | LinkOpen Tools',
         default: 'Tools',
     },
 }

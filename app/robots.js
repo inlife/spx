@@ -1,4 +1,4 @@
-// Shortlink pages (/s/, /0/, /1/) are crawlable on purpose: they carry
+// Shared-link pages (/s/, /0/, /1/) are crawlable on purpose: they carry
 // noindex, so they stay out of results, but crawlers can see that tag and
 // follow the link back to the homepage. Blocking them here would hide both.
 
@@ -10,6 +10,6 @@ export default function robots() {
                 allow: '/',
             },
         ],
-        sitemap: 'https://www.shortlink.studio/sitemap.xml',
+        sitemap: 'https://linkopen.app/sitemap.xml',
     }
 }

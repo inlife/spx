@@ -6,10 +6,10 @@ export const metadata = {
     description: 'Copy an obsidian:// link to a note, link to a heading or block, and make the link clickable in Notion, Slack, GitHub or email.',
     alternates: { canonical: '/obsidian-links' },
     openGraph: {
-        title: 'How to Share Obsidian Links | Shortlink',
+        title: 'How to Share Obsidian Links | LinkOpen',
         description: 'Copy an obsidian:// link to a note and make it clickable in Notion, Slack, GitHub or email.',
-        url: 'https://www.shortlink.studio/obsidian-links',
-        images: ['/preview.png'],
+        url: 'https://linkopen.app/obsidian-links',
+        images: ['/preview.png?v=2'],
     },
 }
 
@@ -77,9 +77,9 @@ export default function ObsidianLinksPage() {
                         Notion, Slack, Gmail, GitHub, Linear and Confluence all drop <code className={code}>obsidian://</code> links. The <a href="/tools/url-compatibility-checker" className="text-emerald-500 hover:text-emerald-400">compatibility checker</a> has the details for each. To get around it, wrap the link in an https address:
                     </p>
                     <ol className="text-zinc-400 leading-relaxed max-w-[60ch] space-y-2 list-decimal list-inside mb-4">
-                        <li>Paste the Obsidian link into the <a href="/" className="text-emerald-500 hover:text-emerald-400">Shortlink converter</a> and copy the result.</li>
-                        <li>Paste that https link wherever you need it. In Markdown: <code className={code}>[Open in Obsidian](https://www.shortlink.studio/s/…)</code>.</li>
-                        <li>Clicking it opens a page on shortlink.studio, which passes the original link on to Obsidian.</li>
+                        <li>Paste the Obsidian link into the <a href="/" className="text-emerald-500 hover:text-emerald-400">LinkOpen converter</a> and copy the result.</li>
+                        <li>Paste that https link wherever you need it. In Markdown: <code className={code}>[Open in Obsidian](https://linkopen.app/s/…)</code>.</li>
+                        <li>Clicking it opens a page on linkopen.app, which passes the original link on to Obsidian.</li>
                     </ol>
                 </section>
 

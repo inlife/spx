@@ -7,10 +7,10 @@ export const metadata = {
     description: 'Build slack://, obsidian://, zoommtg://, notion:// and figma:// deep links from a form, and get an https version for tools that strip custom schemes.',
     alternates: { canonical: '/tools/deep-link-builder' },
     openGraph: {
-        title: 'Deep Link Builder | Shortlink',
+        title: 'Deep Link Builder | LinkOpen',
         description: 'Build Slack, Obsidian, Zoom, Notion and Figma deep links from a form.',
-        url: 'https://www.shortlink.studio/tools/deep-link-builder',
-        images: ['/preview.png'],
+        url: 'https://linkopen.app/tools/deep-link-builder',
+        images: ['/preview.png?v=2'],
     },
 }
 
@@ -43,7 +43,7 @@ export default function DeepLinkBuilderPage() {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: 'Deep Link Builder',
-        url: 'https://www.shortlink.studio/tools/deep-link-builder',
+        url: 'https://linkopen.app/tools/deep-link-builder',
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

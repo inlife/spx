@@ -29,7 +29,7 @@ export default function ContactPage() {
                     access_key: '23269879-4f18-4f1b-871d-d8adada577d3',
                     name: formData.name,
                     email: formData.email,
-                    subject: formData.subject || 'New message from Shortlink',
+                    subject: formData.subject || 'New message from LinkOpen',
                     message: formData.message,
                 })
             })

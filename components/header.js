@@ -7,7 +7,7 @@ const Header = () =>
                     <path d="M17 19.5C17 18.6716 17.6716 18 18.5 18H22.5C23.3284 18 24 18.6716 24 19.5V20.5C24 21.3284 23.3284 22 22.5 22H18.5C17.6716 22 17 21.3284 17 20.5V19.5Z" fill="white"/>
                     <path d="M14.5 12H17.5C17.7761 12 18 12.2239 18 12.5V19.5C18 19.7761 17.7761 20 17.5 20H14.5C14.2239 20 14 19.7761 14 19.5V12.5C14 12.2239 14.2239 12 14.5 12Z" fill="white"/>
                 </svg>
-                <span className="text-xl font-bold text-white">Shortlink</span>
+                <span className="text-xl font-bold text-white">LinkOpen</span>
             </a>
             <nav className="flex items-center gap-6">
                 <a href="/tools" className="text-sm text-zinc-500 hover:text-emerald-500 transition-colors">Tools</a>

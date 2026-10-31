@@ -3,15 +3,15 @@ import Script from 'next/script'
 import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
-  metadataBase: new URL('https://www.shortlink.studio'),
+  metadataBase: new URL('https://linkopen.app'),
   title: {
-    default: 'Shortlink — Fix Custom Scheme URLs',
-    template: '%s | Shortlink',
+    default: 'LinkOpen — Fix Custom Scheme URLs',
+    template: '%s | LinkOpen',
   },
   description: 'Turn slack://, obsidian:// and zoommtg:// links into https links that stay clickable in Notion, GitHub, email and chat. Free, no signup.',
   authors: [{ name: 'inlife', url: 'https://github.com/inlife' }],
   creator: 'inlife',
-  publisher: 'Shortlink',
+  publisher: 'LinkOpen',
   icons: {
     icon: '/favicon.svg',
     apple: '/favicon.svg',
@@ -21,16 +21,16 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Shortlink — Fix Custom Scheme URLs',
+    title: 'LinkOpen — Fix Custom Scheme URLs',
     description: 'Turn slack://, obsidian:// and zoommtg:// links into https links that stay clickable in Notion, GitHub, email and chat. Free, no signup.',
-    url: 'https://www.shortlink.studio',
-    siteName: 'Shortlink',
+    url: 'https://linkopen.app',
+    siteName: 'LinkOpen',
     images: [
       {
-        url: '/preview.png?v=1',
+        url: '/preview.png?v=2',
         width: 1200,
         height: 630,
-        alt: 'Shortlink: make custom scheme links clickable',
+        alt: 'LinkOpen: make custom scheme links clickable',
       },
     ],
     locale: 'en_US',
@@ -39,7 +39,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@inlife360',
-    title: 'Shortlink — Fix Custom Scheme URLs',
+    title: 'LinkOpen — Fix Custom Scheme URLs',
     description: 'Turn slack://, obsidian:// and zoommtg:// links into https links that stay clickable in Notion, GitHub, email and chat.',
   },
   robots: {

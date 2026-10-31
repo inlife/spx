@@ -45,15 +45,15 @@ export default function HomePage() {
                         {
                             '@context': 'https://schema.org',
                             '@type': 'WebSite',
-                            name: 'Shortlink',
-                            alternateName: ['shortlink.studio'],
-                            url: 'https://www.shortlink.studio/',
+                            name: 'LinkOpen',
+                            alternateName: ['linkopen.app', 'Shortlink', 'shortlink.studio'],
+                            url: 'https://linkopen.app/',
                         },
                         {
                             '@context': 'https://schema.org',
                             '@type': 'WebApplication',
-                            name: 'Shortlink',
-                            url: 'https://www.shortlink.studio/',
+                            name: 'LinkOpen',
+                            url: 'https://linkopen.app/',
                             description: 'Turns custom scheme links (slack://, obsidian://, zoommtg://, notion://) into https links that stay clickable in Notion, GitHub, email and chat.',
                             applicationCategory: 'UtilitiesApplication',
                             operatingSystem: 'Any',
@@ -81,7 +81,7 @@ export default function HomePage() {
                             </div>
                             <h1>
                                 <span className="block font-display text-6xl sm:text-8xl md:text-9xl font-bold text-white uppercase leading-[0.85] tracking-tighter">
-                                    Short<br className="sm:hidden" />link
+                                    Link<br className="sm:hidden" />Open
                                 </span>
                                 <span className="block font-mono text-xs sm:text-sm text-zinc-500 uppercase tracking-widest mt-5">
                                     Make slack:// and obsidian:// links clickable
@@ -134,7 +134,7 @@ export default function HomePage() {
                             </div>
                             <div className="flex items-center gap-2">
                                 <span className="text-zinc-600 w-8 shrink-0">OUT</span>
-                                <span className="text-white truncate">shortlink.studio/s/...</span>
+                                <span className="text-white truncate">linkopen.app/s/...</span>
                                 <span className="text-emerald-500 text-[10px] ml-auto shrink-0">CLICKABLE</span>
                             </div>
                         </div>
@@ -304,19 +304,19 @@ export default function HomePage() {
                         },
                         {
                             q: 'Why do slack:// and obsidian:// links break in Notion?',
-                            a: 'Notion, like most web apps, only keeps links that start with http, https, mailto or tel. A pasted slack:// or obsidian:// link loses its link and stays as plain text. Shortlink wraps it in an https address that Notion accepts, and opening that address hands the original link to the app.',
+                            a: 'Notion, like most web apps, only keeps links that start with http, https, mailto or tel. A pasted slack:// or obsidian:// link loses its link and stays as plain text. LinkOpen wraps it in an https address that Notion accepts, and opening that address hands the original link to the app.',
                         },
                         {
-                            q: 'Does Shortlink store my URLs?',
-                            a: 'No. Your URL is compressed into the link itself, and there is no database behind it. One caveat: the site uses Google Analytics and Vercel Analytics, which record the address of each page visited, and for a shortlink that address contains the encoded URL.',
+                            q: 'Does LinkOpen store my URLs?',
+                            a: 'No. Your URL is compressed into the link itself, and there is no database behind it. One caveat: the site uses Google Analytics and Vercel Analytics, which record the address of each page visited, and for a shared link that address contains the encoded URL.',
                         },
                         {
-                            q: 'Is Shortlink free?',
-                            a: 'Yes, Shortlink is free and open source. There are no usage limits, no signup requirements, and no premium tiers. The source code is available on GitHub.',
+                            q: 'Is LinkOpen free?',
+                            a: 'Yes, LinkOpen is free and open source. There are no usage limits, no signup requirements, and no premium tiers. The source code is available on GitHub.',
                         },
                         {
                             q: 'How does the compression work?',
-                            a: 'Shortlink uses LZ-string compression with a custom dictionary of common URL patterns. The URL is first pattern-matched against known schemes, then compressed using LZ encoding, and finally made URL-safe. Nothing is looked up when the link is opened: the link itself carries the whole URL.',
+                            a: 'LinkOpen uses LZ-string compression with a custom dictionary of common URL patterns. The URL is first pattern-matched against known schemes, then compressed using LZ encoding, and finally made URL-safe. Nothing is looked up when the link is opened: the link itself carries the whole URL.',
                         },
                     ].map((faq, i) => (
                         <details key={i} className="group border border-zinc-800">

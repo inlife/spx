@@ -75,7 +75,7 @@ export default function ToolShell({ slug, eyebrow, title, intro, children }) {
                         <div>
                             <div className="text-white font-bold text-base mb-1">Have a custom-scheme link to share?</div>
                             <p className="text-zinc-500 text-xs leading-relaxed max-w-[50ch]">
-                                The Shortlink converter turns it into an https link that opens the app when clicked.
+                                The LinkOpen converter turns it into an https link that opens the app when clicked.
                             </p>
                         </div>
                         <a

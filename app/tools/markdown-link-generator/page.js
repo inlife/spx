@@ -7,10 +7,10 @@ export const metadata = {
     description: 'Turn a URL and label into Markdown, Slack mrkdwn, HTML and reStructuredText links. Custom-scheme URLs can be swapped for an https version.',
     alternates: { canonical: '/tools/markdown-link-generator' },
     openGraph: {
-        title: 'Markdown Link Generator | Shortlink',
+        title: 'Markdown Link Generator | LinkOpen',
         description: 'One URL and label in, Markdown, Slack, HTML and reStructuredText links out.',
-        url: 'https://www.shortlink.studio/tools/markdown-link-generator',
-        images: ['/preview.png'],
+        url: 'https://linkopen.app/tools/markdown-link-generator',
+        images: ['/preview.png?v=2'],
     },
 }
 
@@ -46,7 +46,7 @@ export default function MarkdownLinkGeneratorPage() {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: 'Markdown Link Generator',
-        url: 'https://www.shortlink.studio/tools/markdown-link-generator',
+        url: 'https://linkopen.app/tools/markdown-link-generator',
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

@@ -1,13 +1,13 @@
 export const metadata = {
     title: 'Contact',
-    description: 'Get in touch with the Shortlink team. Report bugs, request features, or ask questions about converting custom scheme URLs.',
+    description: 'Get in touch with the LinkOpen team. Report bugs, request features, or ask questions about converting custom scheme URLs.',
     alternates: {
         canonical: '/contact',
     },
     openGraph: {
-        title: 'Contact Shortlink',
-        description: 'Get in touch with the Shortlink team.',
-        url: 'https://www.shortlink.studio/contact',
+        title: 'Contact LinkOpen',
+        description: 'Get in touch with the LinkOpen team.',
+        url: 'https://linkopen.app/contact',
     },
 }
 
