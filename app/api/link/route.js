@@ -17,7 +17,7 @@ const CORS = {
 function respond(status, json, text, payload) {
     const headers = {
         ...CORS,
-        'Cache-Control': status === 200 ? 'public, max-age=86400' : 'no-store',
+        'Cache-Control': status === 200 ? 'public, max-age=86400, s-maxage=86400' : 'no-store',
     }
     if (json) {
         return Response.json(payload, { status, headers })

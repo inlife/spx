@@ -246,9 +246,11 @@ export default function IntegrationsPage() {
                 <section id="obsidian" className="border-t border-zinc-800 py-10 scroll-mt-6">
                     <h2 className={h2}>Obsidian</h2>
                     <p className={p}>
-                        For now, copy a note’s Obsidian URL and use any of the options above. <a href="/obsidian-links" className={link}>Sharing Obsidian links</a> covers the details.
+                        The LinkOpen plugin for Obsidian adds three commands: copy a link to the current note, to the heading or block under the cursor, or a Markdown link to the note. It also adds a &ldquo;Copy LinkOpen link&rdquo; item to the file menu. Links are built on your device; the plugin makes no network calls.
                     </p>
-                    {/* OBSIDIAN_PLUGIN_SECTION */}
+                    <p className={`${p} mt-4`}>
+                        It&rsquo;s waiting to be listed in Obsidian&rsquo;s community plugins. The source is in the <a href="https://github.com/inlife/spx/tree/master/integrations/obsidian-plugin" className={link}>LinkOpen repository</a>. Until it&rsquo;s listed, copy a note&rsquo;s Obsidian URL and use any of the options above; <a href="/obsidian-links" className={link}>Sharing Obsidian links</a> covers the details.
+                    </p>
                 </section>
             </div>
 

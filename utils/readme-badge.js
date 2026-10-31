@@ -1,7 +1,7 @@
 // "Open in …" README badges: which badge fits a link, and the snippets to paste.
 // The badge images live in public/badge/<id>.svg (scripts/build-badges.cjs).
 
-import { shouldCompress } from './codec'
+import { makeLink } from './make-link'
 import { schemeOf, isWebUrl, isBlockedUrl } from './link-policy'
 import BADGES from './data/badges.json'
 
@@ -45,11 +45,9 @@ export function buildBadgeLink(input) {
     if (isBlockedUrl(url)) return { error: 'blocked', scheme }
 
     const type = isWebUrl(url) ? '0' : '1'
-    const result = shouldCompress(url, type)
-    const path = result.useCompression ? `s/${result.compressed}` : result.legacy
     // encodeURIComponent leaves ( and ) alone, and an unbalanced one ends a
     // Markdown link early. %28/%29 decode to the same characters.
-    const link = `${SITE}/${path}`.replaceAll('(', '%28').replaceAll(')', '%29')
+    const link = makeLink(url).replaceAll('(', '%28').replaceAll(')', '%29')
 
     return { link, scheme, type, keptByGitHub: KEPT_BY_GITHUB.includes(scheme) }
 }

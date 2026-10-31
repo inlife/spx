@@ -9,6 +9,7 @@ export default function sitemap() {
         'deep-link-builder',
         'markdown-link-generator',
         'url-scheme-registry',
+        'readme-badge',
     ]
 
     return [
@@ -31,6 +32,11 @@ export default function sitemap() {
             url: `${baseUrl}/obsidian-links`,
             changeFrequency: 'monthly',
             priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/integrations`,
+            changeFrequency: 'monthly',
+            priority: 0.6,
         },
         {
             url: `${baseUrl}/tools`,

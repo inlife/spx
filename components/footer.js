@@ -4,6 +4,8 @@ const Footer = () =>
             <nav className="flex items-center gap-3 text-xs font-mono text-zinc-600">
                 <a href="/about" className="hover:text-emerald-500 transition-colors">About</a>
                 <span className="text-zinc-700">/</span>
+                <a href="/integrations" className="hover:text-emerald-500 transition-colors">Integrations</a>
+                <span className="text-zinc-700">/</span>
                 <a href="/contact" className="hover:text-emerald-500 transition-colors">Contact</a>
                 <span className="text-zinc-700">/</span>
                 <a href="https://github.com/inlife/spx" target="_blank" className="hover:text-emerald-500 transition-colors">Source</a>

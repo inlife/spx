@@ -12,6 +12,8 @@ How it works: paste a custom scheme link into the converter and copy the https l
 - [Deep link builder](https://linkopen.app/tools/deep-link-builder): build Slack, Obsidian, Zoom, Notion and Figma deep links from a form
 - [Markdown link generator](https://linkopen.app/tools/markdown-link-generator): one link as Markdown, Slack mrkdwn, HTML and reStructuredText
 - [URL scheme list](https://linkopen.app/tools/url-scheme-registry): deep link formats for common apps, with examples and links to official docs
+- [README badge maker](https://linkopen.app/tools/readme-badge): "Open in VS Code", "Open in Obsidian" and other README badges that link through https, so GitHub keeps the link
+- [Integrations](https://linkopen.app/integrations): HTTP API (GET /api/link?url=…&mode=auto|manual&format=text|json, plain-text response, CORS open), converter prefill link (/?url=…), recipes for Apple Shortcuts, Raycast and the shell, and an Obsidian plugin
 - [About](https://linkopen.app/about): how it works, what is stored, what the site tracks
 
 ## Source
