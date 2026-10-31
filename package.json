@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "test": "vitest"
+    "test": "vitest",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "keywords": [],
   "author": "inlife",

@@ -92,8 +92,4 @@ export function check(scheme, platform) {
     return { status: 'unknown', platform, notes: platform.notes }
 }
 
-export function extractScheme(url) {
-    if (!url) return ''
-    const match = url.trim().match(/^([a-zA-Z][a-zA-Z0-9+.\-]*):/)
-    return match ? match[1].toLowerCase() : ''
-}
+export { schemeOf as extractScheme } from 'utils/link-policy'

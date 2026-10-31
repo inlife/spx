@@ -47,7 +47,7 @@ export default function ContactPage() {
         }
     }
 
-    const inputClass = "w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+    const inputClass = "w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
 
     return (
         <main className="min-h-[100dvh] flex flex-col">

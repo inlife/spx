@@ -28,6 +28,11 @@ export default function sitemap() {
             priority: 0.5,
         },
         {
+            url: `${baseUrl}/obsidian-links`,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
             url: `${baseUrl}/tools`,
             changeFrequency: 'monthly',
             priority: 0.8,

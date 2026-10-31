@@ -1,0 +1,19 @@
+# Shortlink (shortlink.studio)
+
+> Shortlink turns custom scheme links (slack://, obsidian://, zoommtg://, notion:// and any other app scheme) into https links that stay clickable in places that only allow web links, such as Notion, GitHub, Gmail, Slack, Linear and Confluence. The original link is compressed into the https link itself; there is no database and no signup. Free and open source.
+
+How it works: paste a custom scheme link into the converter and copy the https link it gives you. Opening that link shows a page on shortlink.studio that hands the original link to the app. Links to websites (http/https) always show a confirmation page instead of redirecting.
+
+## Pages
+
+- [Converter](https://www.shortlink.studio/): make an https link from any custom scheme link
+- [Sharing Obsidian links](https://www.shortlink.studio/obsidian-links): copy an obsidian:// link, link to headings and blocks, make it clickable elsewhere
+- [URL compatibility checker](https://www.shortlink.studio/tools/url-compatibility-checker): which apps keep slack://, obsidian:// and other scheme links clickable
+- [Deep link builder](https://www.shortlink.studio/tools/deep-link-builder): build Slack, Obsidian, Zoom, Notion and Figma deep links from a form
+- [Markdown link generator](https://www.shortlink.studio/tools/markdown-link-generator): one link as Markdown, Slack mrkdwn, HTML and reStructuredText
+- [URL scheme list](https://www.shortlink.studio/tools/url-scheme-registry): deep link formats for common apps, with examples and links to official docs
+- [About](https://www.shortlink.studio/about): how it works, what is stored, what the site tracks
+
+## Source
+
+- [GitHub repository](https://github.com/inlife/spx)

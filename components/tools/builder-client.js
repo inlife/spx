@@ -147,7 +147,7 @@ export default function BuilderClient() {
                             value={values[f.id] || ''}
                             onChange={e => handleField(f.id, e.target.value)}
                             placeholder={f.placeholder}
-                            className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                            className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
                         />
                         {f.hint && (
                             <p className="mt-1.5 text-zinc-500 text-xs leading-relaxed">{f.hint}</p>

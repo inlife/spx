@@ -89,7 +89,7 @@ export default function MarkdownClient() {
                         value={url}
                         onChange={e => setUrl(e.target.value)}
                         placeholder="https://example.com or slack://channel?team=..."
-                        className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                        className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                 </div>
                 <div className="bg-zinc-950 p-5">
@@ -102,7 +102,7 @@ export default function MarkdownClient() {
                         value={label}
                         onChange={e => setLabel(e.target.value)}
                         placeholder="Project notes"
-                        className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                        className="w-full bg-zinc-900 border border-zinc-700 text-white font-mono text-base sm:text-sm px-4 py-3 rounded-none placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                 </div>
             </div>

@@ -8,8 +8,7 @@ export const metadata = {
     default: 'Shortlink — Fix Custom Scheme URLs',
     template: '%s | Shortlink',
   },
-  description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and everywhere else. Free, instant, no signup.',
-  keywords: 'url shortener, link shortener, custom scheme, notion links, obsidian links, broken links fix, link converter, universal links, slack links, zoom links, deep linking',
+  description: 'Turn slack://, obsidian:// and zoommtg:// links into https links that stay clickable in Notion, GitHub, email and chat. Free, no signup.',
   authors: [{ name: 'inlife', url: 'https://github.com/inlife' }],
   creator: 'inlife',
   publisher: 'Shortlink',
@@ -23,7 +22,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'Shortlink — Fix Custom Scheme URLs',
-    description: 'Convert custom scheme URLs into universal links that work in Notion, Obsidian, Slack, and everywhere else. Free, instant, no signup.',
+    description: 'Turn slack://, obsidian:// and zoommtg:// links into https links that stay clickable in Notion, GitHub, email and chat. Free, no signup.',
     url: 'https://www.shortlink.studio',
     siteName: 'Shortlink',
     images: [
@@ -31,7 +30,7 @@ export const metadata = {
         url: '/preview.png?v=1',
         width: 1200,
         height: 630,
-        alt: 'Shortlink — Universal Link Converter',
+        alt: 'Shortlink: make custom scheme links clickable',
       },
     ],
     locale: 'en_US',
@@ -41,7 +40,7 @@ export const metadata = {
     card: 'summary_large_image',
     creator: '@inlife360',
     title: 'Shortlink — Fix Custom Scheme URLs',
-    description: 'Convert custom scheme URLs into universal links that work everywhere. Free, instant, no signup.',
+    description: 'Turn slack://, obsidian:// and zoommtg:// links into https links that stay clickable in Notion, GitHub, email and chat.',
   },
   robots: {
     index: true,
@@ -59,8 +58,6 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1.0,
-  maximumScale: 1.0,
-  userScalable: false,
 }
 
 export default function RootLayout({ children }) {
@@ -73,42 +70,6 @@ export default function RootLayout({ children }) {
         <meta property="fb:profile_id" content="100000470641337" />
         <meta name="google-adsense-account" content="ca-pub-2466083603668341" />
 
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebApplication',
-              name: 'Shortlink',
-              url: 'https://www.shortlink.studio',
-              description: 'Convert custom scheme URLs (slack://, obsidian://, zoom://, notion://) into universal HTTPS links that work everywhere.',
-              applicationCategory: 'UtilityApplication',
-              operatingSystem: 'Any',
-              browserRequirements: 'Requires JavaScript',
-              offers: {
-                '@type': 'Offer',
-                price: '0',
-                priceCurrency: 'USD',
-              },
-              author: {
-                '@type': 'Person',
-                name: 'inlife',
-                url: 'https://github.com/inlife',
-              },
-              featureList: [
-                'Convert slack:// URLs to universal links',
-                'Convert obsidian:// URLs to universal links',
-                'Convert zoom:// URLs to universal links',
-                'Convert notion:// URLs to universal links',
-                'Stateless URL compression with LZ encoding',
-                'No signup required',
-                'No database or tracking',
-                'Open source',
-              ],
-            }),
-          }}
-        />
 
         {/* Fonts: Satoshi (Fontshare) + JetBrains Mono + Space Grotesk (Google Fonts) */}
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />

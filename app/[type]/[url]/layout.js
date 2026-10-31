@@ -1,14 +1,21 @@
+import { schemeOf } from 'utils/link-policy'
+
 export async function generateMetadata({ params }) {
     const { url } = await params
-    const decodedUrl = decodeURIComponent(url)
-    const scheme = decodedUrl.split('://')[0] || 'custom'
+    let scheme = ''
+    try {
+        scheme = schemeOf(decodeURIComponent(url))
+    } catch {
+        // malformed link; the page shows the invalid view
+    }
 
     return {
-        title: `Redirecting to ${scheme}:// link`,
-        description: `Shortlink is redirecting you to a ${scheme}:// custom scheme URL. This universal link works in any browser or app.`,
+        title: scheme ? `Opening ${scheme} link` : 'Opening link',
+        description: 'A Shortlink that opens an app link, such as slack:// or obsidian://.',
+        // Keep shortlinks out of search results, but let crawlers follow the link home
         robots: {
             index: false,
-            follow: false,
+            follow: true,
         },
     }
 }
