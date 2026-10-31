@@ -18,4 +18,5 @@ How it works: paste a custom scheme link into the converter and copy the https l
 
 ## Source
 
-- [GitHub repository](https://github.com/inlife/spx)
+- [GitHub repository](https://github.com/inlife/linkopen)
+- [Obsidian plugin](https://github.com/inlife/obsidian-linkopen)

@@ -57,7 +57,7 @@ describe('buildBadgeLink', () => {
     })
 
     it('uses the confirmation page for web links', () => {
-        const url = 'https://vscode.dev/github/inlife/spx'
+        const url = 'https://vscode.dev/github/inlife/linkopen'
         const { link, type, keptByGitHub } = buildBadgeLink(url)
         expect(type).toBe('0')
         expect(keptByGitHub).toBe(true)

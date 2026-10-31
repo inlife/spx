@@ -39,7 +39,7 @@ describe('makeLink', () => {
     })
 
     it('always makes website links manual', () => {
-        for (const url of ['https://example.com/a?b=1&c=%2F', 'HTTP://example.com', 'https://github.com/inlife/spx/releases/latest/download/app.zip']) {
+        for (const url of ['https://example.com/a?b=1&c=%2F', 'HTTP://example.com', 'https://github.com/inlife/linkopen/releases/latest/download/app.zip']) {
             expect(parse(makeLink(url)).type).toBe('0')
             expect(parse(makeLink(url, { auto: true })).type).toBe('0')
             expect(parse(makeLink(url, { auto: false })).type).toBe('0')

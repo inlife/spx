@@ -1,6 +1,6 @@
 # LinkOpen
 
-[![Open in VS Code](https://linkopen.app/badge/vscode.svg)](https://linkopen.app/s/1G4Zwxg9gJgpgXAegaSsB0BzAlgFwWAGwgDsYB.AVwCcCBeACxxwAcQBSAZgEE2AmAMT79sOehQBGaSAFshWYgSwAzGEJDMAHkA)
+[![Open in VS Code](https://linkopen.app/badge/vscode.svg)](https://linkopen.app/s/1G4Zwxg9gJgpgXAegaSsB0BzAlgFwWAGwgDsYB.AVwCcCBeACxxwAcQBSAZgEE2AmAMT79sOehQBGaSAFshWYgSwAzGEMXEA1hGYxiQA)
 
 [LinkOpen](https://linkopen.app) turns app links like `slack://`, `obsidian://`, `vscode://` and `zoommtg://` into https links. Notion, GitHub, Gmail, Slack and many wikis don't make links like these clickable, so an app link pasted there ends up as plain text. A LinkOpen link is a normal https link. When someone clicks it, a page on linkopen.app passes the original link to the app. It's free, needs no account, and the code is in this repo.
 
@@ -39,7 +39,7 @@ https://linkopen.app/s/1kAHHUPYE4NaPAHCyBTBAXAlgOwOYFIBMAGdMZBAZyA
 - README badges: `https://linkopen.app/badge/<app>.svg`, with a builder at [/tools/readme-badge](https://linkopen.app/tools/readme-badge). The badge at the top of this file is one.
 - Link API: `GET https://linkopen.app/api/link?url=…&mode=auto|manual` returns the same link the converter makes, as plain text (or JSON with `&format=json`).
 - [Integrations](https://linkopen.app/integrations): Apple Shortcuts, Raycast and the shell.
-- Obsidian plugin: copies a link to the current note, heading or block. Source in [`integrations/obsidian-plugin`](integrations/obsidian-plugin); it will be in Obsidian's community plugins once it's reviewed.
+- Obsidian plugin: copies a link to the current note, heading or block. It lives in [inlife/obsidian-linkopen](https://github.com/inlife/obsidian-linkopen) and is on its way into Obsidian's community plugins.
 
 ## Privacy
 
