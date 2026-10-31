@@ -91,21 +91,16 @@ These steps are for the maintainer.
 
 1. Create the public repository `github.com/inlife/obsidian-linkopen`.
 2. Copy everything in this folder to the root of that repository, including `.gitignore` and `.npmrc`.
-3. Run `npm install && npm run build`. Check that `manifest.json` has `"version": "1.0.0"`.
-4. Commit and push. `main.js` stays out of git.
-5. Tag the release with the exact manifest version, without a leading `v`:
+3. Push to the default branch. `main.js` stays out of git; the release workflow builds it.
+4. Tag the release with the exact manifest version, without a leading `v`:
 
    ```bash
    git tag 1.0.0
    git push origin 1.0.0
    ```
 
-6. Create a GitHub release for tag `1.0.0` and attach `main.js` and `manifest.json` as files:
-
-   ```bash
-   gh release create 1.0.0 main.js manifest.json --title 1.0.0 --notes "First release."
-   ```
-
+5. `.github/workflows/release.yml` builds the plugin and publishes a GitHub release for the tag with `main.js` and `manifest.json` attached. It fails if the tag and `manifest.json` disagree. Check the release page once it's done.
+6. Install it with BRAT (`inlife/obsidian-linkopen`) in a test vault and try the commands on desktop and mobile.
 7. Submit the plugin. Obsidian's current guide ([Submit your plugin](https://docs.obsidian.md/Plugins/Releasing/Submit+your+plugin)) uses the Community directory: sign in at [community.obsidian.md](https://community.obsidian.md) with an Obsidian account, link your GitHub account, open **Plugins**, select **New plugin**, enter `https://github.com/inlife/obsidian-linkopen`, choose the owner, agree to the developer policies and select **Submit**. The directory reads `manifest.json` from the default branch, and the automated review shows anything that needs fixing.
 
    Before the directory existed, plugins were submitted with a pull request to [obsidianmd/obsidian-releases](https://github.com/obsidianmd/obsidian-releases) that added an entry to the end of `community-plugins.json`. If that route is needed, this is the entry:
@@ -120,7 +115,7 @@ These steps are for the maintainer.
    }
    ```
 
-For later releases, run `npm version 1.0.1` (or the next version). It updates `manifest.json` and `versions.json`, commits, and creates a tag without a `v`. Push the commit and the tag, build, and create a release with `main.js` and `manifest.json` attached as in step 6.
+For later releases, run `npm version 1.0.1` (or the next version). It updates `manifest.json` and `versions.json`, commits, and creates a tag without a `v`. Push the commit and the tag; the release workflow does the rest.
 
 ## License
 
