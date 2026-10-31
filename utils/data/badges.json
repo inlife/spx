@@ -1,0 +1,12 @@
+[
+    { "id": "vscode", "name": "VS Code", "color": "#0065a9", "schemes": ["vscode", "vscode-insiders"] },
+    { "id": "obsidian", "name": "Obsidian", "color": "#6c31e3", "schemes": ["obsidian"] },
+    { "id": "cursor", "name": "Cursor", "color": "#000000", "schemes": ["cursor"] },
+    { "id": "slack", "name": "Slack", "color": "#4a154b", "schemes": ["slack"] },
+    { "id": "zoom", "name": "Zoom", "color": "#0b5cff", "schemes": ["zoommtg", "zoomus"] },
+    { "id": "notion", "name": "Notion", "color": "#000000", "schemes": ["notion"] },
+    { "id": "figma", "name": "Figma", "color": "#d13a0c", "schemes": ["figma"] },
+    { "id": "teams", "name": "Teams", "color": "#4b53bc", "schemes": ["msteams"] },
+    { "id": "things", "name": "Things", "color": "#1b6ac9", "schemes": ["things"] },
+    { "id": "app", "name": "app", "color": "#047857", "schemes": [] }
+]

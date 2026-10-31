@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" role="img" aria-label="Open in Things">
+  <title>Open in Things</title>
+  <linearGradient id="lo-things-s" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="lo-things-r">
+    <rect width="100" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#lo-things-r)">
+    <rect width="53" height="20" fill="#555"/>
+    <rect x="53" width="47" height="20" fill="#1b6ac9"/>
+    <rect width="100" height="20" fill="url(#lo-things-s)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11" text-rendering="geometricPrecision">
+    <text aria-hidden="true" x="26.5" y="15" fill="#010101" fill-opacity=".3" textLength="43">Open in</text>
+    <text x="26.5" y="14" textLength="43">Open in</text>
+    <text aria-hidden="true" x="76.5" y="15" fill="#010101" fill-opacity=".3" textLength="37">Things</text>
+    <text x="76.5" y="14" textLength="37">Things</text>
+  </g>
+</svg>
