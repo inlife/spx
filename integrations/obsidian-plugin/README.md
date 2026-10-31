@@ -60,7 +60,7 @@ The link names a vault and a note. It opens the note for someone who has Obsidia
 
 - The plugin makes no network requests. Copying a link only writes to your clipboard.
 - A link contains your vault name, the note's path in the vault and any heading or block ID. They are encoded, not encrypted, so anyone who has the link can read them. Don't share links to notes whose names you want to keep private.
-- When someone clicks a link, their browser loads linkopen.app with that data in the address.
+- Remote services: the links point to linkopen.app. The plugin never contacts it; opening a link does. That page doesn't load Google Analytics, and Vercel Analytics records it with the link replaced by its app name (for example `/s/obsidian`).
 
 ## How the link is built
 

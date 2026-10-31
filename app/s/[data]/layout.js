@@ -2,6 +2,8 @@ export const metadata = {
     title: 'Opening link',
     description: 'Opens an app link, such as slack:// or obsidian://, through LinkOpen.',
     // Keep shared links out of search results, but let crawlers follow the link home
+    // The next page (and its analytics) sees only https://linkopen.app/ as the referrer
+    referrer: 'origin',
     robots: {
         index: false,
         follow: true,
