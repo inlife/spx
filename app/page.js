@@ -317,7 +317,7 @@ export default function HomePage() {
                         },
                         {
                             q: 'Does LinkOpen store my URLs?',
-                            a: 'No. Your URL is compressed into the link itself, and there is no database behind it. One caveat: the site uses Google Analytics and Vercel Analytics, which record the address of each page visited, and for a shared link that address contains the encoded URL.',
+                            a: 'No. Your URL is compressed into the link itself, and there is no database behind it. Analytics don’t see it either: shared-link pages don’t load Google Analytics, and Vercel Analytics records them with the link replaced by the app it opens (for example /s/obsidian). The rest of the site uses both.',
                         },
                         {
                             q: 'Is LinkOpen free?',

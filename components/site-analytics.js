@@ -3,30 +3,22 @@
 import Script from 'next/script'
 import { usePathname } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
+import { isSharedLinkPath, redactSharedLinkUrl } from 'utils/analytics'
 
 const GA_ID = 'G-CG6KC5KZLG'
 
-// Shared-link pages (/s/…, /0/…, /1/…) have someone's URL in their address.
-// Google Analytics doesn't load there, and Vercel Analytics gets the address
-// with the link replaced by the app it opens, e.g. /s/obsidian.
-const SHARED_LINK = /^\/(s|0|1)\//
-
-function redactSharedLink(event) {
-    const url = new URL(event.url)
-    const match = url.pathname.match(SHARED_LINK)
-    if (!match) return event
-
-    const scheme = document.querySelector('[data-link-scheme]')?.dataset.linkScheme || 'unknown'
-    return { ...event, url: `${url.origin}/${match[1]}/${scheme}` }
+// See utils/analytics.js: shared-link pages never send their address.
+function beforeSend(event) {
+    const scheme = document.querySelector('[data-link-scheme]')?.dataset.linkScheme
+    return { ...event, url: redactSharedLinkUrl(event.url, scheme) }
 }
 
 export default function SiteAnalytics() {
-    const pathname = usePathname() || ''
-    const onSharedLink = SHARED_LINK.test(pathname)
+    const onSharedLink = isSharedLinkPath(usePathname())
 
     return (
         <>
-            <Analytics beforeSend={redactSharedLink} />
+            <Analytics beforeSend={beforeSend} />
             {!onSharedLink && (
                 <>
                     <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />

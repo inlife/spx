@@ -45,7 +45,7 @@ https://linkopen.app/s/1kAHHUPYE4NaPAHCyBTBAXAlgOwOYFIBMAGdMZBAZyA
 
 There's no database and no accounts. The URL lives inside the link, so LinkOpen has nothing to store. It is compressed, not encrypted: anyone who has the link can read the URL in it.
 
-The site uses Google Analytics and Vercel Analytics. They record page addresses, and the address of a shared link contains the encoded URL. Google Analytics also sets cookies to count visits.
+Analytics never get the link itself. Shared-link pages (`/s/…`, `/0/…`, `/1/…`) don't load Google Analytics, and Vercel Analytics records them with the link replaced by the app it opens, for example `/s/obsidian` (see [`utils/analytics.js`](utils/analytics.js)). They also send only `https://linkopen.app/` as the referrer. The rest of the site uses Google Analytics and Vercel Analytics; Google Analytics sets cookies to count visits.
 
 ## Development
 

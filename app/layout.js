@@ -1,7 +1,6 @@
 import './globals.css'
-import Script from 'next/script'
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from "@vercel/analytics/next"
+import SiteAnalytics from 'components/site-analytics'
 
 // Self-hosted at build time by next/font: no render-blocking request to Google.
 // globals.css maps these variables to font-display / font-mono.
@@ -93,22 +92,9 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
 
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-CG6KC5KZLG"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-CG6KC5KZLG');
-          `}
-        </Script>
       </head>
       <body className="antialiased" suppressHydrationWarning>
-        <Analytics />
+        <SiteAnalytics />
         {children}
       </body>
     </html>
