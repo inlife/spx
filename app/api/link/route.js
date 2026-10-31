@@ -1,5 +1,5 @@
 import { makeLink } from 'utils/make-link'
-import { isWebUrl } from 'utils/link-policy'
+import { isWebUrl, schemeOf } from 'utils/link-policy'
 
 // GET /api/link?url=<app link>&mode=auto|manual&format=text|json
 //
@@ -45,6 +45,8 @@ export function GET(request) {
     const url = (params.get('url') || '').trim()
     if (!url) return fail('url is missing', json)
     if (url.length > MAX_URL_LENGTH) return fail(`url is longer than ${MAX_URL_LENGTH} characters`, json)
+    // Catches stray text (a shared sentence, a note title) before it becomes a dead link
+    if (!schemeOf(url)) return fail('url must start with a scheme, like obsidian:', json)
 
     let link
     try {
